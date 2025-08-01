@@ -93,6 +93,8 @@
                 <ul class="list-none p-0 m-0">
                     <li><a href="https://www.cdctj.com.cn/att_default/0/11/16/44/11164461_561528.pdf" target="_blank" class="text-sky-600 hover:underline">1) https://www.cdctj.com.cn/att_default/0/11/16/44/11164461_561528.pdf</a></li>
                     <li><a href="https://cancerglobal.cchc.org/images/publish/Bilingual_Medical_and_Cancer_Vocabulary.pdf" target="_blank" class="text-sky-600 hover:underline">2) https://cancerglobal.cchc.org/images/publish/Bilingual_Medical_and_Cancer_Vocabulary.pdf</a></li>
+                    <li><a href="https://www.parkwayeast.com.sg/zh/health-plus/article/medical-conditions-list" target="_blank" class="text-sky-600 hover:underline">3) https://www.parkwayeast.com.sg/zh/health-plus/article/medical-conditions-list</a></li>
+                    <li><a href="https://zh.wikipedia.org/wiki/%E7%96%BE%E7%97%85%E5%88%97%E8%A1%A8" target="_blank" class="text-sky-600 hover:underline">4) https://zh.wikipedia.org/wiki/%E7%96%BE%E7%97%85%E5%88%97%E8%A1%A8</a></li>
                 </ul>
             </div>
         </footer>
@@ -100,53 +102,120 @@
 
     <script>
         const medicalData = {
-            "诊断测试与程序 (Diagnostic Tests & Procedures)": [
-                { en: "Biopsy", zh: "活组织检查", pinyin: "huó zǔ zhī jiǎn chá" },
-                { en: "Blood test", zh: "验血", pinyin: "yàn xuè" },
-                { en: "Colonoscopy", zh: "结肠镜检查", pinyin: "jié cháng jìng jiǎn chá" },
-                { en: "CT scan", zh: "CT扫描", pinyin: "CT sǎo miáo" },
-                { en: "Mammogram", zh: "乳房X光检查", pinyin: "rǔ fáng X guāng jiǎn chá" },
-                { en: "MRI", zh: "磁共振成像", pinyin: "cí gòng zhèn chéng xiàng" },
-                { en: "Ultrasound", zh: "超声波检查", pinyin: "chāo shēng bō jiǎn chá" },
-                { en: "X-ray", zh: "X光检查", pinyin: "X guāng jiǎn chá" },
-                { en: "Bone scan", zh: "骨扫描", pinyin: "gǔ sǎo miáo" },
-                { en: "Bone marrow aspiration and biopsy", zh: "骨髓抽出检验", pinyin: "gǔ suǐ chōu chū jiǎn yàn" },
-                { en: "Brain scan", zh: "脑部扫描", pinyin: "nǎo bù sǎo miáo" },
-                { en: "Cystoscopy", zh: "膀胱镜检查", pinyin: "páng guāng jìng jiǎn chá" },
-                { en: "Endoscopy", zh: "内腔镜检查法 / 内视镜", pinyin: "nèi qiāng jìng jiǎn chá fǎ / nèi shì jìng" },
-                { en: "Fecal Occult Blood Test (FOBT)", zh: "粪便潜血试验", pinyin: "fèn biàn qián xuè shì yàn" },
-                { en: "Fine needle aspiration", zh: "细针抽吸术", pinyin: "xì zhēn chōu xī shù" },
-                { en: "Flow cytometry", zh: "流式细胞术", pinyin: "liú shì xì bāo shù" },
-                { en: "Gallium scan", zh: "镓扫描", pinyin: "jiā sǎo miáo" },
-                { en: "Imaging studies", zh: "影像扫描检查", pinyin: "yǐng xiàng sǎo miáo jiǎn chá" },
-                { en: "Intravenous pyelogram (IVP)", zh: "经由静脉注射造影剂的肾盂x光显像", pinyin: "jīng yóu zhí cháng de chāo shēng bō jiǎn chá (qián liè xiàn)" },
-                { en: "Laparoscopy", zh: "腹腔镜", pinyin: "fù qiāng jìng" },
-                { en: "Laryngoscopy", zh: "喉镜检查", pinyin: "hóu jìng jiǎn chá" },
-                { en: "Lower GI series", zh: "下胃肠道摄影检查", pinyin: "xià wèi cháng dào shè yǐng jiǎn chá" },
-                { en: "Lymphangiogram", zh: "淋巴管(造影)照片，淋巴管 X 光照片", pinyin: "lín bā guǎn (zào yǐng) zhào piàn, lín bā guǎn X guāng zhào piàn" },
-                { en: "Mediastinoscopy", zh: "纵膈腔内视镜检查", pinyin: "zòng gé qiāng nèi shì jìng jiǎn chá" },
-                { en: "Needle aspiration", zh: "针头抽吸（取样）", pinyin: "zhēn tóu chōu xī (qǔ yàng)" },
-                { en: "Needle biopsy", zh: "刺采样活组织检查", pinyin: "cì cǎi yàng huó zǔ zhī jiǎn chá" },
-                { en: "Nasoscopy", zh: "鼻镜检查", pinyin: "bí jìng jiǎn chá" },
-                { en: "Nuclear medicine scan", zh: "核医学扫描", pinyin: "hé yī xué sǎo miáo" },
-                { en: "Pap test", zh: "子宫颈抹片检查", pinyin: "zǐ gōng jǐng mò piàn jiǎn chá" },
-                { en: "Pelvic examination", zh: "骨盆检查", pinyin: "gǔ pén jiǎn chá" },
-                { en: "Positron emission tomography (PET scan)", zh: "阳电子断层扫描术", pinyin: "yáng diàn zǐ duàn céng sǎo miáo shù" },
-                { en: "Pulmonary Function Test (PFT)", zh: "肺功能检验", pinyin: "fèi gōng néng jiǎn yàn" },
-                { en: "Radionuclide bone scan", zh: "放射性骨扫描", pinyin: "fàng shè xìng gǔ sǎo miáo" },
-                { en: "Sigmoidoscopy", zh: "乙形大肠镜检查", pinyin: "yǐ xíng dà cháng jìng jiǎn chá" },
-                { en: "Spinal tap", zh: "抽骨髓", pinyin: "chōu gǔ suǐ" },
-                { en: "Sputum cytology", zh: "痰细胞学", pinyin: "tán xì bāo xué" },
-                { en: "Stereotactic needle biopsy", zh: "实体﹝三维定位﹞针头抽样检查", pinyin: "shí tǐ (sān wéi dìng wèi) zhēn tóu chōu yàng jiǎn chá" },
-                { en: "Thoracentesis", zh: "胸腔穿刺术", pinyin: "xiōng qiāng chuān cì shù" },
-                { en: "Thoracoscopy", zh: "胸腔镜检查", pinyin: "xiōng qiāng jìng jiǎn chá" },
-                { en: "Transrectal Ultrasound (TRUS)", zh: "经由直肠的超声波检查 (前列腺)", pinyin: "jīng yóu zhí cháng de chāo shēng bō jiǎn chá (qián liè xiàn)" },
-                { en: "Upper GI Series", zh: "上消化道摄影", pinyin: "shàng xiāo huà dào shè yǐng" },
-                { en: "Urine cytology", zh: "尿细胞学", pinyin: "niào xì bāo xué" },
-                { en: "Virtual colonoscopy", zh: "虚拟大肠镜", pinyin: "xū nǐ dà cháng jìng" },
-                { en: "Wire localization", zh: "针头引导", pinyin: "zhēn tóu yǐn dǎo" }
+            "就诊常用词汇 (Doctor's Visit Vocabulary)": [
+                { en: "Doctor's visit", zh: "看医生", pinyin: "kàn yī shēng" },
+                { en: "Clinic", zh: "诊所", pinyin: "zhěn suǒ" },
+                { en: "Outpatient", zh: "门诊", pinyin: "mén zhěn" },
+                { en: "General check-up", zh: "体检", pinyin: "tǐ jiǎn" },
+                { en: "Annual physical exam", zh: "年检 / 年度体检", pinyin: "nián jiǎn / nián dù tǐ jiǎn" },
+                { en: "Routine check-up", zh: "常规体检", pinyin: "cháng guī tǐ jiǎn" },
+                { en: "Follow-up visit", zh: "复诊", pinyin: "fù zhěn" },
+                { en: "Medical consultation", zh: "医疗咨询", pinyin: "yī liáo zī xún" },
+                { en: "Chief complaint", zh: "主诉", pinyin: "zhǔ sù" },
+                { en: "Medical history", zh: "病史", pinyin: "bìng shǐ" },
+                { en: "Symptoms", zh: "症状", pinyin: "zhèng zhuàng" },
+                { en: "Diagnosis", zh: "诊断", pinyin: "zhěn duàn" },
+                { en: "Prescription", zh: "处方", pinyin: "chǔ fāng" },
+                { en: "Medication", zh: "药物 / 药品", pinyin: "yào wù / yào pǐn" },
+                { en: "Over-the-counter medicine", zh: "非处方药", pinyin: "fēi chǔ fāng yào" },
+                { en: "Injection", zh: "注射", pinyin: "zhù shè" },
+                { en: "IV drip", zh: "打点滴", pinyin: "dǎ diǎn dī" },
+                { en: "Vaccination", zh: "疫苗接种", pinyin: "yì miáo jiē zhǒng" },
+                { en: "Appointment", zh: "预约", pinyin: "yù yuē" },
+                { en: "Walk-in", zh: "无预约看诊", pinyin: "wú yù yuē kàn zhěn" },
+                { en: "Referral", zh: "转诊", pinyin: "zhuǎn zhěn" },
+                { en: "Medical certificate", zh: "医疗证明", pinyin: "yī liáo zhèng míng" },
+                { en: "Health report", zh: "健康报告", pinyin: "jiàn kāng bào gào" },
+                { en: "Consent form", zh: "同意书", pinyin: "tóng yì shū" },
+                { en: "Health insurance", zh: "医疗保险", pinyin: "yī liáo bǎo xiǎn" },
+                // Newly added terms from user
+                { en: "Allergen test", zh: "过敏原测试", pinyin: "guò mǐn yuán cè shì", note: "临床上更常用：过敏原检测 (guò mǐn yuán jiǎn cè)" },
+                { en: "Blood pressure measurement", zh: "血压测量", pinyin: "xuè yā cè liáng" },
+                { en: "Physical examination", zh: "体格检查", pinyin: "tǐ gé jiǎn chá" },
+                { en: "Inpatient", zh: "住院病人", pinyin: "zhù yuàn bìng rén" },
+                { en: "Hospitalization", zh: "住院", pinyin: "zhù yuàn" },
+                { en: "Second opinion", zh: "第二诊断意见", pinyin: "dì èr zhěn duàn yì jiàn" },
+                { en: "Health record", zh: "健康档案", pinyin: "jiàn kāng dàng àn" },
+                { en: "Emergency", zh: "急诊", pinyin: "jí zhěn" },
+                { en: "Pain scale", zh: "疼痛等级", pinyin: "téng tòng děng jí" },
+                { en: "Sick leave note", zh: "病假条", pinyin: "bìng jià tiáo" },
+                { en: "Return-to-work note", zh: "复工证明", pinyin: "fù gōng zhèng míng" },
+                { en: "School excuse note", zh: "学校请假条", pinyin: "xué xiào qǐng jià tiáo" },
+                // New terms from "Clinic Visit Essentials"
+                { en: "Vital signs", zh: "生命体征", pinyin: "shēng mìng tǐ zhēng" },
+                { en: "Temperature check", zh: "量体温", pinyin: "liáng tǐ wēn" },
+                { en: "Height and weight", zh: "身高体重", pinyin: "shēn gāo tǐ zhòng" },
+                { en: "BMI (Body Mass Index)", zh: "体质指数", pinyin: "tǐ zhì zhǐ shù" },
+                { en: "Lab test", zh: "实验室检查", pinyin: "shí yàn shì jiǎn chá" },
+                { en: "Test results", zh: "检查结果 / 化验结果", pinyin: "jiǎn chá jié guǒ / huà yàn jié guǒ" },
+                { en: "Medical chart", zh: "病历", pinyin: "bìng lì" },
+                { en: "Waiting room", zh: "候诊室", pinyin: "hòu zhěn shì" },
+                { en: "Nurse", zh: "护士", pinyin: "hù shì" },
+                { en: "Receptionist", zh: "挂号员 / 接待员", pinyin: "guà hào yuán / jiē dài yuán" },
+                // New terms from "Forms and Paperwork"
+                { en: "Patient registration form", zh: "患者登记表", pinyin: "huàn zhě dēng jì biǎo" },
+                { en: "Insurance card", zh: "医保卡", pinyin: "yī bǎo kǎ" },
+                { en: "ID card", zh: "身份证", pinyin: "shēn fèn zhèng" }
             ],
+            "诊断测试与程序 (Diagnostic Tests & Procedures)": {
+                "常见检查 (Common Tests)": [
+                    { en: "Blood test", zh: "验血", pinyin: "yàn xuè" },
+                    { en: "X-ray", zh: "X光检查", pinyin: "X guāng jiǎn chá" },
+                    { en: "Ultrasound", zh: "超声波检查", pinyin: "chāo shēng bō jiǎn chá" },
+                    { en: "CT scan", zh: "CT扫描", pinyin: "CT sǎo miáo" },
+                    { en: "MRI", zh: "磁共振成像", pinyin: "cí gòng zhèn chéng xiàng" },
+                    { en: "Mammogram", zh: "乳房X光检查", pinyin: "rǔ fáng X guāng jiǎn chá" },
+                    { en: "Pap test", zh: "子宫颈抹片检查", pinyin: "zǐ gōng jǐng mò piàn jiǎn chá" },
+                    { en: "Pelvic examination", zh: "骨盆检查", pinyin: "gǔ pén jiǎn chá" },
+                    { en: "Blood sugar test", zh: "血糖检查", pinyin: "xuè táng jiǎn chá" },
+                    { en: "Lipid profile / Cholesterol test", zh: "血脂检查 / 胆固醇检查", pinyin: "xuè zhī jiǎn chá / dǎn gù chún jiǎn chá" },
+                    { en: "Liver function test", zh: "肝功能检查", pinyin: "gān gōng néng jiǎn chá" },
+                    { en: "Kidney function test", zh: "肾功能检查", pinyin: "shèn gōng néng jiǎn chá" },
+                    { en: "Electrocardiogram (ECG)", zh: "心电图", pinyin: "xīn diàn tú" },
+                    { en: "Hearing test", zh: "听力检查", pinyin: "tīng lì jiǎn chá" },
+                    { en: "Vision test", zh: "视力检查", pinyin: "shì lì jiǎn chá" }
+                ],
+                "高级诊断与专科检查 (Advanced & Specialized Diagnostics)": [
+                    { en: "Biopsy", zh: "活组织检查", pinyin: "huó zǔ zhī jiǎn chá" },
+                    { en: "Colonoscopy", zh: "结肠镜检查", pinyin: "jié cháng jìng jiǎn chá" },
+                    { en: "Bone scan", zh: "骨扫描", pinyin: "gǔ sǎo miáo" },
+                    { en: "Bone marrow aspiration", zh: "骨髓穿刺", pinyin: "gǔ suǐ chuān cì" },
+                    { en: "Brain scan", zh: "脑部扫描", pinyin: "nǎo bù sǎo miáo" },
+                    { en: "Cystoscopy", zh: "膀胱镜检查", pinyin: "páng guāng jìng jiǎn chá" },
+                    { en: "Endoscopy", zh: "内窥镜检查", pinyin: "nèi kuī jìng jiǎn chá", note: "亦称：内视镜检查 (nèi shì jìng jiǎn chá)" },
+                    { en: "Fecal Occult Blood Test (FOBT)", zh: "粪便潜血试验", pinyin: "fèn biàn qián xuè shì yàn" },
+                    { en: "Fine needle aspiration", zh: "细针抽吸术", pinyin: "xì zhēn chōu xī shù" },
+                    { en: "Flow cytometry", zh: "流式细胞术", pinyin: "liú shì xì bāo shù" },
+                    { en: "Gallium scan", zh: "镓扫描", pinyin: "jiā sǎo miáo" },
+                    { en: "Imaging studies", zh: "影像扫描检查", pinyin: "yǐng xiàng sǎo miáo jiǎn chá" },
+                    { en: "Intravenous pyelogram (IVP)", zh: "静脉泌尿造影", pinyin: "jīng mài pái liào tú xiàng" },
+                    { en: "Laparoscopy", zh: "腹腔镜", pinyin: "fù qiāng jìng" },
+                    { en: "Laryngoscopy", zh: "喉镜检查", pinyin: "hóu jìng jiǎn chá" },
+                    { en: "Lower GI series", zh: "下胃肠道摄影检查", pinyin: "xià wèi cháng dào shè yǐng jiǎn chá" },
+                    { en: "Lymphangiogram", zh: "淋巴管(造影)照片，淋巴管 X 光照片", pinyin: "lín bā guǎn (zào yǐng) zhào piàn, lín bā guǎn X guāng zhào piàn" },
+                    { en: "Mediastinoscopy", zh: "纵膈腔内视镜检查", pinyin: "zòng gé qiāng nèi shì jìng jiǎn chá" },
+                    { en: "Needle aspiration", zh: "针头抽吸（取样）", pinyin: "zhēn tóu chōu xī (qǔ yàng)" },
+                    { en: "Needle biopsy", zh: "刺采样活组织检查", pinyin: "cì cǎi yàng huó zǔ zhī jiǎn chá" },
+                    { en: "Nasoscopy", zh: "鼻镜检查", pinyin: "bí jìng jiǎn chá" },
+                    { en: "Nuclear medicine scan", zh: "核医学扫描", pinyin: "hé yī xué sǎo miáo" },
+                    { en: "Positron emission tomography (PET scan)", zh: "阳电子断层扫描术", pinyin: "yáng diàn zǐ duàn céng sǎo miáo shù" },
+                    { en: "Pulmonary Function Test (PFT)", zh: "肺功能检验", pinyin: "fèi gōng néng jiǎn yàn" },
+                    { en: "Radionuclide bone scan", zh: "放射性骨扫描", pinyin: "fàng shè xìng gǔ sǎo miáo" },
+                    { en: "Sigmoidoscopy", zh: "乙形大肠镜检查", pinyin: "yǐ xíng dà cháng jìng jiǎn chá" },
+                    { en: "Spinal tap", zh: "腰椎穿刺", pinyin: "yāo zhuī chuān cì" },
+                    { en: "Sputum cytology", zh: "痰细胞学", pinyin: "tán xì bāo xué" },
+                    { en: "Stereotactic needle biopsy", zh: "实体﹝三维定位﹞针头抽样检查", pinyin: "shí tǐ (sān wéi dìng wèi) zhēn tóu chōu yàng jiǎn chá" },
+                    { en: "Thoracentesis", zh: "胸腔穿刺术", pinyin: "xiōng qiāng chuān cì shù" },
+                    { en: "Thoracoscopy", zh: "胸腔镜检查", pinyin: "xiōng qiāng jìng jiǎn chá" },
+                    { en: "Transrectal Ultrasound (TRUS)", zh: "经直肠超声波检查 (前列腺)", pinyin: "jīng zhí cháng chāo shēng bō jiǎn chá" },
+                    { en: "Upper GI Series", zh: "上消化道摄影", pinyin: "shàng xiāo huà dào shè yǐng" },
+                    { en: "Urine cytology", zh: "尿细胞学", pinyin: "niào xì bāo xué" },
+                    { en: "Virtual colonoscopy", zh: "虚拟大肠镜", pinyin: "xū nǐ dà cháng jìng" },
+                    { en: "Wire localization", zh: "针头引导", pinyin: "zhēn tóu yǐn dǎo" }
+                ]
+            },
             "治疗与疗法 (Treatments & Therapies)": [
+                { en: "Joint replacement", zh: "关节置换", pinyin: "guān jié zhì huàn", note: "此为医疗程序，非疾病" },
                 { en: "Chemotherapy", zh: "化疗", pinyin: "huà liáo" },
                 { en: "Hormone therapy", zh: "荷尔蒙治疗", pinyin: "hé ěr méng zhì liáo" },
                 { en: "Immunotherapy", zh: "免疫疗法", pinyin: "miǎn yì liáo fǎ" },
@@ -325,302 +394,514 @@
                 ]
             },
             "常见疾病与状况 (Common Diseases & Conditions)": {
-                "慢性疾病 (Chronic Conditions)": [
-                    { en: "Arthritis", zh: "关节炎", pinyin: "guān jié yán" },
-                    { en: "Diabetes", zh: "糖尿病", pinyin: "táng niǎo bìng" },
-                    { en: "Hypertension", zh: "高血压", pinyin: "gāo xuè yā" },
-                    { en: "Arteriosclerosis", zh: "动脉硬化症", pinyin: "dòng mài yìng huà zhèng" },
+                "呼吸系统疾病 (Respiratory System Disorders)": [
+                    { en: "Rhinovirus (Common cold)", zh: "鼻病毒（普通感冒）", pinyin: "bí bìng dú (pǔ tōng gǎn mào)" },
+                    { en: "Pharyngitis (Sore throat)", zh: "咽炎（咽喉痛）", pinyin: "yān yán (yān hóu tòng)" },
+                    { en: "Tussis (Cough)", zh: "土脓病（咳嗽）", pinyin: "tǔ nóng bìng (ké sou)" },
                     { en: "Asthma", zh: "哮喘", pinyin: "xiào chuǎn" },
+                    { en: "Pneumonia", zh: "肺炎", pinyin: "fèi yán" },
+                    { en: "Pulmonary tuberculosis", zh: "肺结核", pinyin: "fèi jié hé" },
+                    { en: "Chronic bronchitis (Lung infection)", zh: "慢性支气管炎（肺部感染）", pinyin: "màn xìng zhī qì guǎn yán (fèi bù gǎn rǎn)" },
+                    { en: "Emphysema", zh: "肺气肿", pinyin: "fèi qì zhǒng" },
+                    { en: "Lung cancer", zh: "肺癌", pinyin: "fèi ái" },
+                    { en: "Lower respiratory tract infection", zh: "下呼吸道感染", pinyin: "xià hū xī dào gǎn rǎn" },
                     { en: "Bronchiectasis", zh: "支气管扩张", pinyin: "zhī qì guǎn kuò zhāng" },
                     { en: "Bronchitis", zh: "支气管炎", pinyin: "zhī qì guǎn yán" },
-                    { en: "Cirrhosis", zh: "硬化", pinyin: "yìng huà" },
-                    { en: "Coronary heart disease", zh: "冠心病", pinyin: "guān xīn bìng" },
-                    { en: "Crohn's disease", zh: "克罗恩肠道疾病", pinyin: "kè luó ēn cháng dào jí bìng" },
-                    { en: "Dermatitis", zh: "皮肤炎/皮炎", pinyin: "pí fū yán / pí yán" },
-                    { en: "Emphysema", zh: "肺气肿", pinyin: "fèi qì zhǒng" },
-                    { en: "Endometriosis", zh: "子宫内膜异位", pinyin: "zǐ gōng nèi mó yì wèi" },
-                    { en: "Fibroid uterus", zh: "子宫纤维变性", pinyin: "zǐ gōng xiān wéi biàn xìng" },
-                    { en: "Fibrocystic Changes", zh: "纤维囊肿性变化", pinyin: "xiān wéi náng zhǒng xìng biàn huà" },
-                    { en: "Fibrosis", zh: "纤维化", pinyin: "xiān wéi huà" },
-                    { en: "Glaucoma", zh: "青光眼", pinyin: "qīng guāng yǎn" },
-                    { en: "Hemorrhoids/Piles", zh: "痔疮", pinyin: "zhì chuāng" },
-                    { en: "Hepatitis", zh: "肝炎", pinyin: "gān yán" },
-                    { en: "Hyperhidrosis", zh: "多汗症", pinyin: "duō hàn zhèng" },
-                    { en: "Hypertrophy of the prostate", zh: "前列腺肥大", pinyin: "qián liè xiàn féi dà" },
-                    { en: "Lupus", zh: "狼疮", pinyin: "láng chuāng" },
-                    { en: "Macular degeneration", zh: "黄斑变性 (如色素性视网膜炎)", pinyin: "huáng bān biàn xìng (rú sè sù xìng shì wǎng mó yán)" },
-                    { en: "Menstruation disorder", zh: "月经失调", pinyin: "yuè jīng shī tiáo" },
-                    { en: "Multiple myeloma", zh: "多发性骨髓瘤", pinyin: "duō fā xìng gǔ suǐ liú" },
-                    { en: "Myopia", zh: "近视", pinyin: "jìn shì" },
-                    { en: "Osteoporosis", zh: "骨质疏松", pinyin: "gǔ zhì shū sōng" },
-                    { en: "Parkinson's disease", zh: "帕金森病", pinyin: "pà jīn sēn bìng" },
-                    { en: "Periodontal disease", zh: "牙周病", pinyin: "yá zhōu bìng" },
-                    { en: "Psoriasis", zh: "牛皮癣/银屑病", pinyin: "niú pí xiǎn / yín xiè bìng" },
-                    { en: "Pulmonary tuberculosis", zh: "肺结核", pinyin: "fèi jié hé" },
-                    { en: "Rheumatic heart disease", zh: "风湿性心脏病", pinyin: "fēng shí xìng xīn zàng bìng" },
-                    { en: "Sjögren's syndrome", zh: "干燥综合征，修格兰氏综合征", pinyin: "gān zào zōng hé zhēng, xiū gé lán shì zōng hé zhēng" },
-                    { en: "Squint", zh: "斜视", pinyin: "xié shì" },
-                    { en: "Thrombosis", zh: "血栓症", pinyin: "xuè shuān zhèng" },
-                    { en: "Tinea (Ringworm infection)", zh: "癣", pinyin: "xiǎn" },
-                    { en: "Trachoma", zh: "沙眼", pinyin: "shā yǎn" },
-                    { en: "Trichiasis", zh: "倒睫", pinyin: "dǎo jié" },
-                    { en: "Ulcerative colitis", zh: "溃疡性结肠炎", pinyin: "kuì yáng xìng jié cháng yán" },
-                    { en_US: "Urticaria", zh: "风疹块", pinyin: "fēng zhěn kuài" },
-                    { en: "Valvular cyanosis", zh: "心脏瓣膜病", pinyin: "xīn zàng bàn mó bìng" },
-                    { en: "Valvular incompetence", zh: "瓣锁闭不全", pinyin: "bàn suǒ bì bù quán" },
-                    { en: "Valvular stenosis", zh: "心瓣狭窄", pinyin: "xīn bàn xiá zhǎi" },
-                    { en: "Wart", zh: "疣", pinyin: "yóu" }
+                    { en: "Bronchopneumonia", zh: "支气管肺炎", pinyin: "zhī qì guǎn fèi yán" },
+                    { en: "Common cold", zh: "感冒", pinyin: "gǎn mào" },
+                    { en: "Hemoptysis", zh: "咳血", pinyin: "ké xuè" },
+                    { en: "Influenza (Flu)", zh: "流感（流行性感冒）", pinyin: "liú gǎn (liú xíng xìng gǎn mào)" },
+                    { en: "Pertussis", zh: "百日咳", pinyin: "bǎi rì ké" },
+                    { en: "Pleural effusion", zh: "肺积水", pinyin: "fèi jī shuǐ" },
+                    { en: "Pleurisy", zh: "胸膜炎", pinyin: "xiōng mó yán" },
+                    { en: "Pneumothorax", zh: "气胸", pinyin: "qì xiōng" },
+                    { en: "Rhinitis", zh: "鼻炎", pinyin: "bí yán" },
+                    { en: "Sinusitis", zh: "窦炎", pinyin: "dòu yán" },
+                    { en: "Tracheitis", zh: "气管炎", pinyin: "qì guǎn yán" },
+                    { en: "Upper respiratory infection", zh: "上呼吸道感染", pinyin: "shàng hū xī dào gǎn rǎn" },
+                    { en: "Atypical pneumonia", zh: "非典型肺炎", pinyin: "fēi diǎn xíng fèi yán" },
+                    { en: "Pneumoconiosis", zh: "尘肺症", pinyin: "chén fèi zhèng" },
+                    { en: "Silicosis", zh: "矽肺", pinyin: "xī fèi" },
+                    { en: "Pulmonary embolism", zh: "肺栓塞", pinyin: "fèi shuān sè" },
+                    { en: "Obstructive Pneumonitis", zh: "阻塞性肺炎", pinyin: "zǔ sè xìng fèi yán" },
+                    { en: "Atelectasis", zh: "肺部膨胀不全", pinyin: "fèi bù péng zhàng bù quán" }
                 ],
                 "感染与炎症 (Infections & Inflammations)": [
-                    { en: "Pneumonia", zh: "肺炎", pinyin: "fèi yán" },
-                    { en: "Acquired immunodeficiency syndrome (AIDS)", zh: "后天免疫缺陷综合征, 俗称艾滋病", pinyin: "hòu tiān miǎn yì quē xiàn zōng hé zhēng, sú chēng ài zī bìng" },
-                    { en: "Acute Hepatitis", zh: "急性肝炎", pinyin: "jí xìng gān yán" },
-                    { en: "Allergic contact dermatitis", zh: "变应性接触性皮炎", pinyin: "biàn yìng xìng jiē chù xìng pí yán" },
-                    { en: "Allergic rhinitis", zh: "过敏性鼻炎", pinyin: "guò mǐn xìng bí yán" },
+                    { en: "Pyrexia (Fever)", zh: "热病（发热）", pinyin: "rè bìng (fā rè)" },
                     { en: "Appendicitis", zh: "盲肠炎", pinyin: "máng cháng yán" },
-                    { en: "Athletes foot", zh: "香港脚", pinyin: "xiāng gǎng jiǎo" },
-                    { en: "Bronchopneumonia", zh: "支气管肺炎", pinyin: "zhī qì guǎn fèi yán" },
-                    { en: "Canker sore", zh: "口疮", pinyin: "kǒu chuāng" },
-                    { en: "Candida vaginal infection", zh: "念珠菌阴道炎", pinyin: "niàn zhū jūn yīn dào yán" },
-                    { en: "Cervicitis", zh: "子宫颈炎", pinyin: "zǐ gōng jǐng yán" },
-                    { en: "Cholangitis", zh: "胆管炎", pinyin: "dǎn guǎn yán" },
-                    { en: "Cholecystitis", zh: "胆囊炎", pinyin: "dǎn náng yán" },
-                    { en: "Cholera", zh: "霍乱", pinyin: "huò luàn" },
-                    { en: "Common cold", zh: "感冒", pinyin: "gǎn mào" },
-                    { en: "Conjunctivitis", zh: "结膜炎", pinyin: "jié mó yán" },
-                    { en: "Cystitis", zh: "膀胱炎", pinyin: "páng guāng jìng jiǎn chá" },
-                    { en: "Dacryocystitis", zh: "泪囊炎", pinyin: "lèi náng yán" },
-                    { en: "Dental abscess/tooth abscess", zh: "牙疮", pinyin: "yá chuāng" },
-                    { en: "Dermatitis", zh: "皮肤炎/皮炎", pinyin: "pí fū yán / pí yán" },
                     { en: "Diarrhea", zh: "腹泻", pinyin: "fù xiè" },
-                    { en: "Diphtheria", zh: "白喉", pinyin: "bái hóu" },
                     { en: "Drug eruption", zh: "药疹", pinyin: "yào zhěn" },
-                    { en: "Dysentery", zh: "痢疾", pinyin: "lì jí" },
-                    { en: "Encephalitis", zh: "脑炎", pinyin: "nǎo yán" },
-                    { en: "Endocarditis", zh: "心内膜炎", pinyin: "xīn nèi mó yán" },
-                    { en: "Esophagitis", zh: "食道炎", pinyin: "shí dào yán" },
                     { en: "Frost bite", zh: "冻疮", pinyin: "dòng chuāng" },
-                    { en: "Gastritis", zh: "胃炎", pinyin: "wèi yán" },
                     { en: "Gonorrhea", zh: "淋病", pinyin: "lín bìng" },
                     { en: "Herpes zoster", zh: "带状疱疹", pinyin: "dài zhuàng pào zhěn" },
-                    { en: "Infantile eczema", zh: "小儿湿疹", pinyin: "xiǎo ér shī zhěn" },
                     { en: "Infection", zh: "感染", pinyin: "gǎn rǎn" },
                     { en: "Inflammation", zh: "发炎", pinyin: "fā yán" },
                     { en: "Intestinal catarrh", zh: "肠黏膜炎", pinyin: "cháng nián mó yán" },
-                    { en: "Jaundice", zh: "黄疸病", pinyin: "huáng dǎn bìng" },
-                    { en: "Keratitis", zh: "角膜炎", pinyin: "jiǎo mó yán" },
-                    { en: "Leukocytosis", zh: "白细胞(血球)增多症", pinyin: "bái xì bāo (xuè qiú) zēng duō zhèng" },
-                    { en: "Leukopenia", zh: "白细胞(血球)减少症", pinyin: "bái xì bāo (xuè qiú) jiǎn shǎo zhèng" },
-                    { en: "Leukoplakia", zh: "白斑病", pinyin: "bái bān bìng" },
-                    { en: "Mucositis", zh: "口腔癌", pinyin: "kǒu qiāng ái" },
                     { en: "Mastitis", zh: "乳房炎", pinyin: "rǔ fáng yán" },
                     { en: "Measles", zh: "麻疹", pinyin: "má zhěn" },
-                    { en: "Meningitis", zh: "脑膜炎", pinyin: "nǎo mó yán" },
-                    { en: "Myocarditis", zh: "心肌炎", pinyin: "xīn jī yán" },
-                    { en: "Otitis media", zh: "中耳炎", pinyin: "zhōng ěr yán" },
-                    { en: "Pelvic infection", zh: "盆腔炎", pinyin: "pén qiāng yán" },
-                    { en: "Pericarditis", zh: "心外膜炎 (心包炎)", pinyin: "xīn wài mó yán (xīn bāo yán)" },
                     { en: "Perirectal abscess", zh: "肛门周围脓疡", pinyin: "gāng mén zhōu wéi nóng yáng" },
-                    { en: "Peritonitis", zh: "腹膜炎", pinyin: "fù mó yán" },
-                    { en: "Pertussis", zh: "百日咳", pinyin: "bǎi rì ké" },
-                    { en: "Pharyngitis", zh: "咽炎 / 咽喉炎", pinyin: "yān yán / yān hóu yán" },
-                    { en: "Pneumonitis", zh: "肺的炎症", pinyin: "fèi de yán zhèng" },
-                    { en: "Prostatitis", zh: "前列腺炎", pinyin: "qián liè xiàn yán" },
-                    { en: "Pyelonephritis", zh: "盂肾炎", pinyin: "yú shèn yán" },
-                    { en: "Renal tuberculosis", zh: "肾结核", pinyin: "shèn jié hé" },
-                    { en: "Rhinitis", zh: "鼻炎", pinyin: "bí yán" },
-                    { en: "Scabies", zh: "疥疮", pinyin: "jiè chuāng" },
-                    { en: "Sinusitis", zh: "鼻窦炎 / 窦炎", pinyin: "bí dòu yán / dòu yán" },
-                    { en: "Stomatitis", zh: "口腔炎/口炎", pinyin: "kǒu qiāng yán / kǒu yán" },
-                    { en: "Stye", zh: "睑腺炎/针眼(眼调针)", pinyin: "jiǎn xiàn yán / zhēn yǎn (yǎn tiáo zhēn)" },
-                    { en: "Sunburn", zh: "太阳灼伤", pinyin: "tài yáng zhuó shāng" },
-                    { en: "Syphilis", zh: "梅毒", pinyin: "méi dú" },
-                    { en: "Tracheitis", zh: "气管炎", pinyin: "qì guǎn yán" },
-                    { en: "Trichomoniasis", zh: "滴虫阴道炎", pinyin: "dī chóng yīn dào yào" },
-                    { en: "Typhoid fever", zh: "伤寒 (大肠热)", pinyin: "shāng hán (dà cháng rè)" },
-                    { en: "Urethritis", zh: "尿道炎", pinyin: "niào dào yán" },
-                    { en: "Urinary tract infection", zh: "尿道感染", pinyin: "niào dào gǎn rǎn" },
-                    { en: "Vaginitis", zh: "阴道炎", pinyin: "yīn dào yán" },
                     { en: "Venereal disease", zh: "性病", pinyin: "xìng bìng" },
-                    { en: "Virus", zh: "过滤性病毒", pinyin: "guò lǜ xìng bìng dú" },
-                    { en: "Tonsillitis", zh: "扁桃体炎", pinyin: "biǎn táo tǐ yán" }
+                    { en: "Virus", zh: "过滤性病毒", pinyin: "guò lǜ xìng bìng dú" }
+                ],
+                "慢性疾病 (Chronic Conditions)": [
+                    { en: "Arthritis", zh: "关节炎", pinyin: "guān jié yán" },
+                    { en: "Fibrocystic Changes", zh: "纤维囊肿性变化", pinyin: "xiān wéi náng zhǒng xìng biàn huà" },
+                    { en: "Fibrosis", zh: "纤维化", pinyin: "xiān wéi huà" },
+                    { en: "Urticaria", zh: "风疹块", pinyin: "fēng zhěn kuài" }
                 ],
                 "神经系统疾病 (Nervous System Disorders)": [
-                    { en: "Stroke", zh: "中风", pinyin: "zhōng fēng" },
-                    { en: "Epilepsy", zh: "癫痫", pinyin: "diān xián" },
-                    { en: "Hysteria", zh: "歇斯底里症", pinyin: "xiē sī dǐ lǐ zhèng" },
+                    { en: "Headache", zh: "头痛", pinyin: "tóu tòng" },
+                    { en: "Parkinson's disease", zh: "帕金森病", pinyin: "pà jīn sēn bìng" },
                     { en: "Migraine", zh: "偏头痛", pinyin: "piān tóu tòng" },
                     { en: "Neuralgia", zh: "神经痛", pinyin: "shén jīng tòng" },
                     { en: "Neurasthenia", zh: "神经衰弱", pinyin: "shén jīng shuāi ruò" },
-                    { en: "Sciatica", zh: "坐骨神经痛", pinyin: "zuò gǔ shén jīng tòng" },
-                    { en: "Trigeminal neuralgia", zh: "三叉神经痛", pinyin: "sān chā shén jīng tòng" }
+                    { en: "Trigeminal neuralgia", zh: "三叉神经痛", pinyin: "sān chā shén jīng tòng" },
+                    { en: "Encephalitis", zh: "脑炎", pinyin: "nǎo yán" },
+                    { en: "Japanese encephalitis", zh: "日本脑炎", pinyin: "rì běn nǎo yán" },
+                    { en: "Alzheimer's disease", zh: "阿尔茨海默病", pinyin: "ā ěr cí hǎi mò bìng" },
+                    { en: "Creutzfeldt-Jakob disease (CJD)", zh: "克雅二氏病/库贾氏症（CJD）", pinyin: "kè yǎ èr shì bìng/kù jiǎ shì zhèng (CJD)" },
+                    { en: "Concussion", zh: "脑震荡", pinyin: "nǎo zhèn dàng" },
+                    { en: "Meningioma", zh: "脑膜瘤", pinyin: "nǎo mó liú" },
+                    { en: "Brain cancer", zh: "脑癌", pinyin: "nǎo ái" },
+                    { en: "Meningitis", zh: "脑膜炎", pinyin: "nǎo mó yán" },
+                    { en: "Subarachnoid hemorrhage", zh: "蛛网膜下出血", pinyin: "zhū wǎng mó xià chū xuè" },
+                    { en: "Epilepsy", zh: "癫痫", pinyin: "diān xián" }
                 ],
-                "消化系统疾病 (Digestive System Disorders)": [
-                    { en: "Achlorhydria", zh: "胃酸缺乏症", pinyin: "wèi suān quē fá zhèng" },
-                    { en: "Duodenal ulcer", zh: "十二指肠溃疡", pinyin: "shí èr zhǐ cháng kuì yáng" },
-                    { en: "Gallstone", zh: "胆石", pinyin: "dǎn shí" },
-                    { en: "Gastric ulcer", zh: "胃溃疡", pinyin: "wèi kuì yáng" },
-                    { en: "Gastroptosis", zh: "胃下垂", pinyin: "wèi xià chuí" },
-                    { en: "Hiatus hernia", zh: "裂孔疝气", pinyin: "liè kǒng shàn qì" },
-                    { en: "Hyperacidity", zh: "胃酸过多症", pinyin: "wèi suān guò duō zhèng" },
-                    { en: "Indigestion", zh: "消化不良", pinyin: "xiāo huà bù liáng" },
-                    { en: "Intestinal obstruction", zh: "肠塞", pinyin: "cháng sāi" },
-                    { en: "Myocardial infarction", zh: "心肌梗死", pinyin: "xīn jī gěng sǐ" },
-                    { en: "Pancreatitis", zh: "胰脏炎", pinyin: "yí zàng yán" },
-                    { en: "Pyrosis (Heartburn)", zh: "胃灼热", pinyin: "wèi zhuó rè" }
+                "精神疾病 (Mental Disorders)": [
+                    { en: "Anxiety disorder", zh: "焦虑症", pinyin: "jiāo lǜ zhèng" },
+                    { en: "Depression", zh: "抑郁症", pinyin: "yì yù zhèng" },
+                    { en: "Obsessive-compulsive disorder (OCD)", zh: "强迫症", pinyin: "qiáng pò zhèng" },
+                    { en: "Anorexia nervosa", zh: "厌食症", pinyin: "yàn shí zhèng" },
+                    { en: "Bulimia nervosa", zh: "暴食症", pinyin: "bào shí zhèng" },
+                    { en: "Bipolar disorder", zh: "躁郁症", pinyin: "zào yù zhèng" },
+                    { en: "Schizophrenia", zh: "精神分裂症", pinyin: "jīng shén fēn liè zhèng" },
+                    { en: "Panic disorder", zh: "恐慌症", pinyin: "kǒng huāng zhèng" },
+                    { en: "Attention deficit hyperactivity disorder (ADHD)", zh: "注意力不足过动症", pinyin: "zhù yì lì bù zú guò dòng zhèng" },
+                    { en: "Autism", zh: "自闭症", pinyin: "zì bì zhèng" },
+                    { en: "Asperger syndrome", zh: "阿斯伯格综合征", pinyin: "ā sī bó gé zōng hé zhēng" },
+                    { en: "Social anxiety disorder", zh: "社交恐惧症", pinyin: "shè jiāo kǒng jù zhèng" },
+                    { en: "Acrophobia", zh: "惧高症", pinyin: "jù gāo zhèng" },
+                    { en: "Dissociative identity disorder", zh: "分离性身份障碍", pinyin: "fēn lí xìng shēn fèn zhàng ài" },
+                    { en: "Hysteria", zh: "歇斯底里症", pinyin: "xiē sī dǐ lǐ zhèng" },
+                    { en: "Sexual dysfunction", zh: "性功能障碍", pinyin: "xìng gōng néng zhàng ài" },
+                    { en: "Gender dysphoria", zh: "性别不安症", pinyin: "xìng bié bù ān zhèng" },
+                    { en: "Paraphilic disorder", zh: "性偏好障碍", pinyin: "xìng piān hǎo zhàng ài" },
+                    { en: "Trichotillomania", zh: "拔毛癖", pinyin: "bá máo pǐ" }
+                ],
+                "眼部疾病 (Eye Disorders)": [
+                    { en: "Conjunctivitis (Pink eye)", zh: "结膜炎（眼部疼痛/红眼病）", pinyin: "jié mó yán (yǎn bù téng tòng/hóng yǎn bìng)" },
+                    { en: "Stye", zh: "麦粒肿", pinyin: "mài lì zhǒng" },
+                    { en: "Myopia", zh: "近视", pinyin: "jìn shì" },
+                    { en: "Hyperopia", zh: "远视", pinyin: "yuǎn shì" },
+                    { en: "Presbyopia", zh: "老花", pinyin: "lǎo huā" },
+                    { en: "Strabismus", zh: "斜视", pinyin: "xié shì" },
+                    { en: "Nyctalopia", zh: "夜盲症", pinyin: "yè máng zhèng" },
+                    { en: "Glaucoma", zh: "青光眼", pinyin: "qīng guāng yǎn" },
+                    { en: "Cataract", zh: "白内障", pinyin: "bái nèi zhàng" },
+                    { en: "Dry eye syndrome", zh: "干眼症", pinyin: "gān yǎn zhèng" },
+                    { en: "Floaters", zh: "飞蚊症", pinyin: "fēi wén zhèng" },
+                    { en: "Retinal detachment", zh: "视网膜剥离", pinyin: "shì wǎng mó bō lí" },
+                    { en: "Retinoblastoma", zh: "视网膜母细胞瘤", pinyin: "shì wǎng mó mǔ xì bāo liú" },
+                    { en: "Retinitis pigmentosa", zh: "视网膜色素变性", pinyin: "shì wǎng mó sè sù biàn xìng" },
+                    { en: "Snow blindness", zh: "雪盲症", pinyin: "xuě máng zhèng" },
+                    { en: "Central retinal artery occlusion", zh: "视网膜中央动脉阻塞", pinyin: "shì wǎng mó zhōng yāng dòng mài zǔ sè" },
+                    { en: "Diabetic retinopathy", zh: "糖尿病性视网膜病", pinyin: "táng niǎo bìng xìng shì wǎng mó bìng" },
+                    { en: "Dacryocystitis", zh: "泪囊炎", pinyin: "lèi náng yán" },
+                    { en: "Esotropia (Cross-eye)", zh: "内斜视", pinyin: "nèi xié shì" },
+                    { en: "Keratitis", zh: "角膜炎", pinyin: "jiǎo mó yán" },
+                    { en: "Macular degeneration", zh: "黄斑变性 (如色素性视网膜炎)", pinyin: "huáng bān biàn xìng (rú sè sù xìng shì wǎng mó yán)" },
+                    { en: "Optic neuritis", zh: "视神经炎", pinyin: "shì shén jīng yán" },
+                    { en: "Trachoma", zh: "沙眼", pinyin: "shā yǎn" },
+                    { en: "Trichiasis", zh: "倒睫", pinyin: "dǎo jié" }
+                ],
+                "耳鼻喉口腔颜面疾病 (Ear, Nose, Throat, Mouth, Face Disorders)": [
+                    { en: "Otitis externa (Swimmer's ear)", zh: "外耳道炎（游泳耳）", pinyin: "wài ěr dào yán (yóu yǒng ěr)" },
+                    { en: "Oral ulcer", zh: "口腔溃疡", pinyin: "kǒu qiāng kuì yáng" },
+                    { en: "Tinnitus", zh: "耳鸣", pinyin: "ěr míng" },
+                    { en: "Otitis media", zh: "中耳炎", pinyin: "zhōng ěr yán" },
+                    { en: "Allergic rhinitis", zh: "过敏性鼻炎", pinyin: "guò mǐn xìng bí yán" },
+                    { en: "Chronic sinusitis", zh: "慢性鼻窦炎", pinyin: "màn xìng bí dòu yán" },
+                    { en: "Nasal polyps", zh: "鼻息肉", pinyin: "bí xī ròu" },
+                    { en: "Deviated septum", zh: "鼻中隔弯曲", pinyin: "bí zhōng gé wān qū" },
+                    { en: "Oral thrush", zh: "鹅口疮", pinyin: "é kǒu chuāng" },
+                    { en: "Nosebleed / Epistaxis", zh: "流鼻血", pinyin: "liú bí xuè" },
+                    { en: "Nasopharyngeal cancer", zh: "鼻咽癌", pinyin: "bí yān ái" },
+                    { en: "Oral cancer", zh: "口腔癌", pinyin: "kǒu qiāng ái" },
+                    { en: "Tongue cancer", zh: "舌癌", pinyin: "shé ái" },
+                    { en: "Laryngeal cancer", zh: "喉癌", pinyin: "hóu ái" },
+                    { en: "Cholesteatoma", zh: "胆脂瘤", pinyin: "dǎn zhī liú" },
+                    { en: "Blocked ear", zh: "耳闭", pinyin: "ěr bì" },
+                    { en: "Macroglossia", zh: "重舌", pinyin: "zhòng shé" },
+                    { en: "Cleft lip and palate", zh: "唇腭裂", pinyin: "chún è liè" },
+                    { en: "Dental abscess/tooth abscess", zh: "牙疮", pinyin: "yá chuāng" },
+                    { en: "Leukoplakia", zh: "白斑病", pinyin: "bái bān bìng" },
+                    { en: "Periodontal disease", zh: "牙周病", pinyin: "yá zhōu bìng" },
+                    { en: "Stomatitis", zh: "口腔炎/口炎", pinyin: "kǒu qiāng yán / kǒu yán" },
+                    { en: "Tonsillitis", zh: "扁桃体炎", pinyin: "biǎn táo tǐ yán" },
+                    { en: "Cavity", zh: "蛀牙", pinyin: "zhù yá" }
                 ],
                 "心血管疾病 (Cardiovascular Diseases)": [
-                    { en: "Aneurysm", zh: "动脉瘤", pinyin: "dòng mài liú" },
-                    { en: "Angina", zh: "心绞痛", pinyin: "xīn jiǎo tòng" },
-                    { en: "Arrhythmia", zh: "心律失常", pinyin: "xīn lǜ shī cháng" },
-                    { en: "Arteriosclerosis", zh: "动脉硬化症", pinyin: "dòng mài yìng huà zhèng" },
-                    { en: "Cardiac arrest", zh: "心搏停止 / 心跳突停", pinyin: "xīn bó tíng zhǐ / xīn tiào tū tíng" },
-                    { en: "Cardiac asthma", zh: "心脏哮喘", pinyin: "xīn zàng xiào chuǎn" },
-                    { en: "Congenital heart disease", zh: "先天性心脏病", pinyin: "xiān tiān xìng xīn zàng bìng" },
-                    { en: "Cor pulmonale", zh: "肺性心脏病", pinyin: "fèi xìng xīn zàng bìng" },
+                    { en: "Hyperlipidemia (High cholesterol)", zh: "高脂血症（高胆固醇）", pinyin: "gāo zhī xuè zhèng (gāo dǎn gù chún)" },
+                    { en: "Heart disease", zh: "心脏病", pinyin: "xīn zàng bìng" },
+                    { en: "Stroke", zh: "中风", pinyin: "zhōng fēng" },
+                    { en: "Hypertension", zh: "高血压", pinyin: "gāo xuè yā" },
                     { en: "Coronary heart disease", zh: "冠心病", pinyin: "guān xīn bìng" },
-                    { en: "Coronary occlusion", zh: "冠状动脉闭塞", pinyin: "guān zhuàng dòng mài bì sè" },
-                    { en: "Endocarditis", zh: "心内膜炎", pinyin: "xīn nèi mó yán" },
                     { en: "Myocardial infarction", zh: "心肌梗死", pinyin: "xīn jī gěng sǐ" },
-                    { en: "Myocarditis", zh: "心肌炎", pinyin: "xīn jī yán" },
-                    { en: "Paroxysmal tachycardia", zh: "突发性心跳", pinyin: "tū fā xìng xīn tiào" },
-                    { en: "Pericarditis", zh: "心外膜炎 (心包炎)", pinyin: "xīn wài mó yán (xīn bāo yán)" },
+                    { en: "Arrhythmia", zh: "心律失常", pinyin: "xīn lǜ shī cháng" },
+                    { en: "Congenital heart disease", zh: "先天性心脏病", pinyin: "xiān tiān xìng xīn zàng bìng" },
+                    { en: "Endocarditis", zh: "心内膜炎", pinyin: "xīn nèi mó yán" },
                     { en: "Rheumatic heart disease", zh: "风湿性心脏病", pinyin: "fēng shí xìng xīn zàng bìng" },
                     { en: "Thrombosis", zh: "血栓症", pinyin: "xuè shuān zhèng" },
                     { en: "Valvular cyanosis", zh: "心脏瓣膜病", pinyin: "xīn zàng bàn mó bìng" },
                     { en: "Valvular incompetence", zh: "瓣锁闭不全", pinyin: "bàn suǒ bì bù quán" },
-                    { en: "Valvular stenosis", zh: "心瓣狭窄", pinyin: "xīn bàn xiá zhǎi" }
+                    { en: "Valvular stenosis", zh: "心瓣狭窄", pinyin: "xīn bàn xiá zhǎi" },
+                    { en: "Aneurysm", zh: "动脉瘤", pinyin: "dòng mài liú" },
+                    { en: "Angina", zh: "心绞痛", pinyin: "xīn jiǎo tòng" },
+                    { en: "Arteriosclerosis", zh: "动脉硬化症", pinyin: "dòng mài yìng huà zhèng" },
+                    { en: "Cardiac arrest", zh: "心搏停止 / 心跳突停", pinyin: "xīn bó tíng zhǐ / xīn tiào tū tíng" },
+                    { en: "Cardiac asthma", zh: "心脏哮喘", pinyin: "xīn zàng xiào chuǎn" },
+                    { en: "Cor pulmonale", zh: "肺性心脏病", pinyin: "fèi xìng xīn zàng bìng" },
+                    { en: "Coronary occlusion", zh: "冠状动脉闭塞", pinyin: "guān zhuàng dòng mài bì sè" },
+                    { en: "Myocarditis", zh: "心肌炎", pinyin: "xīn jī yán" },
+                    { en: "Paroxysmal tachycardia", zh: "突发性心跳", pinyin: "tū fā xìng xīn tiào" },
+                    { en: "Pericarditis", zh: "心外膜炎 (心包炎)", pinyin: "xīn wài mó yán (xīn bāo yán)" },
+                    { en: "Mitral valve prolapse", zh: "二尖瓣脱垂", pinyin: "èr jiān bàn tuō chuí" },
+                    { en: "Coronary artery disease", zh: "冠状动脉疾病", pinyin: "guān zhuàng dòng mài jí bìng" },
+                    { en: "Tetralogy of Fallot", zh: "法洛氏四联症", pinyin: "fǎ luò shì sì lián zhèng" },
+                    { en: "Transposition of the great arteries", zh: "大血管转位", pinyin: "dà xuè guǎn zhuǎn wèi" },
+                    { en: "Peripheral artery disease", zh: "周围动脉阻塞", pinyin: "zhōu wéi dòng mài zǔ sè" },
+                    { en: "Raynaud's phenomenon", zh: "雷诺氏症", pinyin: "léi nuò shì zhèng" }
                 ],
-                "其他状况 (Other Conditions)": [
+                "消化系统疾病 (Digestive System Disorders)": {
+                    "胃、食管 (Stomach, Esophagus)": [
+                        { en: "Gastroenteritis (Stomach flu)", zh: "肠胃炎（胃炎）", pinyin: "cháng wèi yán (wèi yán)" },
+                        { en: "Gastroesophageal reflux disease (GERD)", zh: "胃食管反流病", pinyin: "wèi shí guǎn fǎn liú bìng" },
+                        { en: "Gastric ulcer", zh: "胃溃疡", pinyin: "wèi kuì yáng" },
+                        { en: "Gastritis", zh: "胃炎", pinyin: "wèi yán" },
+                        { en: "Esophageal cancer", zh: "食管癌", pinyin: "shí guǎn ái" },
+                        { en: "Stomach cancer", zh: "胃癌", pinyin: "wèi ái" },
+                        { en: "Achlorhydria", zh: "胃酸缺乏症", pinyin: "wèi suān quē fá zhèng" },
+                        { en: "Gastrointestinal perforation", zh: "肠胃穿孔", pinyin: "cháng wèi chuān kǒng" },
+                        { en: "Gastroptosis", zh: "胃下垂", pinyin: "wèi xià chuí" },
+                        { en: "Hiatus hernia", zh: "裂孔疝气", pinyin: "liè kǒng shàn qì" },
+                        { en: "Hyperacidity", zh: "胃酸过多症", pinyin: "wèi suān guò duō zhèng" },
+                        { en: "Indigestion", zh: "消化不良", pinyin: "xiāo huà bù liáng" },
+                        { en: "Pyrosis (Heartburn)", zh: "胃灼热", pinyin: "wèi zhuó rè" },
+                        { en: "Esophageal spasm", zh: "食管痉挛", pinyin: "shí guǎn jìng luán" }
+                    ],
+                    "肝、胆、胆道 (Liver, Gallbladder, Biliary tract)": [
+                        { en: "Liver cancer", zh: "肝癌", pinyin: "gān ái" },
+                        { en: "Gallbladder cancer", zh: "胆囊癌", pinyin: "dǎn náng ái" },
+                        { en: "Hepatitis", zh: "肝炎", pinyin: "gān yán" },
+                        { en: "Cirrhosis", zh: "肝硬化", pinyin: "gān yìng huà" },
+                        { en: "Gallstone", zh: "胆石", pinyin: "dǎn shí" },
+                        { en: "Acute Hepatitis", zh: "急性肝炎", pinyin: "jí xìng gān yán" },
+                        { en: "Cholangitis", zh: "胆管炎", pinyin: "dǎn guǎn yán" },
+                        { en: "Cholecystitis", zh: "胆囊炎", pinyin: "dǎn náng yán" },
+                        { en: "Jaundice", zh: "黄疸病", pinyin: "huáng dǎn bìng" },
+                        { en: "Hepatitis A", zh: "甲型肝炎", pinyin: "jiǎ xíng gān yán" },
+                        { en: "Hepatitis B", zh: "乙型肝炎", pinyin: "yǐ xíng gān yán" },
+                        { en: "Hepatitis C", zh: "丙型肝炎", pinyin: "bǐng xíng gān yán" },
+                        { en: "Alcoholic hepatitis", zh: "酒精性肝炎", pinyin: "jiǔ jīng xìng gān yán" },
+                        { en: "Hepatotoxicity", zh: "肝毒性", pinyin: "gān dú xìng" },
+                        { en: "Wilson's disease", zh: "威尔森氏症", pinyin: "wēi ěr sēn shì zhèng" },
+                        { en: "Bile duct cyst", zh: "胆道囊肿", pinyin: "dǎn dào náng zhǒng" },
+                        { en: "Bile duct cancer / Cholangiocarcinoma", zh: "胆道癌", pinyin: "dǎn dào ái" },
+                        { en: "Hepatic failure", zh: "肝功能衰竭", pinyin: "gān gōng néng shuāi jié" },
+                        { en: "Hepato Encephalopathy", zh: "肝病造成的脑病变", pinyin: "gān bìng zào chéng de nǎo bìng biàn" },
+                        { en: "Hepato-Renal Failure", zh: "肝肾衰竭", pinyin: "gān shèn shuāi jié" }
+                    ],
+                    "胰 (Pancreas)": [
+                        { en: "Diabetes", zh: "糖尿病", pinyin: "táng niǎo bìng" },
+                        { en: "Pancreatic cancer", zh: "胰腺癌", pinyin: "yí xiàn ái" },
+                        { en: "Pancreatitis", zh: "胰脏炎", pinyin: "yí zàng yán" }
+                    ],
+                    "小肠、大肠、直肠 (Small intestine, Large intestine, Rectum)": [
+                        { en: "Irritable bowel syndrome (IBS)", zh: "大肠激躁症", pinyin: "dà cháng jī zào zhèng" },
+                        { en: "Rectal cancer", zh: "直肠癌", pinyin: "zhí cháng ái" },
+                        { en: "Hernia", zh: "疝", pinyin: "shàn" },
+                        { en: "Colorectal polyposis", zh: "大肠息肉症", pinyin: "dà cháng xī róu zhèng" },
+                        { en: "Intestinal cancer", zh: "肠癌", pinyin: "cháng ái" },
+                        { en: "Small intestinal angiodysplasia", zh: "小肠血管发育不良", pinyin: "xiǎo cháng xuè guǎn fā yù bù liáng" },
+                        { en: "Pseudomembranous colitis (C. difficile)", zh: "伪膜性结肠炎（艰难梭菌）", pinyin: "wěi mó xìng jié cháng yán (jiān nán suō jūn)" },
+                        { en: "Duodenal ulcer", zh: "十二指肠溃疡", pinyin: "shí èr zhǐ cháng kuì yáng" },
+                        { en: "Intestinal obstruction", zh: "肠塞", pinyin: "cháng sāi" },
+                    { en: "Ulcerative colitis", zh: "溃疡性结肠炎", pinyin: "kuì yáng xìng jié cháng yán" },
+                        { en: "Crohn's disease", zh: "克罗恩肠道疾病", pinyin: "kè luó ēn cháng dào jí bìng" },
+                        { en: "Intestinal tuberculosis", zh: "肠结核", pinyin: "cháng jié hé" }
+                    ]
+                },
+                "泌尿生殖系统疾病 (Urogenital System Disorders)": [
+                    { en: "Cystitis (Urinary tract infection)", zh: "膀胱炎（尿路感染）", pinyin: "páng guāng yán (niào lù gǎn rǎn)" },
+                    { en: "Dysmenorrhea (Menstrual cramps)", zh: "痛经（经期痉挛）", pinyin: "tòng jīng (jīng qī jìng luán)" },
+                    { en: "Benign prostatic hyperplasia (BPH)", zh: "前列腺肥大", pinyin: "qián liè xiàn féi dà" },
+                    { en: "Prostate cancer", zh: "前列腺癌", pinyin: "qián liè xiàn ái" },
+                    { en: "Kidney cancer", zh: "肾癌", pinyin: "shèn ái" },
+                    { en: "Bladder cancer", zh: "膀胱癌", pinyin: "páng guāng ái" },
+                    { en: "Uremia", zh: "尿毒症", pinyin: "niào dú zhèng" },
+                    { en: "Vaginitis", zh: "阴道炎", pinyin: "yīn dào yán" },
+                    { en: "Prostatitis", zh: "前列腺炎", pinyin: "qián liè xiàn yán" },
+                    { en: "Ureteral cancer", zh: "输尿管癌", pinyin: "shū niào guǎn ái" },
+                    { en: "Testicular cancer", zh: "睾丸癌", pinyin: "gāo wán ái" },
+                    { en: "Penile cancer", zh: "阴茎癌", pinyin: "yīn jīng ái" },
+                    { en: "Ovarian cancer", zh: "卵巢癌", pinyin: "luǎn cháo ái" },
+                    { en: "Uterine cancer", zh: "子宫癌", pinyin: "zǐ gōng ái" },
+                    { en: "Cervical cancer", zh: "子宫颈癌", pinyin: "zǐ gōng jǐng ái" },
+                    { en: "Vaginal cancer", zh: "阴道癌", pinyin: "yīn dào ái" },
+                    { en: "Vulvar cancer", zh: "外阴癌", pinyin: "wài yīn ái" },
+                    { en: "Endometriosis", zh: "子宫内膜异位", pinyin: "zǐ gōng nèi mó yì wèi" },
+                    { en: "Fibroid uterus", zh: "子宫纤维变性", pinyin: "zǐ gōng xiān wéi biàn xìng" },
+                    { en: "Menstruation disorder", zh: "月经失调", pinyin: "yuè jīng shī tiáo" },
+                    { en: "Pelvic inflammatory disease (PID)", zh: "骨盆腔发炎", pinyin: "gǔ pén qiāng fā yán" },
+                    { en: "Renal failure/Kidney failure", zh: "肾功能衰竭", pinyin: "shèn gōng néng shuāi jié" },
+                    { en: "Renal stone/Kidney stone", zh: "肾石", pinyin: "shèn shí" },
+                    { en: "Ureteral stone", zh: "输尿管结石", pinyin: "shū niào guǎn jié shí" },
+                    { en: "Urinary tract infection", zh: "尿道感染", pinyin: "niào dào gǎn rǎn" },
                     { en: "Amenorrhea/no menstruation", zh: "异常性闭经", pinyin: "yì cháng xìng bì jīng" },
-                    { en: "Aphthous Ulcer", zh: "口疮", pinyin: "kǒu chuāng" },
-                    { en: "Atelectasis", zh: "肺部膨胀不全", pinyin: "fèi bù péng zhàng bù quán" },
-                    { en: "Cavity", zh: "蛀牙", pinyin: "zhù yá" },
-                    { en: "Cervical polyp", zh: "子宫颈息肉", pinyin: "zǐ gōng jǐng xī ròu" },
-                    { en: "Coagulopathy", zh: "血凝集异常", pinyin: "xuè níng jí yì cháng" },
-                    { en: "Corn", zh: "鸡眼/钉胼", pinyin: "jī yǎn / dìng pián" },
-                    { en: "Dermatitis", zh: "皮肤炎/皮炎", pinyin: "pí fū yán / pí yán" },
-                    { en: "Diabetic retinopathy", zh: "糖尿病性视网膜病", pinyin: "táng niǎo bìng xìng shì wǎng mó bìng" },
-                    { en: "Dysgerminoma", zh: "无性细胞瘤，恶性胚胎瘤", pinyin: "wú xìng xì bāo liú, è xìng pēi tāi liú" },
-                    { en: "Dysphagia", zh: "吞咽困难", pinyin: "tūn yàn kùn nán" },
-                    { en: "Dysplasia", zh: "组织发展异常", pinyin: "zǔ zhī fā zhǎn yì cháng" },
                     { en: "Enuresis", zh: "遗尿症", pinyin: "yí niào zhèng" },
-                    { en: "Esotropia (Cross-eye)", zh: "内斜视", pinyin: "nèi xié shì" },
-                    { en: "Frost bite", zh: "冻疮", pinyin: "dòng chuāng" },
-                    { en: "Gallstone", zh: "胆石", pinyin: "dǎn shí" },
-                    { en: "Glaucoma", zh: "青光眼", pinyin: "qīng guāng yǎn" },
-                    { en: "Hemiplegia", zh: "半身不遂", pinyin: "bàn shēn bù suí" },
-                    { en: "Hepatic failure", zh: "肝功能衰竭", pinyin: "gān gōng néng shuāi jié" },
-                    { en: "Hepato Encephalopathy", zh: "肝病造成的脑病变", pinyin: "gān bìng zào chéng de nǎo bìng biàn" },
-                    { en: "Hepato-Renal Failure", zh: "肝肾衰竭", pinyin: "gān shèn shuāi jié" },
-                    { en: "Hernia", zh: "小肠气 (疝气，脱肠)", pinyin: "xiǎo cháng qì (shàn qì, tuō cháng)" },
-                    { en: "Hyperopia", zh: "远视", pinyin: "yuǎn shì" },
                     { en: "Impotence", zh: "性无能/阳痿", pinyin: "xìng wú néng / yáng wěi" },
-                    { en: "Insomnia", zh: "失眠", pinyin: "shī mián" },
-                    { en: "Intestinal tuberculosis", zh: "肠结核", pinyin: "cháng jié hé" },
-                    { en: "Jaundice", zh: "黄疸病", pinyin: "huáng dǎn bìng" },
-                    { en: "Keratitis", zh: "角膜炎", pinyin: "jiǎo mó yán" },
-                    { en: "Leukocytosis", zh: "白细胞(血球)增多症", pinyin: "bái xì bāo (xuè qiú) zēng duō zhèng" },
-                    { en: "Leukopenia", zh: "白细胞(血球)减少症", pinyin: "bái xì bāo (xuè qiú) jiǎn shǎo zhèng" },
-                    { en: "Leukoplakia", zh: "白斑病", pinyin: "bái bān bìng" },
-                    { en: "Mucositis", zh: "口腔癌", pinyin: "kǒu qiāng ái" },
                     { en: "Nephritis", zh: "肾炎", pinyin: "shèn yán" },
                     { en: "Nephrolith", zh: "肾结石", pinyin: "shèn jié shí" },
                     { en: "Nephrosis", zh: "肾变病", pinyin: "shèn biàn bìng" },
-                    { en: "Nyctalopia", zh: "夜盲症", pinyin: "yè máng zhèng" },
-                    { en: "Obstructive Pneumonitis", zh: "阻塞性肺炎", pinyin: "zǔ sè xìng fèi yán" },
-                    { en: "Optic neuritis", zh: "视神经炎", pinyin: "shì shén jīng yán" },
-                    { en: "Ovarian cyst", zh: "卵巢囊肿", pinyin: "luǎn cháo náng zhǒng" },
-                    { en: "Ovarian tumor", zh: "卵巢瘤", pinyin: "luǎn cháo liú" },
-                    { en: "Paralysis", zh: "瘫痪", pinyin: "tān huàn" },
                     { en: "Phimosis", zh: "包茎", pinyin: "bāo jīng" },
-                    { en: "Pimple", zh: "暗疮", pinyin: "àn chuāng" },
-                    { en: "Pleurisy", zh: "胸膜炎", pinyin: "xiōng mó yán" },
-                    { en: "Pneumothorax", zh: "气胸", pinyin: "qì xiōng" },
-                    { en: "Poisoning", zh: "中毒", pinyin: "zhòng dú" },
                     { en: "Premature ejaculation", zh: "早泄", pinyin: "zǎo xiè" },
-                    { en: "Renal failure/Kidney failure", zh: "肾功能衰竭", pinyin: "shèn gōng néng shuāi jié" },
-                    { en: "Renal stone/Kidney stone", zh: "肾石", pinyin: "shèn shí" },
+                    { en: "Renal tuberculosis", zh: "肾结核", pinyin: "shèn jié hé" },
+                    { en: "Trichomoniasis", zh: "滴虫阴道炎", pinyin: "dī chóng yīn dào yào" }
+                ],
+                "内分泌疾病 (Endocrine Disorders)": [
+                    { en: "Diabetes", zh: "糖尿病", pinyin: "táng niǎo bìng" },
+                    { en: "Hypothyroidism (Underactive thyroid)", zh: "甲状腺功能减退（甲状腺功能低下）", pinyin: "jiǎ zhuàng xiàn gōng néng jiǎn tuì (jiǎ zhuàng xiàn gōng néng dī xià)" },
+                    { en: "Hyperthyroidism", zh: "甲状腺机能亢进", pinyin: "jiǎ zhuàng xiàn jī néng kàng jìn" },
+                    { en: "Dwarfism", zh: "侏儒症", pinyin: "zhū rú zhèng" },
+                    { en: "Gigantism", zh: "巨人症", pinyin: "jù rén zhèng" },
+                    { en: "Acromegaly", zh: "肢端肥大症", pinyin: "zhī duān féi dà zhèng" }
+                ],
+                "免疫系统疾病 (Immune System Disorders)": [
+                    { en: "Allergic rhinitis", zh: "过敏性鼻炎", pinyin: "guò mǐn xìng bí yán" },
+                    { en: "Systemic lupus erythematosus (SLE)", zh: "全身性红斑狼疮（SLE）", pinyin: "quán shēn xìng hóng bān láng chuāng (SLE)" },
+                    { en: "Rheumatoid arthritis", zh: "类风湿性关节炎", pinyin: "lèi fēng shī xìng guān jié yán" },
+                    { en: "Ankylosing spondylitis", zh: "强直性脊柱炎", pinyin: "qiáng zhí xìng jí zhù yán" },
+                    { en: "Atopic dermatitis", zh: "异位性皮肤炎", pinyin: "yì wèi xìng pí fū yán" },
+                    { en: "Rubella / German measles", zh: "风疹", pinyin: "fēng zhěn" },
+                    { en: "Rheumatic fever", zh: "风湿热", pinyin: "fēng shí rè" },
+                    { en: "IgA nephropathy", zh: "IgA肾病", pinyin: "IgA shèn bìng" },
+                    { en: "Scleroderma", zh: "硬皮病", pinyin: "yìng pí bìng" },
+                    { en: "Sjögren's syndrome", zh: "干燥综合征，修格兰氏综合征", pinyin: "gān zào zōng hé zhēng, xiū gé lán shì zōng hé zhēng" }
+                ],
+                "血液疾病 (Blood Disorders)": [
+                    { en: "Leukemia", zh: "白血病", pinyin: "bái xuè bìng" },
+                    { en: "Anemia", zh: "贫血", pinyin: "pín xuè" },
                     { en: "Scurvy", zh: "坏血病", pinyin: "huài xuè bìng" },
-                    { en: "Subarachnoid hemorrhage", zh: "蛛网膜下出血", pinyin: "zhū wǎng mó xià chū xuè" },
-                    { en: "Tinnitus", zh: "耳鸣", pinyin: "ěr míng" },
-                    { en: "Tumor of the kidney", zh: "肾瘤", pinyin: "shèn liú" },
-                    { en: "Uremia", zh: "尿毒症", pinyin: "niào dú zhèng" },
-                    { en: "Ureteral stone", zh: "输尿管结石", pinyin: "shū niào guǎn jié shí" },
-                    { en: "Vertigo", zh: "眩晕(天旋地转)", pinyin: "xuàn yūn (tiān xuán dì zhuǎn)" }
+                    { en: "Shock", zh: "休克", pinyin: "xiū kè" },
+                    { en: "Acidosis", zh: "酸血症", pinyin: "suān xuè zhèng" },
+                    { en: "Hemophilia", zh: "血友病", pinyin: "xuè yǒu bìng" },
+                    { en: "Iron deficiency anemia", zh: "缺铁性贫血", pinyin: "quē tiě xìng pín xuè" },
+                    { en: "Thalassemia", zh: "地中海贫血症", pinyin: "dì zhōng hǎi pín xuè zhèng" },
+                    { en: "Sickle cell disease", zh: "镰刀型红血球疾病", pinyin: "lián dāo xíng hóng xuè qiú jí bìng" },
+                    { en: "G6PD deficiency / Favism", zh: "蚕豆症", pinyin: "cán dòu zhèng" },
+                    { en: "Multiple myeloma", zh: "多发性骨髓瘤", pinyin: "duō 发性骨髓瘤" },
+                    { en: "Coagulopathy", zh: "血凝集异常", pinyin: "xuè níng jí yì cháng" },
+                    { en: "Leukocytosis", zh: "白细胞(血球)增多症", pinyin: "bái xì bāo (xuè qiú) zēng duō zhèng" },
+                    { en: "Leukopenia", zh: "白细胞(血球)减少症", pinyin: "bái xì bāo (xuè qiú) jiǎn shǎo zhèng" }
+                ],
+                "骨骼肌肉疾病 (Musculoskeletal Disorders)": [
+                    { en: "Sprain (Ligament injury)", zh: "扭伤（韧带损伤）", pinyin: "niǔ shāng (rèn dài sǔn shāng)" },
+                    { en: "Sciatica", zh: "坐骨神经痛", pinyin: "zuò gǔ shén jīng tòng" },
+                    { en: "Low back pain", zh: "下背痛", pinyin: "xià bèi tòng" },
+                    { en: "Osteoporosis", zh: "骨质疏松", pinyin: "gǔ zhì shū sōng" },
+                    { en: "Rheumatoid arthritis", zh: "类风湿性关节炎", pinyin: "lèi fēng shī xìng guān jié yán" },
+                    { en: "Ankylosing spondylitis", zh: "强直性脊柱炎", pinyin: "qiáng zhí xìng jí zhù yán" },
+                    { en: "Osteogenesis imperfecta", zh: "先天成骨不全症", pinyin: "xiān tiān chéng gǔ bù quán zhèng" },
+                    { en: "Osteophyte / Bone spur", zh: "骨质增生", pinyin: "gǔ zhì zēng shēng" },
+                    { en: "Iliotibial band syndrome", zh: "髂胫束综合征", pinyin: "qià jìng shù zōng hé zhēng" },
+                    { en: "Spondylolisthesis", zh: "脊椎滑脱", pinyin: "jí zhuī huá tuō" },
+                    { en: "Avascular necrosis", zh: "缺血性坏死", pinyin: "quē xuè xìng huài sǐ" },
+                    { en: "Trigger finger", zh: "扳机指", pinyin: "bān jī zhǐ" },
+                    { en: "Wry neck / Torticollis", zh: "落枕", pinyin: "là zhěn" },
+                    { en: "Nursemaid's elbow", zh: "保姆肘", pinyin: "bǎo mǔ zhǒu" },
+                    { en: "Sports injury", zh: "运动损伤", pinyin: "yùn dòng sǔn shāng" },
+                    { en: "Carpal tunnel syndrome", zh: "腕隧道综合征", pinyin: "wàn suì dào zōng hé zhēng" },
+                    { en: "Spinal stenosis", zh: "椎管狭窄", pinyin: "zhuī guǎn xiá zhǎi" },
+                    { en: "Adhesive capsulitis / Frozen shoulder", zh: "粘连性肩关节囊炎", pinyin: "nián lián xìng jiān guān jié náng yán" },
+                    { en: "Scoliosis", zh: "脊椎侧弯", pinyin: "jí zhuī cè wān" },
+                    { en: "Flat feet", zh: "扁平足", pinyin: "biǎn píng zú" },
+                    { en: "Chronic fatigue syndrome", zh: "慢性疲劳综合征", pinyin: "màn xìng pí láo zōng hé zhèng" },
+                    { en: "Fibromyalgia", zh: "纤维肌痛症", pinyin: "xiān wéi jī tòng zhèng" },
+                    { en: "Chondropathy", zh: "软骨病变", pinyin: "ruǎn gǔ bìng biàn" }
+                ],
+                "皮肤与皮肤附属器疾病 (Skin & Appendage Disorders)": [
+                    { en: "Contusion (Bruise)", zh: "挫伤（瘀伤）", pinyin: "cuò shāng (yū shāng)" },
+                    { en: "Hyperhidrosis (Excessive sweating)", zh: "多汗症（出汗过多）", pinyin: "duō hàn zhèng (chū hàn guò duō)" },
+                    { en: "Ingrown toenail", zh: "嵌甲症（趾甲内生）", pinyin: "qiàn jiǎ zhèng (zhǐ jiǎ nèi shēng)" },
+                    { en: "Psoriasis", zh: "牛皮癣", pinyin: "niú pí xiǎn" },
+                    { en: "Eczema", zh: "湿疹", pinyin: "shī zhěn" },
+                    { en: "Acne", zh: "痤疮", pinyin: "cuó chuāng" },
+                    { en: "Wart", zh: "疣", pinyin: "yóu" },
+                    { en: "Skin cancer", zh: "皮肤癌", pinyin: "pí fū ái" },
+                    { en: "Basal cell carcinoma", zh: "基底细胞癌", pinyin: "jī dǐ xì bāo ái" },
+                    { en: "Squamous cell carcinoma", zh: "鳞状细胞癌", pinyin: "lín zhuàng xì bāo ái" },
+                    { en: "Melanoma", zh: "黑色素细胞癌", pinyin: "hēi sè sù xì bāo ái" },
+                    { en: "Vitiligo", zh: "白癜风", pinyin: "bái diàn fēng" },
+                    { en: "Pimple", zh: "青春痘", pinyin: "qīng chūn dòu" },
+                    { en: "Comedo", zh: "粉刺", pinyin: "fěn cì" },
+                    { en: "Tinea (Ringworm infection)", zh: "癣病", pinyin: "xiǎn bìng" },
+                    { en: "Flower spot tinea", zh: "花斑癣", pinyin: "huā bān xiǎn" },
+                    { en: "Onychomycosis / Nail fungus", zh: "灰趾甲", pinyin: "huī zhǐ jiǎ" },
+                    { en: "Pigmentation disorders", zh: "色素异常疾病", pinyin: "sè sù yì cháng jí bìng" },
+                    { en: "Freckles", zh: "雀斑", pinyin: "què bān" },
+                    { en: "Hyperpigmentation", zh: "黑斑", pinyin: "hēi bān" },
+                    { en: "Melasma", zh: "肝斑", pinyin: "gān bān" },
+                    { en: "Nevus of Ota", zh: "太田母斑", pinyin: "tài tián mǔ bān" },
+                    { en: "Discoid lupus erythematosus", zh: "盘状红斑狼疮", pinyin: "pán zhuàng hóng bān láng chuāng" },
+                    { en: "Androgenetic alopecia / Male pattern baldness", zh: "雄性秃", pinyin: "xióng xìng tū" },
+                    { en: "Alopecia areata", zh: "斑秃", pinyin: "bān tū" },
+                    { en: "Trichotillomania", zh: "拔毛癖", pinyin: "bá máo pǐ" },
+                    { en: "Mole / Nevus", zh: "痣", pinyin: "zhì" },
+                    { en: "Syringoma", zh: "汗管瘤", pinyin: "hàn guǎn liú" },
+                    { en: "Allergic contact dermatitis", zh: "变应性接触性皮炎", pinyin: "biàn yìng xìng jiē chù xìng pí yán" },
+                    { en: "Dermatitis", zh: "皮肤炎/皮炎", pinyin: "pí fū yán / pí yán" },
+                    { en: "Infantile eczema", zh: "小儿湿疹", pinyin: "xiǎo ér shī zhěn" },
+                    { en: "Scabies", zh: "疥疮", pinyin: "jiè chuāng" },
+                    { en: "Sunburn", zh: "太阳灼伤", pinyin: "tài yáng zhuó shāng" },
+                    { en: "Corn", zh: "鸡眼/钉胼", pinyin: "jī yǎn / dìng pián" },
+                    { en: "Athletes foot", zh: "香港脚", pinyin: "xiāng gǎng jiǎo" }
+                ],
+                "细菌性传染病 (Bacterial Infectious Diseases)": [
+                    { en: "Cholera", zh: "霍乱", pinyin: "huò luàn" },
+                    { en: "Typhoid fever", zh: "伤寒", pinyin: "shāng hán" },
+                    { en: "Syphilis", zh: "梅毒", pinyin: "méi dú" },
+                    { en: "Tuberculosis", zh: "结核病", pinyin: "jié hé bìng" },
+                    { en: "Pertussis", zh: "百日咳", pinyin: "bǎi rì ké" },
+                    { en: "Scarlet fever", zh: "猩红热", pinyin: "xīng hóng rè" },
+                    { en: "Tetanus", zh: "破伤风", pinyin: "pò shāng fēng" },
+                    { en: "Plague", zh: "鼠疫", pinyin: "shǔ yì" },
+                    { en: "Salmonellosis", zh: "沙门氏菌病", pinyin: "shā mén shì jūn bìng" },
+                    { en: "Shigellosis", zh: "志贺氏菌病", pinyin: "zhì hè shì jūn bìng" },
+                    { en: "Leprosy", zh: "麻风病", pinyin: "má fēng bìng" },
+                    { en: "Toxic shock syndrome", zh: "毒性休克综合征", pinyin: "dú xìng xiū kè zōng hé zhēng" },
+                    { en: "Food poisoning", zh: "食物中毒", pinyin: "shí wù zhòng dú" },
+                    { en: "Typhus", zh: "斑疹伤寒", pinyin: "bān zhěn shāng hán" },
+                    { en: "Q fever", zh: "Q热", pinyin: "Q rè" }
+                ],
+                "寄生虫病 (Parasitic Diseases)": [
+                    { en: "Dysentery", zh: "痢疾", pinyin: "lì jí" },
+                    { en: "Ascariasis", zh: "蛔虫病", pinyin: "huí chóng bìng" },
+                    { en: "Pinworm infection / Enterobiasis", zh: "蛲虫病", pinyin: "náo chóng bìng" },
+                    { en: "Taeniasis", zh: "绦虫病", pinyin: "tāo chóng bìng" },
+                    { en: "Cysticercosis", zh: "囊虫病", pinyin: "náng chóng bìng" },
+                    { en: "Pubic lice / Crabs", zh: "阴虱", pinyin: "yīn shī" },
+                    { en: "Malaria", zh: "疟疾", pinyin: "nüè jí" },
+                    { en: "Demodicosis", zh: "毛囊虫病", pinyin: "máo náng chóng bìng" }
+                ],
+                "病毒性传染病 (Viral Infectious Diseases)": [
+                    { en: "Acquired immunodeficiency syndrome (AIDS)", zh: "艾滋病", pinyin: "ài zī bìng" },
+                    { en: "Influenza (Flu)", zh: "流行性感冒", pinyin: "liú xíng xìng gǎn mào" },
+                    { en: "Wart", zh: "疣", pinyin: "yóu" },
+                    { en: "2019冠状病毒病", zh: "2019冠状病毒病", pinyin: "2019 guàn zhuàng bìng dú bìng" },
+                    { en: "Upper respiratory infection", zh: "上呼吸道感染", pinyin: "shàng hū xī dào gǎn rǎn" },
+                    { en: "Smallpox", zh: "天花", pinyin: "tiān huā" },
+                    { en: "Poliomyelitis", zh: "小儿麻痹症", pinyin: "xiǎo ér má bì zhèng" },
+                    { en: "Chickenpox", zh: "水痘", pinyin: "shuǐ dòu" },
+                    { en: "Diphtheria", zh: "白喉", pinyin: "bái hóu" },
+                    { en: "Rabies", zh: "狂犬病", pinyin: "kuáng quǎn bìng" },
+                    { en: "Yellow fever", zh: "黄热病", pinyin: "huáng rè bìng" },
+                    { en: "Dengue fever", zh: "登革热", pinyin: "dēng gé rè" },
+                    { en: "Hand, foot, and mouth disease (HFMD)", zh: "手足口病", pinyin: "shǒu zú kǒu bìng" },
+                    { en: "Avian influenza / Bird flu", zh: "禽流感", pinyin: "qín liú gǎn" },
+                    { en: "Severe acute respiratory syndrome (SARS)", zh: "严重急性呼吸综合征（SARS）", pinyin: "yán zhòng jí xìng hū xī zōng hé zhēng (SARS)" }
+                ],
+                "其他状况 (Other Conditions)": [
+                    { en: "Dysphagia", zh: "吞咽困难", pinyin: "tūn yàn kùn nán" },
+                    { en: "Dysplasia", zh: "组织发展异常", pinyin: "zǔ zhī fā zhǎn yì cháng" },
+                    { en: "Insomnia", zh: "失眠", pinyin: "shī mián" },
+                    { en: "Paralysis", zh: "瘫痪", pinyin: "tān huàn" },
+                    { en: "Poisoning", zh: "中毒", pinyin: "zhòng dú" },
+                    { en: "Vertigo", zh: "眩晕(天旋地转)", pinyin: "xuàn yūn (tiān xuán dì zhuǎn)" },
+                    { en: "Dermatitis", zh: "皮肤炎/皮炎", pinyin: "pí fū yán / pí yán" },
+                    { en: "Chorea", zh: "舞蹈病", pinyin: "wǔ dǎo bìng" },
+                    { en: "Genetic disease", zh: "遗传病", pinyin: "yí chuán bìng" },
+                    { en: "Pneumonic plague", zh: "瘟疫", pinyin: "wēn yì" },
+                    { en: "Psittacosis", zh: "鹦鹉热", pinyin: "yīng wǔ rè" },
+                    { en: "Repetitive strain injury (RSI)", zh: "重复性劳损（RSI）", pinyin: "chóng fù xìng láo sǔn (RSI)" },
+                    { en: "Rift Valley fever", zh: "裂谷热", pinyin: "liè gǔ rè" },
+                    { en: "Streptococcus", zh: "链球菌", pinyin: "liàn qiú jūn" }
                 ]
             },
-            "癌症类型 (Cancer Types)": [
-                { en: "Breast cancer", zh: "乳腺癌", pinyin: "rǔ xiàn ái" },
-                { en: "Colorectal cancer", zh: "大肠癌", pinyin: "dà cháng ái" },
-                { en: "Leukemia", zh: "白血病", pinyin: "bái xuè bìng" },
-                { en: "Liver cancer", pinyin: "gān ái", zh: "肝癌" },
-                { en: "Lung cancer", zh: "肺癌", pinyin: "fèi ái" },
-                { en: "Lymphoma", zh: "淋巴瘤", pinyin: "lín bā liú" },
-                { en: "Prostate cancer", zh: "前列腺癌", pinyin: "qián liè xiàn ái" },
-                { en: "Adenocarcinoma", zh: "腺癌", pinyin: "xiàn ái" },
-                { en: "Aggressive lymphomas", zh: "急性淋巴瘤", pinyin: "jí xìng lín bā liú" },
-                { en: "Basal cell carcinoma", zh: "基底细胞癌", pinyin: "jī dǐ xì bāo ái" },
-                { en: "Bronchoalveolar Carcinoma", zh: "支气管肺泡癌", pinyin: "zhī qì guǎn fèi pào ái" },
-                { en: "Bronchogenic Carcinoma", zh: "支气管原生癌，即肺癌", pinyin: "zhī qì guǎn yuán shēng ái, jí fèi ái" },
-                { en: "Burkitt leukemia", zh: "伯基特氏白血病", pinyin: "bó jī tè shì bái xuè bìng" },
-                { en: "Burkitt lymphoma", zh: "伯基特氏淋巴瘤", pinyin: "bó jī tè shì lín bā liú" },
-                { en: "Cancer", zh: "癌症", pinyin: "ái zhèng" },
-                { en: "Carcinoma", zh: "癌瘤", pinyin: "ái liú" },
-                { en: "Carcinoma in situ", zh: "原位癌", pinyin: "yuán wèi ái" },
-                { en: "Cholangiocarcinoma", zh: "胆管癌", pinyin: "dǎn guǎn ái" },
-                { en: "Ductal Carcinoma in Situ", zh: "原位乳腺管癌", pinyin: "yuán wèi rǔ xiàn guǎn ái" },
-                { en: "Esophagus cancer", zh: "食道癌", pinyin: "shí dào ái" },
-                { en: "Gall Bladder Cancer", zh: "胆囊癌", pinyin: "dǎn náng ái" },
-                { en: "Germ cell tumors", zh: "生殖细胞肿瘤", pinyin: "shēng zhí xì bāo zhǒng liú" },
-                { en: "Hepatoma", zh: "肝肿瘤", pinyin: "gān zhǒng liú" },
-                { en: "Hodgkin’s Lymphoma", zh: "霍奇金淋巴瘤", pinyin: "huò qí jīn lín bā liú" },
-                { en: "Hypopharyngeal cancer", zh: "下咽癌", pinyin: "xià yān ái" },
-                { en: "Infiltrating Ductal Carcinoma", zh: "浸润性乳腺管癌", pinyin: "jìn rùn xìng rǔ xiàn guǎn ái" },
-                { en: "Indolent lymphoma", zh: "慢性淋巴瘤", pinyin: "màn xìng lín bā liú" },
-                { en: "Invasive lobular Carcinoma", zh: "侵入性乳叶癌 / 侵入性肺叶癌", pinyin: "qīn rùn xìng rǔ yè ái / qīn rùn xìng fèi yè ái" },
-                { en: "Invasive cancer", zh: "侵入性癌症", pinyin: "qīn rùn xìng ái zhèng" },
-                { en: "Kaposi's sarcoma", zh: "卡波西氏恶性肿瘤", pinyin: "kǎ bō xī shì è xìng zhǒng liú" },
-                { en: "Large Cell Carcinoma", zh: "大细胞癌", pinyin: "dà xì bāo ái" },
-                { en: "Lobular Carcinoma In Situ (LCIS)", zh: "原位乳叶癌 / 腺或肺小叶原位癌", pinyin: "yuán wèi rǔ yè ái / xiàn huò fèi xiǎo yè yuán wèi ái" },
-                { en: "Localized Breast Cancer", zh: "局部的乳癌", pinyin: "jú bù de rǔ ái" },
-                { en: "Localized cancer", zh: "局部癌", pinyin: "jú bù ái" },
-                { en: "Lung Cancer, Adenocarcinoma", zh: "肺腺癌", pinyin: "fèi xiàn ái" },
-                { en: "Lung Cancer, Bronchioalveolar Carcinoma", zh: "肺支气管肺泡性肺癌", pinyin: "fèi zhī qì guǎn fèi pào xìng fèi ái" },
-                { en: "Lung Cancer, Large Cell", zh: "大细胞类肺癌", pinyin: "dà xì bāo lèi fèi ái" },
-                { en: "Lung Cancer, Non Small Cell Carcinoma", zh: "非小细胞性肺癌", pinyin: "fēi xiǎo xì bāo xìng fèi ái" },
-                { en: "Lung Cancer, Small Cell Carcinoma", zh: "小细胞肺癌", pinyin: "xiǎo xì bāo fèi ái" },
-                { en: "Lung Cancer, Squamous Carcinoma", zh: "鳞状上皮肺癌", pinyin: "lín zhuàng shàng pí fèi ái" },
-                { en: "Lymphoblastic lymphoma", zh: "淋巴细胞淋巴瘤", pinyin: "lín bā xì bāo lín bā liú" },
-                { en: "Malignant tumor", zh: "恶性肿瘤", pinyin: "è xìng zhǒng liú" },
-                { en: "Medullary Carcinoma", zh: "髓状癌", pinyin: "suǐ zhuàng ái" },
-                { en: "Melanoma", zh: "黑色素瘤", pinyin: "hēi sè sù liú" },
-                { en: "Mucinous carcinoma", zh: "粘液(腺)癌", pinyin: "nián yè (xiàn) ái" },
-                { en: "Multicentric Breast Cancer", zh: "多中心的乳癌", pinyin: "duō zhōng xīn de rǔ ái" },
-                { en: "Nasopharyngeal cancer", zh: "鼻咽癌", pinyin: "bí yān ái" },
-                { en: "Neoplasm", zh: "肿瘤(新生物)", pinyin: "zhǒng liú (xīn shēng wù)" },
-                { en: "Neuroendocrine Tumor", zh: "神经内分泌瘤", pinyin: "shén jīng nèi fēn mì liú" },
-                { en: "Non-Hodgkin lymphoma", zh: "非霍奇金淋巴瘤", pinyin: "fēi huò qí jīn lín bā liú" },
-                { en: "Ovarian epithelial cancer", zh: "卵巢上皮性癌", pinyin: "luǎn cháo shàng pí xìng ái" },
-                { en: "Ovarian Germ Cell Tumors", zh: "卵巢恶性生殖细胞肿瘤", pinyin: "luǎn cháo è xìng shēng zhí xì bāo zhǒng liú" },
-                { en: "Ovarian Low Malignant Potential Tumors", zh: "低恶性度卵巢肿瘤", pinyin: "dī è xìng dù luǎn cháo zhǒng liú" },
-                { en: "Paget’s Disease of the Nipple", zh: "乳头的佩吉特病", pinyin: "rǔ tóu de pèi jí tè bìng" },
-                { en: "Pre-cancerous", zh: "变肿瘤前的", pinyin: "biàn zhǒng liú qián de" },
-                { en: "Pre-malignant", zh: "变恶性肿瘤前的", pinyin: "biàn è xìng zhǒng liú qián de" },
-                { en: "Rectal cancer", zh: "直肠癌", pinyin: "zhí cháng ái" },
-                { en: "Sarcoma", zh: "肉瘤", pinyin: "ròu liú" },
-                { en: "Secondary tumor", zh: "继发瘤", pinyin: "jì fā liú" },
-                { en: "Skin cancer", zh: "皮肤癌", pinyin: "pí fū ái" },
-                { en: "Small Cell Lung Cancer (SCLC)", zh: "小细胞肺癌", pinyin: "xiǎo xì bāo fèi ái" },
-                { en: "Squamous Cell Carcinoma", zh: "鳞状细胞癌", pinyin: "lín zhuàng xì bāo ái" },
-                { en: "Stomach cancer", zh: "胃癌", pinyin: "wèi ái" },
-                { en: "Tumor", zh: "肿瘤", pinyin: "zhǒng liú" }
-            ],
+            "肿瘤与癌症 (Tumors & Cancers)": {
+                "肿瘤 (Tumors)": [
+                    { en: "Tumor", zh: "肿瘤", pinyin: "zhǒng liú" },
+                    { en: "Dysgerminoma", zh: "无性细胞瘤，恶性胚胎瘤", pinyin: "wú xìng xì bāo liú, è xìng pēi tāi liú" },
+                    { en: "Ovarian tumor", zh: "卵巢瘤", pinyin: "luǎn cháo liú" },
+                    { en: "Tumor of the kidney", zh: "肾瘤", pinyin: "shèn liú" },
+                    { en: "Hepatoma", zh: "肝肿瘤", pinyin: "gān zhǒng liú" },
+                    { en: "Neoplasm", zh: "肿瘤(新生物)", pinyin: "zhǒng liú (xīn shēng wù)" },
+                    { en: "Neuroendocrine Tumor", zh: "神经内分泌瘤", pinyin: "shén jīng nèi fēn mì liú" },
+                    { en: "Secondary tumor", zh: "继发瘤", pinyin: "jì fā liú" },
+                    { en: "Ovarian Low Malignant Potential Tumors", zh: "低恶性度卵巢肿瘤", pinyin: "dī è xìng dù luǎn cháo zhǒng liú" },
+                    { en: "Ovarian Germ Cell Tumors", zh: "卵巢恶性生殖细胞肿瘤", pinyin: "luǎn cháo è xìng shēng zhí xì bāo zhǒng liú" }
+                ],
+                "癌症 (Cancers)": [
+                    { en: "Breast cancer", zh: "乳腺癌", pinyin: "rǔ xiàn ái" },
+                    { en: "Colorectal cancer", zh: "大肠癌", pinyin: "dà cháng ái" },
+                    { en: "Leukemia", zh: "白血病", pinyin: "bái xuè bìng" },
+                    { en: "Liver cancer", pinyin: "gān ái", zh: "肝癌" },
+                    { en: "Lung cancer", zh: "肺癌", pinyin: "fèi ái" },
+                    { en: "Lymphoma", zh: "淋巴瘤", pinyin: "lín bā liú" },
+                    { en: "Prostate cancer", zh: "前列腺癌", pinyin: "qián liè xiàn ái" },
+                    { en: "Adenocarcinoma", zh: "腺癌", pinyin: "xiàn ái" },
+                    { en: "Aggressive lymphomas", zh: "急性淋巴瘤", pinyin: "jí xìng lín bā liú" },
+                    { en: "Basal cell carcinoma", zh: "基底细胞癌", pinyin: "jī dǐ xì bāo ái" },
+                    { en: "Bronchoalveolar Carcinoma", zh: "支气管肺泡癌", pinyin: "zhī qì guǎn fèi pào ái" },
+                    { en: "Bronchogenic Carcinoma", zh: "支气管原生癌，即肺癌", pinyin: "zhī qì guǎn yuán shēng ái, jí fèi ái" },
+                    { en: "Burkitt leukemia", zh: "伯基特氏白血病", pinyin: "bó jī tè shì bái xuè bìng" },
+                    { en: "Burkitt lymphoma", zh: "伯基特氏淋巴瘤", pinyin: "bó jī tè shì lín bā liú" },
+                    { en: "Cancer", zh: "癌症", pinyin: "ái zhèng" },
+                    { en: "Carcinoma", zh: "癌瘤", pinyin: "ái liú" },
+                    { en: "Carcinoma in situ", zh: "原位癌", pinyin: "yuán wèi ái" },
+                    { en: "Cholangiocarcinoma", zh: "胆管癌", pinyin: "dǎn guǎn ái" },
+                    { en: "Ductal Carcinoma in Situ", zh: "原位乳腺管癌", pinyin: "yuán wèi rǔ xiàn guǎn ái" },
+                    { en: "Esophagus cancer", zh: "食道癌", pinyin: "shí dào ái" },
+                    { en: "Gall Bladder Cancer", zh: "胆囊癌", pinyin: "dǎn náng ái" },
+                    { en: "Hodgkin’s Lymphoma", zh: "霍奇金淋巴瘤", pinyin: "huò qí jīn lín bā liú" },
+                    { en: "Hypopharyngeal cancer", zh: "下咽癌", pinyin: "xià yān ái" },
+                    { en: "Infiltrating Ductal Carcinoma", zh: "浸润性乳腺管癌", pinyin: "jìn rùn xìng rǔ xiàn guǎn ái" },
+                    { en: "Indolent lymphoma", zh: "慢性淋巴瘤", pinyin: "màn xìng lín bā liú" },
+                    { en: "Invasive lobular Carcinoma", zh: "侵入性乳叶癌 / 侵入性肺叶癌", pinyin: "qīn rùn xìng rǔ yè ái / qīn rùn xìng fèi yè ái" },
+                    { en: "Invasive cancer", zh: "侵入性癌症", pinyin: "qīn rùn xìng ái zhèng" },
+                    { en: "Kaposi's sarcoma", zh: "卡波西氏恶性肿瘤", pinyin: "kǎ bō xī shì è xìng zhǒng liú" },
+                    { en: "Large Cell Carcinoma", zh: "大细胞癌", pinyin: "dà xì bāo ái" },
+                    { en: "Lobular Carcinoma In Situ (LCIS)", zh: "原位乳叶癌 / 腺或肺小叶原位癌", pinyin: "yuán wèi rǔ yè ái / xiàn huò fèi xiǎo yè yuán wèi ái" },
+                    { en: "Localized Breast Cancer", zh: "局部的乳癌", pinyin: "jú bù de rǔ ái" },
+                    { en: "Localized cancer", zh: "局部癌", pinyin: "jú bù ái" },
+                    { en: "Lung Cancer, Adenocarcinoma", zh: "肺腺癌", pinyin: "fèi xiàn ái" },
+                    { en: "Lung Cancer, Bronchioalveolar Carcinoma", zh: "肺支气管肺泡性肺癌", pinyin: "fèi zhī qì guǎn fèi pào xìng fèi ái" },
+                    { en: "Lung Cancer, Large Cell", zh: "大细胞类肺癌", pinyin: "dà xì bāo lèi fèi ái" },
+                    { en: "Lung Cancer, Non Small Cell Carcinoma", zh: "非小细胞性肺癌", pinyin: "fēi xiǎo xì bāo xìng fèi ái" },
+                    { en: "Lung Cancer, Small Cell Carcinoma", zh: "小细胞肺癌", pinyin: "xiǎo xì bāo fèi ái" },
+                    { en: "Lung Cancer, Squamous Carcinoma", zh: "鳞状上皮肺癌", pinyin: "lín zhuàng shàng pí fèi ái" },
+                    { en: "Lymphoblastic lymphoma", zh: "淋巴细胞淋巴瘤", pinyin: "lín bā xì bāo lín bā liú" },
+                    { en: "Malignant tumor", zh: "恶性肿瘤", pinyin: "è xìng zhǒng liú" },
+                    { en: "Medullary Carcinoma", zh: "髓状癌", pinyin: "suǐ zhuàng ái" },
+                    { en: "Melanoma", zh: "黑色素瘤", pinyin: "hēi sè sù liú" },
+                    { en: "Mucinous carcinoma", zh: "粘液(腺)癌", pinyin: "nián yè (xiàn) ái" },
+                    { en: "Multicentric Breast Cancer", zh: "多中心的乳癌", pinyin: "duō zhōng xīn de rǔ ái" },
+                    { en: "Nasopharyngeal cancer", zh: "鼻咽癌", pinyin: "bí yān ái" },
+                    { en: "Non-Hodgkin lymphoma", zh: "非霍奇金淋巴瘤", pinyin: "fēi huò qí jīn lín bā liú" },
+                    { en: "Ovarian epithelial cancer", zh: "卵巢上皮性癌", pinyin: "luǎn cháo shàng pí xìng ái" },
+                    { en: "Paget’s Disease of the Nipple", zh: "乳头的佩吉特病", pinyin: "rǔ tóu de pèi jí tè bìng" },
+                    { en: "Pre-cancerous", zh: "变肿瘤前的", pinyin: "biàn zhǒng liú qián de" },
+                    { en: "Pre-malignant", zh: "变恶性肿瘤前的", pinyin: "biàn è xìng zhǒng liú qián de" },
+                    { en: "Rectal cancer", zh: "直肠癌", pinyin: "zhí cháng ái" },
+                    { en: "Sarcoma", zh: "肉瘤", pinyin: "ròu liú" },
+                    { en: "Skin cancer", zh: "皮肤癌", pinyin: "pí fū ái" },
+                    { en: "Small Cell Lung Cancer (SCLC)", zh: "小细胞肺癌", pinyin: "xiǎo xì bāo fèi ái" },
+                    { en: "Squamous Cell Carcinoma", zh: "鳞状细胞癌", pinyin: "lín zhuàng shàng pí fèi ái" },
+                    { en: "Stomach cancer", zh: "胃癌", pinyin: "wèi ái" }
+                ]
+            },
             "病患照护术语 (Patient Care Terms)": [
                 { en: "Discharge", zh: "出院", pinyin: "chū yuàn" },
                 { en: "Follow-up", zh: "随访", pinyin: "suí fǎng" },
-                { en: "Informed consent", zh: "知情同意", pinyin: "zhī qíng tóng yì" },
-                { en: "Medical history", zh: "病史", pinyin: "bìng shǐ" },
                 { en: "Prognosis", zh: "预后", pinyin: "yù hòu" },
                 { en: "Rehabilitation", zh: "康复", pinyin: "kāng fù" },
                 { en: "Advance care planning", zh: "事前疗护计划", pinyin: "shì qián liáo hù jì huà" },
@@ -658,7 +939,6 @@
                 { en: "Hospice care", zh: "安宁疗护", pinyin: "ān níng liáo hù" },
                 { en: "Hospital bed", zh: "医院病床", pinyin: "yī yuàn bìng chuáng" },
                 { en: "Incontinence", zh: "大小便失禁", pinyin: "dà xiǎo biàn shī jīn" },
-                { en: "Informed consent form", zh: "同意知会书", pinyin: "tóng yì zhī huì shū" },
                 { en: "Intubation", zh: "气管内插管", pinyin: "qì guǎn nèi chā guǎn" },
                 { en: "Kidney dialysis", zh: "洗肾，肾透析", pinyin: "xǐ shèn, shèn tòu xī" },
                 { en: "Living will", zh: "生前预嘱", pinyin: "shēng qián yù zhǔ" },
@@ -800,7 +1080,7 @@
                 { en: "Glycemic Index", zh: "血糖指数", pinyin: "xuè táng zhǐ shù" },
                 { en: "Antioxidants", zh: "抗氧化剂", pinyin: "kàng yǎng huà jì" },
                 { en: "Food Allergy", zh: "食物过敏", pinyin: "shí wù guò mǐn" },
-                { en: "Plateau Phase", zh: "平台期", pinyin: "píng tái qī" }
+                { en: "Plateau Phase", zh: "平台期", pinyin: "píng tái qái" }
             ],
             "关键营养词汇 (Key Nutritional Vocabulary)": [
                 { en: "Nutrition", zh: "营养", pinyin: "yíng yǎng" },
@@ -842,12 +1122,35 @@
             for (const categoryKey in medicalData) {
                 const categoryContent = medicalData[categoryKey];
                 if (Array.isArray(categoryContent)) {
-                    allTerms.push(...categoryContent);
+                    // Simple array category
+                    categoryContent.forEach(term => {
+                        allTerms.push({ ...term, category: categoryKey });
+                    });
                 } else if (categoryContent.terms && Array.isArray(categoryContent.terms)) {
-                    allTerms.push(...categoryContent.terms);
-                } else { // Subcategorized content
+                    // Special structure like Minerals
+                    categoryContent.terms.forEach(term => {
+                        allTerms.push({ ...term, category: categoryKey });
+                    });
+                } else { // Subcategorized content (e.g., Body Parts & Systems, Common Diseases & Conditions, Tumors & Cancers)
                     for (const subCategoryKey in categoryContent) {
-                        allTerms.push(...categoryContent[subCategoryKey]);
+                        const subCategoryContent = categoryContent[subCategoryKey]; // Changed variable name to avoid confusion
+
+                        if (Array.isArray(subCategoryContent)) {
+                            // Direct array of terms within a sub-category
+                            subCategoryContent.forEach(term => {
+                                allTerms.push({ ...term, category: categoryKey, subCategory: subCategoryKey });
+                            });
+                        } else if (typeof subCategoryContent === 'object' && subCategoryContent !== null) {
+                            // Further nested object (e.g., Diagnostic Tests & Procedures, Digestive System Disorders)
+                            for (const nestedSubCategoryKey in subCategoryContent) {
+                                const nestedSubCategoryTerms = subCategoryContent[nestedSubCategoryKey];
+                                if (Array.isArray(nestedSubCategoryTerms)) {
+                                    nestedSubCategoryTerms.forEach(term => {
+                                        allTerms.push({ ...term, category: categoryKey, subCategory: `${subCategoryKey} - ${nestedSubCategoryKey}` });
+                                    });
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -905,6 +1208,7 @@
                                 <span class="chinese-text">${term.zh || ''}</span>
                                 <span class="pinyin-text">${term.pinyin || ''}</span>
                                 ${term.note ? `<span class="pinyin-text text-slate-600 italic mt-1">备注: ${term.note}</span>` : ''}
+                                ${term.category ? `<span class="text-xs text-sky-700 bg-sky-100 px-2 py-1 rounded-full mt-1 inline-block">${term.category}${term.subCategory ? ` - ${term.subCategory}` : ''}</span>` : ''}
                             </td>
                         `;
                         termList.appendChild(row);
@@ -950,26 +1254,57 @@
                         `;
                         termList.appendChild(row);
                     });
-                } else { // Subcategorized structure like Body Parts, Common Diseases
+                } else { // Subcategorized structure like Body Parts, Common Diseases, and now Tumors & Cancers
                     for (const subCategoryKey in currentCategoryObj) {
-                        const subCategoryTerms = currentCategoryObj[subCategoryKey];
+                        const subCategoryContent = currentCategoryObj[subCategoryKey];
+
+                        // Add a header for the sub-category
                         const subCategoryHeader = document.createElement('tr');
                         subCategoryHeader.innerHTML = `<td colspan="2" class="p-3 text-left text-lg font-semibold text-sky-700 bg-sky-50/50 border-b border-slate-200 rounded-lg mt-4">${subCategoryKey}</td>`;
                         termList.appendChild(subCategoryHeader);
 
-                        subCategoryTerms.forEach(term => {
-                            const row = document.createElement('tr');
-                            row.className = 'border-b border-slate-100 hover:bg-sky-50/50';
-                            row.innerHTML = `
-                                <td class="p-3 text-slate-800">${term.en || ''}</td>
-                                <td class="p-3 text-slate-800">
-                                    <span class="chinese-text">${term.zh || ''}</span>
-                                    <span class="pinyin-text">${term.pinyin || ''}</span>
-                                    ${term.note ? `<span class="pinyin-text text-slate-600 italic mt-1">备注: ${term.note}</span>` : ''}
-                                </td>
-                            `;
-                            termList.appendChild(row);
-                        });
+                        // Check if the subCategoryContent is an array (direct terms)
+                        if (Array.isArray(subCategoryContent)) {
+                            subCategoryContent.forEach(term => {
+                                const row = document.createElement('tr');
+                                row.className = 'border-b border-slate-100 hover:bg-sky-50/50';
+                                row.innerHTML = `
+                                    <td class="p-3 text-slate-800">${term.en || ''}</td>
+                                    <td class="p-3 text-slate-800">
+                                        <span class="chinese-text">${term.zh || ''}</span>
+                                        <span class="pinyin-text">${term.pinyin || ''}</span>
+                                        ${term.note ? `<span class="pinyin-text text-slate-600 italic mt-1">备注: ${term.note}</span>` : ''}
+                                    </td>
+                                `;
+                                termList.appendChild(row);
+                            });
+                        } else if (typeof subCategoryContent === 'object' && subCategoryContent !== null) {
+                            // If it's an object, it means there's another level of nesting (e.g., Diagnostic Tests & Procedures, Digestive System Disorders)
+                            for (const nestedSubCategoryKey in subCategoryContent) {
+                                const nestedSubCategoryTerms = subCategoryContent[nestedSubCategoryKey];
+                                
+                                // Add a header for the nested sub-category
+                                const nestedSubCategoryHeader = document.createElement('tr');
+                                nestedSubCategoryHeader.innerHTML = `<td colspan="2" class="p-3 text-left text-base font-medium text-slate-700 bg-slate-50/50 border-b border-slate-100 pl-6">${nestedSubCategoryKey}</td>`;
+                                termList.appendChild(nestedSubCategoryHeader);
+
+                                if (Array.isArray(nestedSubCategoryTerms)) {
+                                    nestedSubCategoryTerms.forEach(term => {
+                                        const row = document.createElement('tr');
+                                        row.className = 'border-b border-slate-100 hover:bg-sky-50/50';
+                                        row.innerHTML = `
+                                            <td class="p-3 text-slate-800">${term.en || ''}</td>
+                                            <td class="p-3 text-slate-800">
+                                                <span class="chinese-text">${term.zh || ''}</span>
+                                                <span class="pinyin-text">${term.pinyin || ''}</span>
+                                                ${term.note ? `<span class="pinyin-text text-slate-600 italic mt-1">备注: ${term.note}</span>` : ''}
+                                            </td>
+                                        `;
+                                        termList.appendChild(row);
+                                    });
+                                }
+                            }
+                        }
                     }
                 }
                 if (termList.children.length === 0) { // Fallback if no terms are found for a category (shouldn't happen with current data)

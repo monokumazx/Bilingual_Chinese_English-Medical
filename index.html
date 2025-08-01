@@ -14,6 +14,7 @@
         body {
             font-family: 'Noto Sans SC', sans-serif;
             background-color: #f8fafc; /* slate-50 */
+            cursor: default; /* Ensure default cursor */
         }
         .nav-button {
             transition: all 0.3s ease;
@@ -46,6 +47,22 @@
             display: block;
             font-size: 0.8rem;
             color: #64748b; /* slate-500 */
+        }
+        /* Tooltip styles */
+        #tooltip {
+            position: fixed; /* Use fixed to stay relative to viewport */
+            background-color: #0ea5e9; /* sky-500 */
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            font-size: 0.9rem;
+            z-index: 1000; /* Ensure it's on top */
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+            pointer-events: none; /* Crucial to allow mouse events on elements underneath */
+            max-width: 250px; /* Limit tooltip width */
+            word-wrap: break-word; /* Break long words */
         }
     </style>
 </head>
@@ -86,8 +103,9 @@
         </main>
 
         <footer class="text-center mt-12 py-6 border-t border-slate-200">
-            <p class="text-slate-500 text-sm">此页面内容由AI辅助排版，但所有词汇和笔记均由本人（一位语言爱好者，非医疗专业人士）收集整理。因此，请勿将此信息视为医疗建议，本人无法保证其完全准确性。</p>
-            <p class="text-slate-500 text-sm mt-1">This page's content is AI-assisted in layout, but all vocabulary and notes were collected and organized by me (a language enthusiast, not a medical professional). Therefore, please do not take this information as medical advice, and I cannot guarantee its complete accuracy.</p>
+            <p class="text-slate-500 text-sm font-bold">⚠️ 免责声明 / Disclaimer</p>
+            <p class="text-slate-500 text-sm mt-1">本页面内容由AI辅助排版，由本人（非医疗专业人员，仅为语言爱好者）整理自公开来源，仅供语言学习和参考使用，不构成任何医疗建议或诊断。请勿将此信息用于医疗决策。如需医疗帮助，请咨询专业医生。本人对内容的准确性不作保证，不承担因使用该信息所产生的任何责任。</p>
+            <p class="text-slate-500 text-sm mt-1">This page is AI-assisted in layout and compiled by me, a language enthusiast (not a medical professional), based on publicly available sources. It is intended for language learning and reference purposes only and does not constitute medical advice or diagnosis. Please do not use this information for any medical decision-making. I make no guarantees about its accuracy and accept no liability for any consequences resulting from its use. Please consult a licensed healthcare professional for medical concerns.</p>
             <div class="mt-4 text-sm text-slate-500">
                 <h3 class="font-semibold mb-2">参考来源 (Sources):</h3>
                 <ul class="list-none p-0 m-0">
@@ -100,331 +118,329 @@
         </footer>
     </div>
 
+    <!-- Tooltip element -->
+    <div id="tooltip" class="absolute bg-sky-700 text-white p-2 rounded-lg shadow-xl text-sm z-50 opacity: 0; transition: opacity 0.2s ease-in-out; pointer-events: none; max-width: 250px; word-wrap: break-word;"></div>
+
     <script>
         const medicalData = {
             "就诊常用词汇 (Doctor's Visit Vocabulary)": [
-                { en: "Doctor's visit", zh: "看医生", pinyin: "kàn yī shēng" },
-                { en: "Clinic", zh: "诊所", pinyin: "zhěn suǒ" },
-                { en: "Outpatient", zh: "门诊", pinyin: "mén zhěn" },
-                { en: "General check-up", zh: "体检", pinyin: "tǐ jiǎn" },
-                { en: "Annual physical exam", zh: "年检 / 年度体检", pinyin: "nián jiǎn / nián dù tǐ jiǎn" },
-                { en: "Routine check-up", zh: "常规体检", pinyin: "cháng guī tǐ jiǎn" },
-                { en: "Follow-up visit", zh: "复诊", pinyin: "fù zhěn" },
-                { en: "Medical consultation", zh: "医疗咨询", pinyin: "yī liáo zī xún" },
-                { en: "Chief complaint", zh: "主诉", pinyin: "zhǔ sù" },
-                { en: "Medical history", zh: "病史", pinyin: "bìng shǐ" },
-                { en: "Symptoms", zh: "症状", pinyin: "zhèng zhuàng" },
-                { en: "Diagnosis", zh: "诊断", pinyin: "zhěn duàn" },
-                { en: "Prescription", zh: "处方", pinyin: "chǔ fāng" },
-                { en: "Medication", zh: "药物 / 药品", pinyin: "yào wù / yào pǐn" },
-                { en: "Over-the-counter medicine", zh: "非处方药", pinyin: "fēi chǔ fāng yào" },
-                { en: "Injection", zh: "注射", pinyin: "zhù shè" },
-                { en: "IV drip", zh: "打点滴", pinyin: "dǎ diǎn dī" },
-                { en: "Vaccination", zh: "疫苗接种", pinyin: "yì miáo jiē zhǒng" },
-                { en: "Appointment", zh: "预约", pinyin: "yù yuē" },
-                { en: "Walk-in", zh: "无预约看诊", pinyin: "wú yù yuē kàn zhěn" },
-                { en: "Referral", zh: "转诊", pinyin: "zhuǎn zhěn" },
-                { en: "Medical certificate", zh: "医疗证明", pinyin: "yī liáo zhèng míng" },
-                { en: "Health report", zh: "健康报告", pinyin: "jiàn kāng bào gào" },
-                { en: "Consent form", zh: "同意书", pinyin: "tóng yì shū" },
-                { en: "Health insurance", zh: "医疗保险", pinyin: "yī liáo bǎo xiǎn" },
+                { en: "Doctor's visit", zh: "看医生", pinyin: "kàn yī shēng", en_description: "Seeing a doctor for diagnosis or treatment.", zh_description: "就医、接受诊断或治疗。" },
+                { en: "Clinic", zh: "诊所", pinyin: "zhěn suǒ", en_description: "A small outpatient medical facility.", zh_description: "提供门诊服务的小型医疗机构。" },
+                { en: "Outpatient", zh: "门诊", pinyin: "mén zhěn", en_description: "Medical service without hospital admission.", zh_description: "不需要住院的就诊形式。" },
+                { en: "General check-up", zh: "体检", pinyin: "tǐ jiǎn", en_description: "A routine health examination.", zh_description: "常规的身体健康检查。" },
+                { en: "Annual physical exam", zh: "年检 / 年度体检", pinyin: "nián jiǎn / nián dù tǐ jiǎn", en_description: "A yearly complete health assessment.", zh_description: "每年一次的全面健康检查。" },
+                { en: "Routine check-up", zh: "常规体检", pinyin: "cháng guī tǐ jiǎn", en_description: "A non-urgent, regular exam to monitor health.", zh_description: "用于健康监测的定期检查。" },
+                { en: "Follow-up visit", zh: "复诊", pinyin: "fù zhěn", en_description: "A return visit to review progress.", zh_description: "对治疗情况进行复查。" },
+                { en: "Medical consultation", zh: "医疗咨询", pinyin: "yī liáo zī xún", en_description: "Seeking professional medical advice.", zh_description: "向医生咨询医疗建议。" },
+                { en: "Chief complaint", zh: "主诉", pinyin: "zhǔ sù", en_description: "The main issue the patient reports.", zh_description: "患者描述的主要症状或问题。" },
+                { en: "Medical history", zh: "病史", pinyin: "bìng shǐ", en_description: "Record of past illnesses and treatments.", zh_description: "患者过去的疾病和治疗记录。" },
+                { en: "Symptoms", zh: "症状", pinyin: "zhèng zhuàng", en_description: "Signs of illness experienced by the patient.", zh_description: "患者感受到的身体异常表现。" },
+                { en: "Diagnosis", zh: "诊断", pinyin: "zhěn duàn", en_description: "The doctor’s identification of the illness.", zh_description: "医生对疾病的判断结果。" },
+                { en: "Prescription", zh: "处方", pinyin: "chǔ fāng", en_description: "A written order for medication.", zh_description: "医生开的药品使用说明。" },
+                { en: "Medication", zh: "药物 / 药品", pinyin: "yào wù / yào pǐn", en_description: "Drugs used to treat illness.", zh_description: "用于治疗疾病的药品。" },
+                { en: "Over-the-counter medicine", zh: "非处方药", pinyin: "fēi chǔ fāng yào", en_description: "Medicine available without a prescription.", zh_description: "无需医生处方即可购买的药品。" },
+                { en: "Injection", zh: "注射", pinyin: "zhù shè", en_description: "Medicine given with a needle.", zh_description: "用针将药物注入体内的方式。" },
+                { en: "IV drip", zh: "打点滴", pinyin: "dǎ diǎn dī", en_description: "Medicine or fluids delivered via vein.", zh_description: "通过静脉注入药液的治疗方法。" },
+                { en: "Vaccination", zh: "疫苗接种", pinyin: "yì miáo jiē zhòng", en_description: "Immunization to prevent disease.", zh_description: "通过注射疫苗预防疾病。" },
+                { en: "Appointment", zh: "预约", pinyin: "yù yuē", en_description: "A scheduled visit to a doctor.", zh_description: "提前安排的就诊时间。" },
+                { en: "Walk-in", zh: "无预约看诊", pinyin: "wú yù yuē kàn zhěn", en_description: "Visiting a clinic without prior booking.", zh_description: "无需提前预约的就诊方式。" },
+                { en: "Referral", zh: "转诊", pinyin: "zhuǎn zhěn", en_description: "Transfer to another doctor or specialist.", zh_description: "转到其他医生或专科的建议。" },
+                { en: "Medical certificate", zh: "医疗证明", pinyin: "yī liáo zhèng míng", en_description: "Official document confirming a medical condition.", zh_description: "证明健康状况的正式文件。" },
+                { en: "Health report", zh: "健康报告", pinyin: "jiàn kāng bào gào", en_description: "Summary of health check-up or test results.", zh_description: "健康检查或检测的总结报告。" },
+                { en: "Consent form", zh: "同意书", pinyin: "tóng yì shū", en_description: "Document giving permission for treatment.", zh_description: "同意接受治疗的书面文件。" },
+                { en: "Health insurance", zh: "医疗保险", pinyin: "yī liáo bǎo xiǎn", en_description: "Financial coverage for medical costs.", zh_description: "用于报销医疗费用的保险。" },
                 // Newly added terms from user
-                { en: "Allergen test", zh: "过敏原测试", pinyin: "guò mǐn yuán cè shì", note: "临床上更常用：过敏原检测 (guò mǐn yuán jiǎn cè)" },
-                { en: "Blood pressure measurement", zh: "血压测量", pinyin: "xuè yā cè liáng" },
-                { en: "Physical examination", zh: "体格检查", pinyin: "tǐ gé jiǎn chá" },
-                { en: "Inpatient", zh: "住院病人", pinyin: "zhù yuàn bìng rén" },
-                { en: "Hospitalization", zh: "住院", pinyin: "zhù yuàn" },
-                { en: "Second opinion", zh: "第二诊断意见", pinyin: "dì èr zhěn duàn yì jiàn" },
-                { en: "Health record", zh: "健康档案", pinyin: "jiàn kāng dàng àn" },
-                { en: "Emergency", zh: "急诊", pinyin: "jí zhěn" },
-                { en: "Pain scale", zh: "疼痛等级", pinyin: "téng tòng děng jí" },
-                { en: "Sick leave note", zh: "病假条", pinyin: "bìng jià tiáo" },
-                { en: "Return-to-work note", zh: "复工证明", pinyin: "fù gōng zhèng míng" },
-                { en: "School excuse note", zh: "学校请假条", pinyin: "xué xiào qǐng jià tiáo" },
+                { en: "Allergen test", zh: "过敏原测试 / 检测", pinyin: "guò mǐn yuán cè shì / jiǎn cè", en_description: "A test to find allergy triggers.", zh_description: "用于检测过敏源的检查。" },
+                { en: "Blood pressure measurement", zh: "血压测量", pinyin: "xuè yā cè liáng", en_description: "Checking the force of blood flow.", zh_description: "测量血液对血管的压力。" },
+                { en: "Physical examination", zh: "体格检查", pinyin: "tǐ gé jiǎn chá", en_description: "A doctor’s evaluation of the body.", zh_description: "医生对身体状态的评估。" },
+                { en: "Inpatient", zh: "住院病人", pinyin: "zhù yuàn bìng rén", en_description: "A patient staying in the hospital.", zh_description: "需要住院治疗的患者。" },
+                { en: "Hospitalization", zh: "住院", pinyin: "zhù yuàn", en_description: "Being admitted to the hospital.", zh_description: "进入医院接受住院治疗。" },
+                { en: "Second opinion", zh: "第二诊断意见", pinyin: "dì èr zhěn duàn yì jiàn", en_description: "Another doctor’s view on a diagnosis.", zh_description: "对诊断结果的再次确认意见。" },
+                { en: "Health record", zh: "健康档案", pinyin: "jiàn kāng dàng àn", en_description: "A record of a person’s medical history.", zh_description: "存储个人健康信息的档案。" },
+                { en: "Emergency", zh: "急诊", pinyin: "jí zhěn", en_description: "Immediate medical care for urgent cases.", zh_description: "需要立即处理的紧急医疗情况。" },
+                { en: "Pain scale", zh: "疼痛等级", pinyin: "téng tòng děng jí", en_description: "Rating system for pain intensity.", zh_description: "用于评估疼痛程度的等级系统。" },
+                { en: "Sick leave note", zh: "病假条", pinyin: "bìng jià tiáo", en_description: "A note excusing someone from work due to illness.", zh_description: "因病请假的医生证明。" },
+                { en: "Return-to-work note", zh: "复工证明", pinyin: "fù gōng zhèng míng", en_description: "Proof that a patient is fit to return to work.", zh_description: "表明已康复可复工的证明。" },
+                { en: "School excuse note", zh: "学校请假条", pinyin: "xué xiào qǐng jià tiáo", en_description: "A note for school absence due to illness.", zh: "因病请假的学校用条。" },
                 // New terms from "Clinic Visit Essentials"
-                { en: "Vital signs", zh: "生命体征", pinyin: "shēng mìng tǐ zhēng" },
-                { en: "Temperature check", zh: "量体温", pinyin: "liáng tǐ wēn" },
-                { en: "Height and weight", zh: "身高体重", pinyin: "shēn gāo tǐ zhòng" },
-                { en: "BMI (Body Mass Index)", zh: "体质指数", pinyin: "tǐ zhì zhǐ shù" },
-                { en: "Lab test", zh: "实验室检查", pinyin: "shí yàn shì jiǎn chá" },
-                { en: "Test results", zh: "检查结果 / 化验结果", pinyin: "jiǎn chá jié guǒ / huà yàn jié guǒ" },
-                { en: "Medical chart", zh: "病历", pinyin: "bìng lì" },
-                { en: "Waiting room", zh: "候诊室", pinyin: "hòu zhěn shì" },
-                { en: "Nurse", zh: "护士", pinyin: "hù shì" },
-                { en: "Receptionist", zh: "挂号员 / 接待员", pinyin: "guà hào yuán / jiē dài yuán" },
+                { en: "Vital signs", zh: "生命体征", pinyin: "shēng mìng tǐ zhēng", en_description: "Key indicators like pulse, temperature, BP.", zh_description: "反映基本生命状态的指标。" },
+                { en: "Temperature check", zh: "量体温", pinyin: "liáng tǐ wēn", en_description: "Measuring body temperature.", zh_description: "测量身体温度。" },
+                { en: "Height and weight", zh: "身高体重", pinyin: "shēn gāo tǐ zhòng", en_description: "Basic body measurements.", zh_description: "记录身体基本数据。" },
+                { en: "BMI (Body Mass Index)", zh: "体质指数", pinyin: "tǐ zhì zhǐ sù", en_description: "A measure of body fat using height and weight.", zh_description: "身高与体重计算出的身体指数。" },
+                { en: "Lab test", zh: "实验室检查", pinyin: "shí yàn shì jiǎn chá", en_description: "Test on samples like blood or urine.", zh_description: "对血液、尿液等样本的化验检查。" },
+                { en: "Test results", zh: "检查结果 / 化验结果", pinyin: "jiǎn chá jié guǒ / huà yàn jié guǒ", en_description: "The outcome of a medical test.", zh_description: "医学检查的结果。" },
+                { en: "Medical chart", zh: "病历", pinyin: "bìng lì", en_description: "A patient’s medical documentation.", zh_description: "记录病情和治疗过程的文件。" },
+                { en: "Waiting room", zh: "候诊室", pinyin: "hòu zhěn shì", en_description: "Where patients wait to be seen.", zh_description: "等待医生看诊的地方。" },
+                { en: "Nurse", zh: "护士", pinyin: "hù shì", en_description: "A licensed healthcare provider assisting with care.", zh_description: "协助医生护理患者的专业人员。" },
+                { en: "Receptionist", zh: "挂号员 / 接待员", pinyin: "guà hào yuán / jiē dài yuán", en_description: "Staff managing check-in and patient info.", zh_description: "负责登记和接待的工作人员。" },
                 // New terms from "Forms and Paperwork"
-                { en: "Patient registration form", zh: "患者登记表", pinyin: "huàn zhě dēng jì biǎo" },
-                { en: "Insurance card", zh: "医保卡", pinyin: "yī bǎo kǎ" },
-                { en: "ID card", zh: "身份证", pinyin: "shēn fèn zhèng" }
+                { en: "Patient registration form", zh: "患者登记表", pinyin: "huàn zhě dēng jì biǎo", en_description: "A form for entering patient details.", zh_description: "填写患者基本信息的表格。" },
+                { en: "Insurance card", zh: "医保卡", pinyin: "yī bǎo kǎ", en_description: "ID for using medical insurance.", zh_description: "医疗保险的凭证卡片。" },
+                { en: "ID card", zh: "身份证", pinyin: "shēn fèn zhèng", en_description: "Official identification document.", zh: "身份确认用的合法证件。" }
             ],
             "诊断测试与程序 (Diagnostic Tests & Procedures)": {
                 "常见检查 (Common Tests)": [
-                    { en: "Blood test", zh: "验血", pinyin: "yàn xuè" },
-                    { en: "X-ray", zh: "X光检查", pinyin: "X guāng jiǎn chá" },
-                    { en: "Ultrasound", zh: "超声波检查", pinyin: "chāo shēng bō jiǎn chá" },
-                    { en: "CT scan", zh: "CT扫描", pinyin: "CT sǎo miáo" },
-                    { en: "MRI", zh: "磁共振成像", pinyin: "cí gòng zhèn chéng xiàng" },
-                    { en: "Mammogram", zh: "乳房X光检查", pinyin: "rǔ fáng X guāng jiǎn chá" },
-                    { en: "Pap test", zh: "子宫颈抹片检查", pinyin: "zǐ gōng jǐng mò piàn jiǎn chá" },
-                    { en: "Pelvic examination", zh: "骨盆检查", pinyin: "gǔ pén jiǎn chá" },
-                    { en: "Blood sugar test", zh: "血糖检查", pinyin: "xuè táng jiǎn chá" },
-                    { en: "Lipid profile / Cholesterol test", zh: "血脂检查 / 胆固醇检查", pinyin: "xuè zhī jiǎn chá / dǎn gù chún jiǎn chá" },
-                    { en: "Liver function test", zh: "肝功能检查", pinyin: "gān gōng néng jiǎn chá" },
-                    { en: "Kidney function test", zh: "肾功能检查", pinyin: "shèn gōng néng jiǎn chá" },
-                    { en: "Electrocardiogram (ECG)", zh: "心电图", pinyin: "xīn diàn tú" },
-                    { en: "Hearing test", zh: "听力检查", pinyin: "tīng lì jiǎn chá" },
-                    { en: "Vision test", zh: "视力检查", pinyin: "shì lì jiǎn chá" }
+                    { en: "Blood test", zh: "验血", pinyin: "yàn xuè", en_description: "Blood sample analysis for health indicators.", zh_description: "用血液检查健康状况。" },
+                    { en: "X-ray", zh: "X光检查", pinyin: "X guāng jiǎn chá", en_description: "Imaging using X-rays to view bones and chest.", zh_description: "用X射线拍摄骨骼、胸腔等结构。" },
+                    { en: "Ultrasound", zh: "超声波检查", pinyin: "chāo shēng bō jiǎn chá", en_description: "Uses sound waves to image internal organs.", zh_description: "用声波检查内部器官，如肝、心脏等。" },
+                    { en: "CT scan", zh: "CT扫描", pinyin: "CT sǎo miáo", en_description: "Cross-sectional imaging using X-rays.", zh_description: "利用X光进行体层断面扫描。" },
+                    { en: "MRI", zh: "磁共振成像", pinyin: "cí gòng zhèn chéng xiàng", en_description: "Uses magnets and radio waves for detailed images.", zh_description: "使用磁场和射频波形成精细图像。" },
+                    { en: "Mammogram", zh: "乳房X光检查", pinyin: "rǔ fáng X guāng jiǎn chá", en_description: "X-ray imaging of breast tissue to screen cancer.", zh_description: "对乳房组织进行X光检查以筛查癌症。" },
+                    { en: "Pap test", zh: "子宫颈抹片检查", pinyin: "zǐ gōng jǐng mò piàn jiǎn chá", en_description: "Cervical cell sampling to detect precancerous changes.", zh_description: "检查宫颈细胞变化以预防癌变。" },
+                    { en: "Pelvic examination", zh: "骨盆检查", pinyin: "gǔ pén jiǎn chá", en_description: "Physical exam of female reproductive organs.", zh_description: "检查女性盆腔器官状况的体格检查。" },
+                    { en: "Blood sugar test", zh: "血糖检查", pinyin: "xuè táng jiǎn chá", en_description: "Measures blood glucose levels.", zh_description: "测量血液中的葡萄糖水平。" },
+                    { en: "Lipid profile / Cholesterol test", zh: "血脂 / 胆固醇检查", pinyin: "xuè zhī jiǎn chá / dǎn gù chún jiǎn chá", en_description: "Measures blood fat levels like cholesterol.", zh_description: "检查血脂及胆固醇水平。" },
+                    { en: "Liver function test", zh: "肝功能检查", pinyin: "gān gōng néng jiǎn chá", en_description: "Tests liver enzymes to assess liver health.", zh_description: "检测肝酶以评估肝脏功能状态。" },
+                    { en: "Kidney function test", zh: "肾功能检查", pinyin: "shèn gōng néng jiǎn chá", en_description: "Measures kidney excretion and filtering ability.", zh_description: "检测肾脏排泄和过滤功能。" },
+                    { en: "Electrocardiogram (ECG)", zh: "心电图", pinyin: "xīn diàn tú", en_description: "Records the heart’s electrical activity.", zh_description: "记录心脏的电活动（心律、节律）。" },
+                    { en: "Hearing test", zh: "听力检查", pinyin: "tīng lì jiǎn chá", en_description: "Assesses how well one hears various tones.", zh_description: "测试不同频率声音的听力能力。" },
+                    { en: "Vision test", zh: "视力检查", pinyin: "shì lì jiǎn chá", en_description: "Measures visual acuity and clarity.", zh_description: "测量视力清晰度和准确度。" }
                 ],
                 "高级诊断与专科检查 (Advanced & Specialized Diagnostics)": [
-                    { en: "Biopsy", zh: "活组织检查", pinyin: "huó zǔ zhī jiǎn chá" },
-                    { en: "Colonoscopy", zh: "结肠镜检查", pinyin: "jié cháng jìng jiǎn chá" },
-                    { en: "Bone scan", zh: "骨扫描", pinyin: "gǔ sǎo miáo" },
-                    { en: "Bone marrow aspiration", zh: "骨髓穿刺", pinyin: "gǔ suǐ chuān cì" },
-                    { en: "Brain scan", zh: "脑部扫描", pinyin: "nǎo bù sǎo miáo" },
-                    { en: "Cystoscopy", zh: "膀胱镜检查", pinyin: "páng guāng jìng jiǎn chá" },
-                    { en: "Endoscopy", zh: "内窥镜检查", pinyin: "nèi kuī jìng jiǎn chá", note: "亦称：内视镜检查 (nèi shì jìng jiǎn chá)" },
-                    { en: "Fecal Occult Blood Test (FOBT)", zh: "粪便潜血试验", pinyin: "fèn biàn qián xuè shì yàn" },
-                    { en: "Fine needle aspiration", zh: "细针抽吸术", pinyin: "xì zhēn chōu xī shù" },
-                    { en: "Flow cytometry", zh: "流式细胞术", pinyin: "liú shì xì bāo shù" },
-                    { en: "Gallium scan", zh: "镓扫描", pinyin: "jiā sǎo miáo" },
-                    { en: "Imaging studies", zh: "影像扫描检查", pinyin: "yǐng xiàng sǎo miáo jiǎn chá" },
-                    { en: "Intravenous pyelogram (IVP)", zh: "静脉泌尿造影", pinyin: "jīng mài pái liào tú xiàng" },
-                    { en: "Laparoscopy", zh: "腹腔镜", pinyin: "fù qiāng jìng" },
-                    { en: "Laryngoscopy", zh: "喉镜检查", pinyin: "hóu jìng jiǎn chá" },
-                    { en: "Lower GI series", zh: "下胃肠道摄影检查", pinyin: "xià wèi cháng dào shè yǐng jiǎn chá" },
-                    { en: "Lymphangiogram", zh: "淋巴管(造影)照片，淋巴管 X 光照片", pinyin: "lín bā guǎn (zào yǐng) zhào piàn, lín bā guǎn X guāng zhào piàn" },
-                    { en: "Mediastinoscopy", zh: "纵膈腔内视镜检查", pinyin: "zòng gé qiāng nèi shì jìng jiǎn chá" },
-                    { en: "Needle aspiration", zh: "针头抽吸（取样）", pinyin: "zhēn tóu chōu xī (qǔ yàng)" },
-                    { en: "Needle biopsy", zh: "刺采样活组织检查", pinyin: "cì cǎi yàng huó zǔ zhī jiǎn chá" },
-                    { en: "Nasoscopy", zh: "鼻镜检查", pinyin: "bí jìng jiǎn chá" },
-                    { en: "Nuclear medicine scan", zh: "核医学扫描", pinyin: "hé yī xué sǎo miáo" },
-                    { en: "Positron emission tomography (PET scan)", zh: "阳电子断层扫描术", pinyin: "yáng diàn zǐ duàn céng sǎo miáo shù" },
-                    { en: "Pulmonary Function Test (PFT)", zh: "肺功能检验", pinyin: "fèi gōng néng jiǎn yàn" },
-                    { en: "Radionuclide bone scan", zh: "放射性骨扫描", pinyin: "fàng shè xìng gǔ sǎo miáo" },
-                    { en: "Sigmoidoscopy", zh: "乙形大肠镜检查", pinyin: "yǐ xíng dà cháng jìng jiǎn chá" },
-                    { en: "Spinal tap", zh: "腰椎穿刺", pinyin: "yāo zhuī chuān cì" },
-                    { en: "Sputum cytology", zh: "痰细胞学", pinyin: "tán xì bāo xué" },
-                    { en: "Stereotactic needle biopsy", zh: "实体﹝三维定位﹞针头抽样检查", pinyin: "shí tǐ (sān wéi dìng wèi) zhēn tóu chōu yàng jiǎn chá" },
-                    { en: "Thoracentesis", zh: "胸腔穿刺术", pinyin: "xiōng qiāng chuān cì shù" },
-                    { en: "Thoracoscopy", zh: "胸腔镜检查", pinyin: "xiōng qiāng jìng jiǎn chá" },
-                    { en: "Transrectal Ultrasound (TRUS)", zh: "经直肠超声波检查 (前列腺)", pinyin: "jīng zhí cháng chāo shēng bō jiǎn chá" },
-                    { en: "Upper GI Series", zh: "上消化道摄影", pinyin: "shàng xiāo huà dào shè yǐng" },
-                    { en: "Urine cytology", zh: "尿细胞学", pinyin: "niào xì bāo xué" },
-                    { en: "Virtual colonoscopy", zh: "虚拟大肠镜", pinyin: "xū nǐ dà cháng jìng" },
-                    { en: "Wire localization", zh: "针头引导", pinyin: "zhēn tóu yǐn dǎo" }
+                    { en: "Biopsy", zh: "活组织检查", pinyin: "huó zǔ zhī jiǎn chá", en_description: "Tissue sampling for microscopic examination.", zh_description: "提取组织样本进行显微镜下分析。" },
+                    { en: "Colonoscopy", zh: "结肠镜检查", pinyin: "jié cháng jìng jiǎn chá", en_description: "Visual inspection of large intestine via colonoscope.", zh_description: "用结肠镜检查大肠内壁状况。" },
+                    { en: "Bone scan", zh: "骨扫描", pinyin: "gǔ sǎo miáo", en_description: "Nuclear imaging to assess bone metabolism.", zh_description: "使用放射性示踪剂检查骨代谢和损伤。" },
+                    { en: "Bone marrow aspiration", zh: "骨髓穿刺", pinyin: "gǔ suǐ chuān cì", en_description: "Extraction of marrow for disease detection.", zh_description: "抽取骨髓样本以检测血液及血癌等疾病。" },
+                    { en: "Brain scan", zh: "脑部扫描", pinyin: "nǎo bù sǎo miáo", en_description: "Imaging the brain via CT or MRI.", zh_description: "使用CT或MRI扫描脑部结构。" },
+                    { en: "Cystoscopy", zh: "膀胱镜检查", pinyin: "páng guāng jìng jiǎn chá", en_description: "Visual inspection of the bladder using a cystoscope.", zh_description: "用膀胱镜检查膀胱内壁。" },
+                    { en: "Endoscopy", zh: "内窥镜检查", pinyin: "nèi kuī jìng jiǎn chá", en_description: "Viewing GI tract using flexible camera.", zh_description: "使用内窥镜检查胃、食道、肠道内部结构。", note: "亦称：内视镜检查 (nèi shì jìng jiǎn chá)" },
+                    { en: "Fecal Occult Blood Test (FOBT)", zh: "粪便潜血试验", pinyin: "fèn biàn qián xuè shì yàn", en_description: "Tests stool for hidden blood indicating GI bleeding.", zh_description: "检测粪便中隐血以发现肠道出血。" },
+                    { en: "Fine needle aspiration", zh: "细针抽吸术", pinyin: "xì zhēn chōu xī shù", en_description: "Uses a needle to sample fluid or cells from lumps.", zh_description: "用细针抽取肿块液体或细胞样本。" },
+                    { en: "Flow cytometry", zh: "流式细胞术", pinyin: "liú shì xì bāo shù", en_description: "Analyzes cell populations in blood or tissue.", zh_description: "分析血液或组织中细胞类型比例。" },
+                    { en: "Gallium scan", zh: "镓扫描", pinyin: "jiā sǎo miáo", en_description: "Nuclear scan to detect infection or tumors.", zh_description: "用镓-67扫描检测感染或肿瘤。" },
+                    { en: "Imaging studies", zh: "影像扫描检查", pinyin: "yǐng xiàng sǎo miáo jiǎn chá", en_description: "General term for MRI, CT, etc.", zh_description: "影像学检查的总称，如CT、MRI等。" },
+                    { en: "Intravenous pyelogram (IVP)", zh: "静脉泌尿造影", pinyin: "jīng mài pái liào tú xiàng", en_description: "X-ray imaging of urinary tract using contrast dye.", zh_description: "注入造影剂后X光显示泌尿系统结构。" },
+                    { en: "Laparoscopy", zh: "腹腔镜", pinyin: "fù qiāng jìng", en_description: "Minimally invasive visual inspection of abdomen.", zh_description: "用腹腔镜检查腹部器官（如胆囊、子宫等）。" },
+                    { en: "Laryngoscopy", zh: "喉镜检查", pinyin: "hóu jìng jiǎn chá", en_description: "Visual exploration of the voice box and throat.", zh_description: "用喉镜检查声带及咽喉结构。" },
+                    { en: "Lower GI series", zh: "下胃肠道摄影检查", pinyin: "xià wèi cháng dào shè yǐng jiǎn chá", en_description: "X-ray series of the lower digestive tract using barium.", zh_description: "吞钡后拍摄下消化道X光系列图像。" },
+                    { en: "Lymphangiogram", zh: "淋巴管造影", pinyin: "lín bā guǎn zào yǐng", en_description: "X-ray imaging of lymph vessels after contrast injection.", zh_description: "注入造影剂后拍摄淋巴管结构。" },
+                    { en: "Mediastinoscopy", zh: "纵膈腔内视镜检查", pinyin: "zòng gé qiāng nèi shì jìng jiǎn chá", en_description: "Endoscopic examination of the mediastinum.", zh_description: "用内镜检查纵隔腔内结构。" },
+                    { en: "Needle aspiration", zh: "针头抽吸（取样）", pinyin: "zhēn tóu chōu xī (qǔ yàng)", en_description: "Using a needle to sample fluid or cells from lumps.", zh_description: "用针头从组织中取样分析。" },
+                    { en: "Needle biopsy", zh: "刺采样活组织检查", pinyin: "cì cǎi yàng huó zǔ zhī jiǎn chá", en_description: "Larger needle used to collect tissue cores for study.", zh_description: "用粗针取组织块进行病理检查。" },
+                    { en: "Nasoscopy", zh: "鼻镜检查", pinyin: "bí jìng jiǎn chá", en_description: "Visual exam of nasal passages with a scope.", zh_description: "用鼻镜检查鼻腔内部结构。" },
+                    { en: "Nuclear medicine scan", zh: "核医学扫描", pinyin: "hé yī xué sǎo miáo", en_description: "Uses radioactive isotopes to visualize organ function.", zh_description: "用放射性示踪剂成像以评估器官功能。" },
+                    { en: "Positron emission tomography (PET scan)", zh: "阳电子断层扫描术", pinyin: "yáng diàn zǐ duàn céng sǎo miáo shù", en_description: "Functional imaging using radioactive glucose tracer.", zh_description: "用放射性葡萄糖扫描检测代谢活跃部位。" },
+                    { en: "Pulmonary Function Test (PFT)", zh: "肺功能检验", pinyin: "fèi gōng néng jiǎn yàn", en_description: "Measures lung breathing capacity and airflow.", zh_description: "测试肺活量和气道流量状况。" },
+                    { en: "Radionuclide bone scan", zh: "放射性骨扫描", pinyin: "fàng shè xìng gǔ sǎo miáo", en_description: "Specific nuclear bone scan for tumors or fractures.", zh_description: "用放射性示踪剂检测骨骼异常或病变。" },
+                    { en: "Sigmoidoscopy", zh: "乙状结肠镜检查", pinyin: "yǐ zhuàng jié cháng jìng jiǎn chá", en_description: "Visual exam of lower colon using a flexible scope.", zh_description: "用内镜检查乙状结肠（大肠下部）。" },
+                    { en: "Spinal tap", zh: "腰椎穿刺", pinyin: "yāo zhuī chuān cì", en_description: "Extraction of cerebrospinal fluid (CSF) for analysis.", zh_description: "抽取脑脊液检查感染或出血等情况。" },
+                    { en: "Sputum cytology", zh: "痰细胞学", pinyin: "tán xì bāo xué", en_description: "Microscopic exam of sputum cells for lung cancer/infection.", zh_description: "检查痰液中细胞以检测肺癌或感染。" },
+                    { en: "Stereotactic needle biopsy", zh: "三维定位针活检", pinyin: "sān wéi dìng wèi zhēn huó jiǎn", en_description: "Image-guided needle biopsy for precise sampling.", zh_description: "在影像引导下对病灶进行精准取样活检。" },
+                    { en: "Thoracentesis", zh: "胸腔穿刺术", pinyin: "xiōng qiāng chuān cì shù", en_description: "Needle drainage of fluid from the pleural cavity.", zh_description: "从胸膜腔抽出液体以诊断或缓解积液。" },
+                    { en: "Thoracoscopy", zh: "胸腔镜检查", pinyin: "xiōng qiāng jìng jiǎn chá", en_description: "Endoscopic inspection of the pleural cavity.", zh_description: "用胸腔镜检查胸膜腔内部。" },
+                    { en: "Transrectal Ultrasound (TRUS)", zh: "经直肠超声波检查（前列腺）", pinyin: "jīng zhí cháng chāo shēng bō jiǎn chá", en_description: "Ultrasound probe via rectum to image prostate.", zh_description: "通过直肠超声检查前列腺结构。" },
+                    { en: "Upper GI Series", zh: "上消化道摄影", pinyin: "shàng xiāo huà dào shè yǐng", en_description: "X-ray exam of esophagus, stomach, and small intestine.", zh_description: "吞钡后拍摄上消化道X光图像。" },
+                    { en: "Urine cytology", zh: "尿细胞学", pinyin: "niào xì bāo xué", en_description: "Examining urine cells for cancer or infection.", zh_description: "检查尿液中的细胞以发现癌症或感染迹象。" },
+                    { en: "Virtual colonoscopy", zh: "虚拟大肠镜", pinyin: "xū nǐ dà cháng jìng", en_description: "CT-based 3D imaging of the colon without scope insertion.", zh_description: "无需插镜即可CT生成大肠三维图像。" },
+                    { en: "Wire localization", zh: "针头引导定位", pinyin: "zhēn tóu yǐn dǎo dìng wèi", en_description: "Needle-guided mark for surgery on small lesions.", zh_description: "用针定位小病变以指导手术切除。" }
                 ]
             },
             "治疗与疗法 (Treatments & Therapies)": [
-                { en: "Joint replacement", zh: "关节置换", pinyin: "guān jié zhì huàn", note: "此为医疗程序，非疾病" },
-                { en: "Chemotherapy", zh: "化疗", pinyin: "huà liáo" },
-                { en: "Hormone therapy", zh: "荷尔蒙治疗", pinyin: "hé ěr méng zhì liáo" },
-                { en: "Immunotherapy", zh: "免疫疗法", pinyin: "miǎn yì liáo fǎ" },
-                { en: "Radiation therapy", zh: "放射治疗", pinyin: "fàng shè zhì liáo" },
-                { en: "Surgery", zh: "手术", pinyin: "shǒu shù" },
-                { en: "Targeted therapy", zh: "靶向治疗", pinyin: "bǎ xiàng zhì liáo" },
-                { en: "Ablative therapy", zh: "剥括疗法", pinyin: "bō kuò liáo fǎ" },
-                { en: "Adjuvant therapy", zh: "辅助疗法", pinyin: "fǔ zhù liáo fǎ" },
-                { en: "Alternative therapy", zh: "另类疗法", pinyin: "lìng lèi liáo fǎ" },
-                { en: "Angioplasty", zh: "血管成形术", pinyin: "xuè guǎn chéng xíng shù" },
-                { en: "Biological therapy", zh: "生物制剂疗法", pinyin: "shēng wù zhì jì liáo fǎ" },
-                { en: "Biotherapy", zh: "生物疗法", pinyin: "shēng wù liáo fǎ" },
-                { en: "Brachytherapy", zh: "组织间放射治疗", pinyin: "zǔ zhī jiān fàng shè zhì liáo" },
-                { en: "Chemoembolization", zh: "化学栓塞治疗", pinyin: "huà xué shuān sè zhì liáo" },
-                { en: "Combined modality therapy", zh: "合并疗法", pinyin: "hé bìng liáo fǎ" },
-                { en: "Complementary therapy", zh: "辅助疗法", pinyin: "fǔ zhù liáo fǎ" },
-                { en: "Cryoablation", zh: "冷冻剥脱术", pinyin: "lěng dòng bō tuō shù" },
-                { en: "Cryosurgery", zh: "冷冻切除法", pinyin: "lěng dòng qiē chú fǎ" },
-                { en: "D & C (dilation and curettage of uterus)", zh: "扩张宫项和刮宫术", pinyin: "kuò zhāng gōng xiàng hé guā gōng shù" },
-                { en: "Endocrine therapy", zh: "内分泌治疗", pinyin: "nèi fēn mì zhì liáo" },
-                { en: "Gene therapy", zh: "基因治疗", pinyin: "jī yīn zhì liáo" },
-                { en: "Hyperalimentation", zh: "高营养疗法", pinyin: "gāo yíng yǎng liáo fǎ" },
-                { en: "Hyperthermia therapy", zh: "发热疗法", pinyin: "fā rè liáo fǎ" },
-                { en: "Interstitial radiation therapy", zh: "组织间质放射性治疗", pinyin: "zǔ zhī jiān zhì fàng shè xìng zhì liáo" },
-                { en: "Liver Transplantation", zh: "肝脏移植手术", pinyin: "gān zàng yí zhí shǒu shù" },
-                { en: "Lumpectomy", zh: "肿块切除术", pinyin: "zhǒng kuài qiē chú shù" },
-                { en: "Mastectomy", zh: "乳房切除术", pinyin: "rǔ fáng qiē chú shù" },
-                { en: "Photodynamic therapy (PDT)", zh: "光能疗法", pinyin: "guāng néng liáo fǎ" },
-                { en: "Pleuradesis", zh: "胸膜黏合术", pinyin: "xiōng mó nián hé shù" },
-                { en: "Prophylactic Cranial Irradiation (PCI)", zh: "预防式头部放射", pinyin: "yù fáng shì tóu bù fàng shè" },
-                { en: "Radiation Dermatitis", zh: "放射治疗引起的皮肤炎", pinyin: "fàng shè zhì liáo yǐn qǐ de pí fū yán" },
-                { en: "Radiation Pneumonitis", zh: "放射治疗引起的肺炎", pinyin: "fàng shè zhì liáo yǐn qǐ de fèi yán" },
-                { en: "Radiofrequency ablation", zh: "周波肿瘤烧灼术", pinyin: "zhōu bō zhǒng liú shāo zhuó shù" },
-                { en: "Rehabilitation", zh: "复健", pinyin: "fù jiàn" },
-                { en: "Rescue treatment", zh: "援救治疗", pinyin: "yuán jiù zhì liáo" },
-                { en: "Segmental Resection", zh: "肺小节切除手术", pinyin: "fèi xiǎo jié qiē chú shǒu shù" },
-                { en: "Sequential Treatment", zh: "化疗、放疗分开给予之治疗", pinyin: "huà liáo, fàng liáo fēn kāi gěi yǔ zhī zhì liáo" },
-                { en: "Stereotactic radiosurgery", zh: "实体﹝三维定位﹞放射性治疗", pinyin: "shí tǐ (sān wéi dìng wèi) fàng shè xìng zhì liáo" },
-                { en: "Supportive Care", zh: "支持治疗", pinyin: "zhī chí zhì liáo" },
-                { en: "Therapeutic abortion", zh: "治疗性流产", pinyin: "zhì liáo xìng liú chǎn" },
-                { en: "To wean", zh: "断奶", pinyin: "duàn nǎi" },
-                { en: "Total Mastectomy", zh: "完全乳房切除手术", pinyin: "wán quán rǔ fáng qiē chú shǒu shù" },
-                { en: "Transurethral Resection of Prostate (TURP)", zh: "经由尿道刮除前列腺手术", pinyin: "jīng yóu niào dào guā chú qián liè xiàn shǒu shù" },
-                { en: "Wedge Resection", zh: "肺部楔形切除手术", pinyin: "fèi bù xiē xíng qiē chú shǒu shù" }
+                { en: "Joint replacement", zh: "关节置换", pinyin: "guān jié zhì huàn", en_description: "Surgical replacement of a damaged joint with a prosthesis.", zh_description: "通过手术将受损关节更换为人工关节。" },
+                { en: "Chemotherapy", zh: "化疗", pinyin: "huà liáo", en_description: "Use of drugs to kill or stop the growth of cancer cells.", zh_description: "使用药物杀死或抑制癌细胞生长。" },
+                { en: "Hormone therapy", zh: "荷尔蒙治疗", pinyin: "hé ěr méng zhì liáo", en_description: "Treatment using hormones to block or add to natural hormones.", zh_description: "通过添加或阻断体内荷尔蒙来治疗疾病。" },
+                { en: "Immunotherapy", zh: "免疫疗法", pinyin: "miǎn yì liáo fǎ", en_description: "Boosting or modifying the immune system to fight disease.", zh_description: "调节或增强免疫系统以抵抗疾病。" },
+                { en: "Radiation therapy", zh: "放射治疗", pinyin: "fàng shè zhì liáo", en_description: "Use of high-energy rays to kill cancer cells.", zh_description: "利用高能辐射杀死癌细胞。" },
+                { en: "Surgery", zh: "手术", pinyin: "shǒu shù", en_description: "Physical operation to treat or remove diseased tissue.", zh_description: "通过切除、修复组织来治疗疾病。" },
+                { en: "Targeted therapy", zh: "靶向治疗", pinyin: "bǎ xiàng zhì liáo", en_description: "Drugs that specifically attack cancer cells without harming normal cells.", zh_description: "精准攻击癌细胞而较少影响正常细胞的治疗。" },
+                { en: "Ablative therapy", zh: "剥括疗法", pinyin: "bō kuò liáo fǎ", en_description: "Destroys tissue using heat, cold, or chemicals.", zh_description: "利用热、冷或化学物质破坏异常组织。" },
+                { en: "Adjuvant therapy", zh: "辅助疗法", pinyin: "fǔ zhù liáo fǎ", en_description: "Additional treatment after primary therapy to prevent recurrence.", zh_description: "在主要治疗后使用的辅助治疗，预防复发。" },
+                { en: "Alternative therapy", zh: "另类疗法", pinyin: "lìng lèi liáo fǎ", en_description: "Non-standard treatments outside mainstream medicine.", zh_description: "非主流医学采用的替代性治疗方法。" },
+                { en: "Angioplasty", zh: "血管成形术", pinyin: "xuè guǎn chéng xíng shù", en_description: "Opens narrowed or blocked blood vessels using a balloon.", zh_description: "用球囊扩张狭窄或阻塞的血管。" },
+                { en: "Biological therapy / Biotherapy", zh: "生物疗法 / 生物制剂疗法", pinyin: "shēng wù liáo fǎ / shēng wù zhì jì liáo fǎ", en_description: "Uses biological agents (e.g., proteins, cells) to treat disease.", zh_description: "利用生物制剂如蛋白质或细胞治疗疾病。" },
+                { en: "Brachytherapy", zh: "组织间放射治疗", pinyin: "zǔ zhī jiān fàng shè zhì liáo", en_description: "Internal radiation placed close to or inside a tumor.", zh_description: "将放射源直接放入或靠近肿瘤部位。" },
+                { en: "Chemoembolization", zh: "化学栓塞治疗", pinyin: "huà xué shuān sè zhì liáo", en_description: "Injects chemotherapy drugs directly into a tumor’s blood supply.", zh_description: "将化疗药物注入肿瘤供血血管中并阻断血流。" },
+                { en: "Combined modality therapy", zh: "合并疗法", pinyin: "hé bìng liáo fǎ", en_description: "Uses more than one type of treatment (e.g., surgery + chemo).", zh_description: "联合多种治疗方式的综合疗法。" },
+                { en: "Complementary therapy", zh: "辅助疗法", pinyin: "fǔ zhù liáo fǎ", en_description: "Supportive treatments used along with standard care.", zh_description: "配合传统治疗使用的支持性疗法。" },
+                { en: "Cryoablation / Cryosurgery", zh: "冷冻剥脱术 / 冷冻切除法", pinyin: "lěng dòng bō tuō shù / lěng dòng qiē chú fǎ", en_description: "Freezes and destroys abnormal tissue.", zh_description: "利用极低温度冷冻并破坏异常组织。" },
+                { en: "D&C (dilation and curettage)", zh: "扩张宫颈和刮宫术", pinyin: "kuò zhāng gōng jǐng hé guā gōng shù", en_description: "Surgical scraping of the uterine lining.", zh_description: "扩张子宫颈并刮除子宫内膜的手术。" },
+                { en: "Endocrine therapy", zh: "内分泌治疗", pinyin: "nèi fēn mì zhì liáo", en_description: "Regulates hormones to treat conditions like cancer.", zh_description: "调节体内激素水平以治疗疾病。" },
+                { en: "Gene therapy", zh: "基因治疗", pinyin: "jī yīn zhì liáo", en_description: "Introduces genetic material into cells to fight or prevent disease.", zh_description: "向细胞内导入基因以治疗或预防疾病。" },
+                { en: "Hyperalimentation", zh: "高营养疗法", pinyin: "gāo yíng yǎng liáo fǎ", en_description: "Providing nutrients via IV for patients who cannot eat.", zh_description: "通过静脉输液提供营养的治疗方式。" },
+                { en: "Hyperthermia therapy", zh: "发热疗法", pinyin: "fā rè liáo fǎ", en_description: "Heats body tissues to damage cancer cells.", zh_description: "利用高温破坏癌细胞。" },
+                { en: "Interstitial radiation therapy", zh: "组织间质放射性治疗", pinyin: "zǔ zhī jiān zhì fàng shè xìng zhì liáo", en_description: "Places radioactive material directly into tissue.", zh_description: "将放射源植入病灶组织内部。" },
+                { en: "Liver transplantation", zh: "肝脏移植手术", pinyin: "gān zàng yí zhí shǒu shù", en_description: "Surgical replacement of a diseased liver with a donor liver.", zh_description: "将病肝换为健康捐赠肝脏的手术。" },
+                { en: "Lumpectomy", zh: "肿块切除术", pinyin: "zhǒng kuài qiē chú shù", en_description: "Surgical removal of a tumor without removing the whole organ.", zh_description: "切除肿块但保留器官的手术。" },
+                { en: "Mastectomy (Total Mastectomy)", zh: "（完全）乳房切除术", pinyin: "wán quán rǔ fáng qiē chú shù", en_description: "Surgical removal of one or both breasts.", zh_description: "部分或完全切除乳房的手术。" },
+                { en: "Photodynamic therapy (PDT)", zh: "光动力疗法", pinyin: "guāng dòng lì liáo fǎ", en_description: "Uses light-activated drugs to kill cancer cells.", zh_description: "利用光敏药物和特定光照杀死癌细胞。" },
+                { en: "Pleurodesis", zh: "胸膜黏合术", pinyin: "xiōng mó nián hé shù", en_description: "Causes pleura to stick together to prevent fluid buildup.", zh_description: "粘合肺与胸膜，防止液体积聚。" },
+                { en: "Prophylactic Cranial Irradiation (PCI)", zh: "预防式头部放射", pinyin: "yù fáng shì tóu bù fàng shè", en_description: "Radiation to the brain to prevent cancer spread.", zh_description: "对脑部进行预防性放疗以防癌扩散。" },
+                { en: "Radiation dermatitis / pneumonitis", zh: "放射性皮炎 / 放射性肺炎", pinyin: "fàng shè xìng pí yán / fàng shè xìng fèi yán", en_description: "Skin or lung inflammation caused by radiation therapy.", zh_description: "放疗导致的皮肤或肺部炎症反应。" },
+                { en: "Radiofrequency ablation (RFA)", zh: "射频烧灼术", pinyin: "shè pín shāo zhuó shù", en_description: "Uses heat from radio waves to destroy abnormal tissue.", zh_description: "利用射频波产生热量消融异常组织。" },
+                { en: "Rehabilitation (Rehab)", zh: "复健", pinyin: "fù jiàn", en_description: "Therapy to recover physical or cognitive abilities.", zh_description: "恢复身体或认知功能的康复治疗。" },
+                { en: "Rescue treatment", zh: "援救治疗", pinyin: "yuán jiù zhì liáo", en_description: "Emergency or last-resort intervention for severe illness.", zh_description: "对病情恶化或无效治疗后的紧急干预。" },
+                { en: "Segmental resection / Wedge resection", zh: "肺小节 / 楔形切除手术", pinyin: "fèi xiǎo jié / xiē xíng qiē chú shǒu shù", en_description: "Removes a portion of lung tissue, often for cancer.", zh_description: "切除肺部小部分组织（楔形或分节）治疗肺病。" },
+                { en: "Sequential treatment", zh: "分阶段治疗", pinyin: "fēn jiē duàn zhì liáo", en_description: "Different therapies given one after another.", zh_description: "将不同治疗按顺序分阶段进行。" },
+                { en: "Stereotactic radiosurgery", zh: "三维定位放射治疗", pinyin: "sān wéi dìng wèi fàng shè zhì liáo", en_description: "Precisely delivers radiation to small areas (no incision).", zh_description: "精准对病灶进行无创放射治疗。" },
+                { en: "Supportive care", zh: "支持治疗", pinyin: "zhī chí zhì liáo", en_description: "Relieves symptoms and improves comfort, not curative.", zh_description: "缓解症状，提高生活质量的非治愈性治疗。" },
+                { en: "Therapeutic abortion", zh: "治疗性流产", pinyin: "zhì liáo xìng liú chǎn", en_description: "Medically induced abortion to protect maternal health.", zh_description: "为保护孕妇健康而进行的人工流产。" },
+                { en: "To wean", zh: "断奶", pinyin: "duàn nǎi", en_description: "Gradually stop breastfeeding.", zh_description: "慢慢停止母乳喂养过程。" },
+                { en: "Transurethral Resection of Prostate (TURP)", zh: "经尿道前列腺切除术", pinyin: "jīng niào dào qián liè xiàn qiē chú shù", en_description: "Removes part of the prostate through the urethra.", zh_description: "经尿道切除前列腺肥大部分组织。" }
             ],
             "药物 (Medications & Drugs)": [
-                { en: "Antibiotics", zh: "抗生素", pinyin: "kàng shēng sù" },
-                { en: "Antidepressants", zh: "抗抑郁药", pinyin: "kàng yì yù yào" },
-                { en: "Painkillers", zh: "止痛药", pinyin: "zhǐ tòng yào" },
-                { en: "Steroids", zh: "类固醇", pinyin: "lèi gù chún" },
-                { en: "Analgesic", zh: "止痛药", pinyin: "zhǐ tòng yào" },
-                { en: "Antiandrogen", zh: "抗雄性荷尔蒙药物", pinyin: "kàng xióng xìng hé ěr méng yào wù" },
-                { en: "Antiemetic", zh: "止吐的", pinyin: "zhǐ tù de" },
-                { en: "Antiestrogen", zh: "抗雌激素", pinyin: "kàng cí jī sù" },
-                { en: "Antimetabolites", zh: "抗代谢产物", pinyin: "kàng dài xiè chǎn wù" },
-                { en: "Antioxidants", zh: "抗氧化剂", pinyin: "kàng yǎng huà jì" },
-                { en: "Casodex", zh: "荷尔蒙药名，又称 Bicalutamide", pinyin: "hé ěr méng yào míng, yòu chēng Bicalutamide" },
-                { en: "Corticosteroid", zh: "皮质类脂醇", pinyin: "pí zhì lèi zhī chún" },
-                { en: "Diethylstilbestrol (DES)", zh: "乙烯雌酚", pinyin: "yǐ xī cí fēn" },
-                { en: "Flutamide", zh: "荷尔蒙药名，又称 Eulexin", pinyin: "hé ěr méng yào míng, yòu chēng Eulexin" },
-                { en: "Interferon", zh: "干扰素", pinyin: "gān rǎo sù" },
-                { en: "Isotretinoin", zh: "维甲酸衍生物，第二代维他命 A 酸", pinyin: "wéi jiǎ suān yǎn shēng wù, dì èr dài wéi tā mìng A suān" },
-                { en: "Lamivudine (Epivir)", zh: "口服药，抑制 B(乙)型肝炎病毒", pinyin: "kǒu fú yào, yì zhì B (yǐ) xíng gān yán bìng dú" },
-                { en: "Lupron", zh: "荷尔蒙药名，又称 Leuprolide", pinyin: "hé ěr méng yào míng, yòu chēng Leuprolide" },
-                { en_US: "Nonopioids", zh: "非鸦片类药剂", pinyin: "fēi yā piàn lèi yào jì" },
-                { en: "Opioids", zh: "鸦片类药剂", pinyin: "yā piàn lèi yào jì" },
-                { en: "Pain medication", zh: "止痛药物", pinyin: "zhǐ tòng yào wù" },
-                { en: "Proscar", zh: "荷尔蒙药名，又称 Finasteride", pinyin: "hé ěr méng yào míng, yòu chēng Finasteride" },
-                { en: "Rebetron", zh: "治疗肝炎的口服药", pinyin: "zhì liáo gān yán de kǒu fú yào" },
-                { en: "Ribavirin (Rebetol)", zh: "治疗肝炎的口服药，可与干扰素并用治疗 C(丙)型肝炎", pinyin: "zhì liáo gān yán de kǒu fú yào, kě yǔ gān rǎo sù bìng yòng zhì liáo C (bǐng) xíng gān yán" },
-                { en: "Retinoids", zh: "维他命 A 类似物", pinyin: "wéi tā mìng A lèi sì wù" },
-                { en: "Taxol", zh: "﹝抗癌药名﹞", pinyin: "kàng ái yào míng" },
-                { en: "Vinblastine", zh: "长春花碱，长春碱", pinyin: "cháng chūn huā jiǎn, cháng chūn jiǎn" },
-                { en: "Zoladex", zh: "荷尔蒙药名，又称 Goserelin", pinyin: "hé ěr méng yào míng, yòu chēng Goserelin" }
+                { en: "Antibiotics", zh: "抗生素", pinyin: "kàng shēng sù", en_description: "Drugs that kill or stop the growth of bacteria.", zh_description: "杀死或抑制细菌生长的药物。" },
+                { en: "Antidepressants", zh: "抗抑郁药", pinyin: "kàng yì yù yào", en_description: "Medications used to treat depression and mood disorders.", zh_description: "用于治疗抑郁症和情绪障碍的药物。" },
+                { en: "Painkillers / Analgesic", zh: "止痛药", pinyin: "zhǐ tòng yào", en_description: "Drugs that relieve pain.", zh_description: "缓解疼痛的药物。" },
+                { en: "Steroids", zh: "类固醇", pinyin: "lèi gù chún", en_description: "Hormone-like drugs used to reduce inflammation or treat hormonal issues.", zh_description: "类似激素的药物，用于抗炎或调节激素。" },
+                { en: "Antiandrogen", zh: "抗雄性荷尔蒙药物", pinyin: "kàng xióng xìng hé ěr méng yào wù", en_description: "Blocks male hormones to treat certain cancers or conditions.", zh_description: "抑制雄性激素的药物，常用于治疗癌症。" },
+                { en: "Antiemetic", zh: "止吐药", pinyin: "zhǐ tù yào", en_description: "Prevents or reduces nausea and vomiting.", zh_description: "防止或减轻恶心呕吐的药物。" },
+                { en: "Antiestrogen", zh: "抗雌激素", pinyin: "kàng cí jī sù", en_description: "Blocks estrogen to treat hormone-sensitive conditions.", zh_description: "抑制雌激素的药物，用于激素相关疾病。" },
+                { en: "Antimetabolites", zh: "抗代谢产物", pinyin: "kàng dài xiè chǎn wù", en_description: "Cancer drugs that interfere with DNA production.", zh_description: "影响DNA合成的抗癌药。" },
+                { en: "Antioxidants", zh: "抗氧化剂", pinyin: "kàng yǎng huà jì", en_description: "Prevent cell damage from free radicals.", zh_description: "防止自由基对细胞的伤害。" },
+                { en: "Casodex", zh: "荷尔蒙药名，又称 Bicalutamide", pinyin: "hé ěr méng yào míng, yòu chēng Bicalutamide", en_description: "Antiandrogen used in prostate cancer treatment.", zh_description: "用于治疗前列腺癌的抗雄激素药。" },
+                { en: "Corticosteroid", zh: "皮质类脂醇", pinyin: "pí zhì lèi zhī chún", en_description: "Steroid hormones used to suppress inflammation and immune response.", zh_description: "抗炎和免疫抑制作用的类固醇。" },
+                { en: "Diethylstilbestrol (DES)", zh: "乙烯雌酚", pinyin: "yǐ xī cí fēn", en_description: "Synthetic estrogen, now rarely used due to side effects.", zh_description: "一种合成雌激素，因副作用已很少使用。" },
+                { en: "Flutamide", zh: "荷尔蒙药名，又称 Eulexin", pinyin: "hé ěr méng yào míng, yòu chēng Eulexin", en_description: "Antiandrogen for prostate cancer.", zh_description: "抗雄激素药，用于前列腺癌治疗。" },
+                { en: "Interferon", zh: "干扰素", pinyin: "gān rǎo sù", en_description: "Proteins that help the immune system fight viruses and cancer.", zh_description: "激活免疫系统对抗病毒或癌细胞的蛋白。" },
+                { en: "Isotretinoin", zh: "维甲酸衍生物，第二代维他命 A 酸", pinyin: "wéi jiǎ suān yǎn shēng wù, dì èr dài wéi tā mìng A suān", en_description: "A vitamin A derivative used to treat severe acne.", zh_description: "第二代维他命A酸类，用于治疗严重痤疮。" },
+                { en: "Lamivudine (Epivir)", zh: "口服药，抑制 B(乙)型肝炎病毒", pinyin: "kǒu fú yào, yì zhì B (yǐ) xíng gān yán bìng dú", en_description: "Antiviral drug used for hepatitis B treatment.", zh_description: "用于治疗乙型肝炎的抗病毒药。" },
+                { en: "Lupron", zh: "荷尔蒙药名，又称 Leuprolide", pinyin: "hé ěr méng yào míng, yòu chēng Leuprolide", en_description: "Lowers hormone levels, used for cancer or endometriosis.", zh_description: "降低激素水平，用于癌症或子宫内膜异位症。" },
+                { en: "Nonopioids", zh: "非鸦片类药剂", pinyin: "fēi yā piàn lèi yào jì", en_description: "Pain relievers that are not opioid-based.", zh_description: "非成瘾性止痛药。" },
+                { en: "Opioids", zh: "鸦片类药剂", pinyin: "yā piàn lèi yào jì", en_description: "Strong painkillers that can be addictive.", zh_description: "强效止痛药，可能成瘾。" },
+                { en: "Pain medication", zh: "止痛药物", pinyin: "zhǐ tòng yào wù", en_description: "General term for drugs that relieve pain.", zh_description: "泛指所有缓解疼痛的药物。" },
+                { en: "Proscar", zh: "荷尔蒙药名，又称 Finasteride", pinyin: "hé ěr méng yào míng, yòu chēng Finasteride", en_description: "Treats enlarged prostate and hair loss by blocking DHT.", zh_description: "抑制DHT，用于治疗前列腺增生与脱发。" },
+                { en: "Rebetron", zh: "治疗肝炎的口服药", pinyin: "zhì liáo gān yán de kǒu fú yào", en_description: "Combo drug for hepatitis C treatment.", zh_description: "治疗丙型肝炎的口服药组合。" },
+                { en: "Ribavirin (Rebetol)", zh: "治疗肝炎的口服药，可与干扰素并用治疗 C(丙)型肝炎", pinyin: "zhì liáo gān yán de kǒu fú yào, kě yǔ gān rǎo sù bìng yòng zhì liáo C (bǐng) xíng gān yán", en_description: "Used with interferon to treat hepatitis C.", zh_description: "与干扰素联合治疗丙型肝炎的药物。" },
+                { en: "Retinoids", zh: "维他命 A 类似物", pinyin: "wéi tā mìng A lèi sì wù", en_description: "Vitamin A derivatives used for skin disorders and acne.", zh_description: "维A类药物，用于治疗皮肤病和痤疮。" },
+                { en: "Taxol", zh: "﹝抗癌药名﹞", pinyin: "kàng ái yào míng", en_description: "Chemotherapy drug for breast, ovarian, and lung cancer.", zh_description: "常用于乳腺癌、卵巢癌等的化疗药。" },
+                { en: "Vinblastine", zh: "长春花碱，长春碱", pinyin: "cháng chūn huā jiǎn, cháng chūn jiǎn", en_description: "Plant-based chemo drug for Hodgkin's lymphoma and more.", zh_description: "长春花提取的抗癌药。" },
+                { en: "Zoladex", zh: "荷尔蒙药名，又称 Goserelin", pinyin: "hé ěr méng yào míng, yòu chēng Goserelin", en_description: "Suppresses hormone production, used for cancer treatment.", zh_description: "抑制激素分泌，用于癌症治疗。" }
             ],
             "身体部位与系统 (Body Parts & Systems)": {
                 "主要器官 (Major Organs)": [
-                    { en: "Brain", zh: "大脑", pinyin: "dà nǎo" },
-                    { en: "Kidney", zh: "肾脏", pinyin: "shèn zàng" },
-                    { en: "Liver", zh: "肝脏", pinyin: "gān zàng" },
-                    { en: "Lungs", zh: "肺", pinyin: "fèi" },
-                    { en: "Pancreas", zh: "胰腺", pinyin: "yí xiàn" },
-                    { en: "Thyroid", zh: "甲状腺", pinyin: "jiǎ zhuàng xiàn" },
-                    { en: "Heart", zh: "心脏", pinyin: "xīn zàng" },
-                    { en: "Spleen", zh: "脾脏", pinyin: "pí zàng" }
+                    { en: "Brain", zh: "大脑", pinyin: "dà nǎo", en_description: "The main organ of the nervous system, responsible for thinking and coordination.", zh_description: "控制思考与协调行为的神经系统中枢。" },
+                    { en: "Kidney", zh: "肾脏", pinyin: "shèn zàng", en_description: "Organs that filter blood and produce urine.", zh_description: "过滤血液并生成尿液的器官。" },
+                    { en: "Liver", zh: "肝脏", pinyin: "gān zàng", en_description: "Organ that processes nutrients and detoxifies the body.", zh_description: "处理营养并解毒的内分泌器官。" },
+                    { en: "Lungs", zh: "肺", pinyin: "fèi", en_description: "Organs that exchange oxygen and carbon dioxide.", zh_description: "负责氧气吸入与二氧化碳排出的器官。" },
+                    { en: "Pancreas", zh: "胰腺", pinyin: "yí xiàn", en_description: "Produces insulin and digestive enzymes.", zh_description: "分泌胰岛素与消化酶的消化系统器官。" },
+                    { en: "Thyroid", zh: "甲状腺", pinyin: "jiǎ zhuàng xiàn", en_description: "Gland regulating metabolism through hormone release.", zh_description: "通过激素调节新陈代谢的腺体。" },
+                    { en: "Heart", zh: "心脏", pinyin: "xīn zàng", en_description: "Pumps blood through the circulatory system.", zh_description: "驱动血液循环的心血管核心器官。" },
+                    { en: "Spleen", zh: "脾脏", pinyin: "pí zàng", en_description: "Filters blood and supports immune function.", zh_description: "过滤血液并参与免疫反应的器官。" }
                 ],
                 "生殖与泌尿系统 (Reproductive & Urinary Systems)": [
-                    { en: "Prostate", zh: "前列腺", pinyin: "qián liè xiàn" },
-                    { en: "Adrenal gland", zh: "肾上腺", pinyin: "shèn shàng xiàn" },
-                    { en: "Anus", zh: "肛门", pinyin: "gāng mén" },
-                    { en: "Areola of nipple", zh: "乳晕", pinyin: "rǔ yūn" },
-                    { en: "Bladder", zh: "膀胱", pinyin: "páng guāng" },
-                    { en: "Bladder Neck", zh: "膀胱颈", pinyin: "páng guāng jǐng" },
-                    { en: "Cervix", zh: "子宫颈", pinyin: "zǐ gōng jǐng" },
-                    { en: "Fallopian tubes", zh: "输卵管", pinyin: "shū luǎn guǎn" },
-                    { en: "Ovary", zh: "卵巢", pinyin: "luǎn cháo" },
-                    { en: "Penis", zh: "阴茎", pinyin: "yīn jīng" },
-                    { en: "Scrotum", zh: "阴囊", pinyin: "yīn náng" },
-                    { en: "Seminal Vesicle", zh: "精囊", pinyin: "jīng náng" },
-                    { en: "Testis", zh: "睾丸", pinyin: "gāo wán" },
-                    { en: "Ureter", zh: "输尿管", pinyin: "shū niào guǎn" },
-                    { en: "Urethra", zh: "尿道", pinyin: "niào dào" },
-                    { en: "Uterus", zh: "子宫", pinyin: "zǐ gōng" },
-                    { en: "Vagina", zh: "阴道", pinyin: "yīn dào" }
+                    { en: "Prostate", zh: "前列腺", pinyin: "qián liè xiàn", en_description: "Male gland producing fluid for semen.", zh_description: "生成精液液体的男性腺体。" },
+                    { en: "Adrenal gland", zh: "肾上腺", pinyin: "shèn shàng xiàn", en_description: "Produces adrenaline and hormones to respond to stress.", zh_description: "分泌肾上腺素与调节压力反应的腺体。" },
+                    { en: "Anus", zh: "肛门", pinyin: "gāng mén", en_description: "The opening at the end of the digestive tract through which solid waste leaves the body.", zh_description: "消化道末端的开口，固体废物通过它排出体外。" },
+                    { en: "Areola of nipple", zh: "乳晕", pinyin: "rǔ yūn", en_description: "The pigmented area around the nipple.", zh_description: "乳头周围的色素区域。" },
+                    { en: "Bladder", zh: "膀胱", pinyin: "páng guāng", en_description: "Stores urine before excretion.", zh_description: "储存尿液直到排出。" },
+                    { en: "Bladder Neck", zh: "膀胱颈", pinyin: "páng guāng jǐng", en_description: "The narrow part of the bladder that connects to the urethra.", zh_description: "膀胱连接尿道的狭窄部分。" },
+                    { en: "Cervix", zh: "子宫颈", pinyin: "zǐ gōng jǐng", en_description: "Lower neck of the uterus opening into the vagina.", zh_description: "子宫下段连接阴道的部分。" },
+                    { en: "Fallopian tubes", zh: "输卵管", pinyin: "shū luǎn guǎn", en_description: "Tubes that transport eggs from ovaries to uterus.", zh_description: "将卵子从卵巢输送至子宫的通道。" },
+                    { en: "Ovary", zh: "卵巢", pinyin: "luǎn cháo", en_description: "Produces eggs and female hormones.", zh_description: "产生卵细胞与女性性激素的器官。" },
+                    { en: "Penis", zh: "阴茎", pinyin: "yīn jīng", en_description: "Male external reproductive organ.", zh_description: "男性外部生殖器。" },
+                    { en: "Scrotum", zh: "阴囊", pinyin: "yīn náng", en_description: "Skin pouch containing the testes.", zh_description: "包裹睾丸的皮肤囊袋。" },
+                    { en: "Seminal Vesicle", zh: "精囊", pinyin: "jīng náng", en_description: "Glands that produce fluid that forms part of semen.", zh_description: "产生构成精液一部分液体的腺体。" },
+                    { en: "Testis", zh: "睾丸", pinyin: "gāo wán", en_description: "Produces sperm and testosterone.", zh_description: "生成精子与睾酮的男性生殖腺。" },
+                    { en: "Ureter", zh: "输尿管", pinyin: "shū niào guǎn", en_description: "Tubes that carry urine from kidneys to bladder.", zh_description: "将尿液从肾脏输送至膀胱的管道。" },
+                    { en: "Urethra", zh: "尿道", pinyin: "niào dào", en_description: "Tube that carries urine out of the body.", zh_description: "尿液排出体外的通道。" },
+                    { en: "Uterus", zh: "子宫", pinyin: "zǐ gōng", en_description: "Organ where a fetus develops during pregnancy.", zh_description: "胎儿发育的女性生殖器官。" },
+                    { en: "Vagina", zh: "阴道", pinyin: "yīn dào", en_description: "A muscular, stretchy tube in women and most female mammals that connects the outside to the uterus.", zh_description: "阴道是女性和大多数雌性哺乳动物身体里的一个有弹性的肌肉通道，连接身体外部和子宫。" }
                 ],
                 "循环与呼吸系统 (Circulatory & Respiratory Systems)": [
-                    { en: "Artery", zh: "动脉", pinyin: "dòng mài" },
-                    { en: "Atrium", zh: "心房", pinyin: "xīn fáng" },
-                    { en: "Blood vessel", zh: "血管", pinyin: "xuè guǎn" },
-                    { en: "Bronchus", zh: "支气管", pinyin: "zhī qì guǎn" },
-                    { en: "Carina (气管的)", zh: "隆凸，在左右支气管交界处", pinyin: "lóng tū, zài zuǒ yòu zhī qì guǎn jiāo jiè chù" },
-                    { en: "Chest Wall", zh: "胸壁", pinyin: "xiōng bì" },
-                    { en: "Diaphragma", zh: "隔膜", pinyin: "gé mó" },
-                    { en: "Hilum", zh: "肺门", pinyin: "fèi mén" },
-                    { en: "Lymph nodes", zh: "淋巴结", pinyin: "lín bā jié" },
-                    { en: "Lymph vessels", zh: "淋巴管", pinyin: "lín bā guǎn" },
-                    { en: "Mediastinum", zh: "纵膈腔", pinyin: "zòng gé qiāng" },
-                    { en: "Pericardium", zh: "心膜、心包", pinyin: "xīn mó, xīn bāo" },
-                    { en: "Pleura", zh: "胸膜、肋膜", pinyin: "xiōng mó, lè mó" },
-                    { en: "Rib", zh: "肋骨", pinyin: "lèi gǔ" },
-                    { en: "Trachea", zh: "气管", pinyin: "qì guǎn" },
-                    { en: "Valve", zh: "瓣膜", pinyin: "bàn mó" },
-                    { en: "Vein", zh: "静脉", pinyin: "jìng mài" },
-                    { en: "Ventricle", zh: "心室", pinyin: "xīn shì" }
+                    { en: "Artery", zh: "动脉", pinyin: "dòng mài", en_description: "Vessel carrying oxygen-rich blood from heart to body.", zh_description: "将含氧血液从心脏输送至全身的血管。" },
+                    { en: "Atrium", zh: "心房", pinyin: "xīn fáng", en_description: "Heart chamber that receives blood before pumping.", zh_description: "心脏顶部接受血液进入的腔室。" },
+                    { en: "Blood vessel", zh: "血管", pinyin: "xuè guǎn", en_description: "Tubes (arteries/veins) that circulate blood.", zh_description: "负责血液循环的动静脉管道系统。" },
+                    { en: "Bronchus", zh: "支气管", pinyin: "zhī qì guǎn", en_description: "Large airway branch leading into lungs.", zh_description: "通往肺部的主气道分支之一。" },
+                    { en: "Carina (气管的)", zh: "隆凸，在左右支气管交界处", pinyin: "lóng tū, zài zuǒ yòu zhī qì guǎn jiāo jiè chù", en_description: "Ridge where trachea divides into bronchial tubes.", zh_description: "气管分叉为左、右支气管时的中央突起。" },
+                    { en: "Chest Wall", zh: "胸壁", pinyin: "xiōng bì", en_description: "Bones and muscles forming outer chest boundary.", zh_description: "构成胸廓外部结构的骨骼和肌肉。" },
+                    { en: "Diaphragma", zh: "隔膜", pinyin: "gé mó", en_description: "Muscle separating chest and abdomen; aids breathing.", zh_description: "分隔胸腔与腹腔的主要呼吸肌。" },
+                    { en: "Hilum", zh: "肺门", pinyin: "fèi mén", en_description: "Lung root where blood vessels and airways enter.", zh_description: "血管与气管进入肺部的连接区域。" },
+                    { en: "Lymph nodes", zh: "淋巴结", pinyin: "lín bā jié", en_description: "Small immune glands filtering lymph fluid.", zh_description: "过滤淋巴液并参与免疫反应的小型器官。" },
+                    { en: "Lymph vessels", zh: "淋巴管", pinyin: "lín bā guǎn", en_description: "Tubes that transport lymph throughout the body.", zh_description: "输送淋巴液并维持体液循环的管道。" },
+                    { en: "Mediastinum", zh: "纵膈腔", pinyin: "zòng gé qiāng", en_description: "Central chest region between lungs housing heart and major vessels.", zh_description: "位于左右肺之间的心脏与大血管所在区域。" },
+                    { en: "Pericardium", zh: "心膜、心包", pinyin: "xīn mó, xīn bāo", en_description: "Tissue sac surrounding and protecting the heart.", zh_description: "包绕心脏的双层保护膜。" },
+                    { en: "Pleura", zh: "胸膜、肋膜", pinyin: "xiōng mó, lè mó", en_description: "Two-layer membrane lining lungs and chest cavity.", zh_description: "覆盖肺表面及胸腔壁的双层膜。" },
+                    { en: "Rib", zh: "肋骨", pinyin: "lèi gǔ", en_description: "Bones forming the rib cage protecting thoracic organs.", zh_description: "构成胸廓以保护内脏的骨骼结构。" },
+                    { en: "Trachea", zh: "气管", pinyin: "qì guǎn", en_description: "Airway tube carrying air from throat to lungs.", zh_description: "将空气由咽喉输送至肺部的通道。" },
+                    { en: "Valve", zh: "瓣膜", pinyin: "bàn mó", en_description: "Tissue flaps controlling blood flow within heart and vessels.", zh_description: "控制心脏与血管内血液单向流动的瓣状组织。" },
+                    { en: "Vein", zh: "静脉", pinyin: "jìng mài", en_description: "Vessel that returns deoxygenated blood to heart.", zh_description: "将缺氧血液返回心脏的血管。" },
+                    { en: "Ventricle", zh: "心室", pinyin: "xīn shì", en_description: "Lower chamber of the heart pumping blood out.", zh_description: "将血液泵送离开心脏的主要腔室。" }
                 ],
                 "神经与感官系统 (Nervous & Sensory Systems)": [
-                    { en: "Cerebellum", zh: "小脑", pinyin: "xiǎo nǎo" },
-                    { en: "Cerebrum", zh: "大脑", pinyin: "dà nǎo" },
-                    { en: "Cornea", zh: "眼角膜", pinyin: "yǎn jiǎo mó" },
-                    { en: "Ear", zh: "耳", pinyin: "ěr" },
-                    { en: "Eye ball", zh: "眼球", pinyin: "yǎn qiú" },
-                    { en: "Glottis", zh: "声门", pinyin: "shēng mén" },
-                    { en: "Hypothalamus", zh: "视丘下部，位于脑内", pinyin: "shì qiū xià bù, wèi yú nǎo nèi" },
-                    { en: "Inner ear", zh: "内耳", pinyin: "nèi ěr" },
-                    { en: "Iris", zh: "虹膜", pinyin: "hóng mó" },
-                    { en: "Lacrimal duct", zh: "泪管", pinyin: "lèi guǎn" },
-                    { en: "Larynx", zh: "喉", pinyin: "hóu" },
-                    { en: "Lens", zh: "晶状体", pinyin: "jīng zhuàng tǐ" },
-                    { en: "Meninges", zh: "脑脊膜，脑脊髓膜", pinyin: "nǎo jí mó, nǎo jí suǐ mó" },
-                    { en: "Middle ear", zh: "中耳", pinyin: "zhōng ěr" },
-                    { en: "Nasal cavity", zh: "鼻腔", pinyin: "bí qiāng" },
-                    { en: "Nerve", zh: "神经", pinyin: "shén jīng" },
-                    { en: "Nose", zh: "鼻", pinyin: "bí" },
-                    { en: "Oropharynx", zh: "口咽", pinyin: "kǒu yān" },
-                    { en: "Outer ear", zh: "外耳", pinyin: "wài ěr" },
-                    { en: "Pharyngeal tonsil", zh: "咽头", pinyin: "yān tóu" },
-                    { en: "Pharynx", zh: "咽", pinyin: "yān" },
-                    { en: "Pituitary Gland", zh: "脑下垂体", pinyin: "nǎo xià chuí tǐ" },
-                    { en: "Pupil", zh: "瞳孔", pinyin: "tóng kǒng" },
-                    { en: "Retinal", zh: "视网膜", pinyin: "shì wǎng mó" },
-                    { en: "Sclera", zh: "巩膜", pinyin: "gǒng mó" },
-                    { en: "Semicircular canal", zh: "三半规管", pinyin: "sān bàn guī guǎn" },
-                    { en: "Soft palate", zh: "软腭骨", pinyin: "ruǎn è gǔ" },
-                    { en: "Spinal cord", zh: "脊髓神经", pinyin: "jí suǐ shén jīng" },
-                    { en: "Subglottis", zh: "声门下区", pinyin: "shēng mén xià qū" },
-                    { en: "Supraglottis", zh: "声门上区", pinyin: "shēng mén shàng qū" },
-                    { en: "Throat", zh: "喉", pinyin: "hóu" },
-                    { en: "Tongue", zh: "舌", pinyin: "shé" },
-                    { en: "Tonsil", zh: "扁桃体", pinyin: "biǎn táo tǐ" },
-                    { en: "Tympanic membrane (Ear drum)", zh: "鼓膜", pinyin: "gǔ mó" },
-                    { en: "Uvula", zh: "悬雍垂 (小舌)", pinyin: "xuán yōng chuí (xiǎo shé)" },
-                    { en: "Vocal cord", zh: "声带", pinyin: "shēng dài" }
+                    { en: "Cerebellum", zh: "小脑", pinyin: "xiǎo nǎo", en_description: "Region of brain that coordinates balance and fine motor skills.", zh_description: "调节身体平衡与精细运动的脑区。" },
+                    { en: "Cerebrum", zh: "大脑", pinyin: "dà nǎo", en_description: "Largest brain part that controls thought, memory, and movements.", zh_description: "负责思维、记忆与运动控制的大脑部分。" },
+                    { en: "Cornea", zh: "眼角膜", pinyin: "yǎn jiǎo mó", en_description: "Transparent front eye layer that refracts light.", zh_description: "覆盖眼球前部的透明角质层，负责光线折射。" },
+                    { en: "Ear", zh: "耳", pinyin: "ěr", en_description: "Organ of hearing and balance.", zh_description: "负责听觉和平衡的感官器官。" },
+                    { en: "Eye ball", zh: "眼球", pinyin: "yǎn qiú", en_description: "Spherical organ for vision.", zh_description: "完成视觉功能的球状器官。" },
+                    { en: "Glottis", zh: "声门", pinyin: "shēng mén", en_description: "Opening between vocal cords allowing airflow.", zh_description: "声带之间控制空气通过的开口。" },
+                    { en: "Hypothalamus", zh: "视丘下部，位于脑内", pinyin: "shì qiū xià bù, wèi yú nǎo nèi", en_description: "Brain region regulating temperature, hunger, and hormones.", zh_description: "调控体温、饥饿感与激素分泌的大脑区域。" },
+                    { en: "Inner ear", zh: "内耳", pinyin: "nèi ěr", en_description: "Deep ear structures for hearing and equilibrium.", zh_description: "包含耳蜗和平衡结构的内耳部位。" },
+                    { en: "Iris", zh: "虹膜", pinyin: "hóng mó", en_description: "Colored eye part that controls pupil size.", zh_description: "可调瞳孔大小的彩色眼部结构。" },
+                    { en: "Lacrimal duct", zh: "泪管", pinyin: "lèi guǎn", en_description: "Channel that drains tears from eye to nose.", zh_description: "输送泪液从眼部流向鼻腔的管道。" },
+                    { en: "Larynx", zh: "喉", pinyin: "hóu", en_description: "Voice box housing vocal cords for speech.", zh_description: "包含声带用于发声的上呼吸道结构。" },
+                    { en: "Lens", zh: "晶状体", pinyin: "jīng zhuàng tǐ", en_description: "Transparent structure that focuses light onto retina.", zh_description: "将光线聚焦于视网膜的眼睛晶体。" },
+                    { en: "Meninges", zh: "脑脊膜，脑脊髓膜", pinyin: "nǎo jí mó, nǎo jí suǐ mó", en_description: "Protective membranes covering brain and spinal cord.", zh_description: "包覆脑与脊髓的保护性膜结构。" },
+                    { en: "Middle ear", zh: "中耳", pinyin: "zhōng ěr", en_description: "Air-filled space transmitting sound to inner ear.", zh_description: "传导声音至内耳的耳鼓室结构。" },
+                    { en: "Nasal cavity", zh: "鼻腔", pinyin: "bí qiāng", en_description: "Hollow space inside nose for breathing and olfaction.", zh_description: "鼻腔内部用于呼吸与嗅觉的空间。" },
+                    { en: "Nerve", zh: "神经", pinyin: "shén jīng", en_description: "Bundles of fibers transmitting signals between body and brain.", zh_description: "传递神经信号的纤维束。" },
+                    { en: "Nose", zh: "鼻", pinyin: "bí", en_description: "Organ for breathing and smelling.", zh_description: "负责呼吸与嗅觉的器官。" },
+                    { en: "Oropharynx", zh: "口咽", pinyin: "kǒu yān", en_description: "Passage at back of mouth aiding breathing and swallowing.", zh_description: "连接口腔与喉咽的通道。" },
+                    { en: "Outer ear", zh: "外耳", pinyin: "wài ěr", en_description: "Visible outer part collecting sound waves.", zh_description: "收集声音的外部耳廓结构。" },
+                    { en: "Pharyngeal tonsil", zh: "咽头", pinyin: "yān tóu", en_description: "Lymph tissue at roof of mouth near nasal cavity.", zh_description: "位于鼻咽处的免疫淋巴组织。" },
+                    { en: "Pharynx", zh: "咽", pinyin: "yān", en_description: "Throat region connecting nasal and oral cavities.", zh_description: "吸气与吞咽通道的共同部位。" },
+                    { en: "Pituitary Gland", zh: "脑下垂体", pinyin: "nǎo xià chuí tǐ", en_description: "Hormone gland regulating growth and endocrine function.", zh_description: "控制生长和多种激素分泌的垂体腺体。" },
+                    { en: "Pupil", zh: "瞳孔", pinyin: "tóng kǒng", en_description: "Opening in the iris that lets light into the eye.", zh_description: "控制光线进入隐藏部分的开口。" },
+                    { en: "Retinal", zh: "视网膜", pinyin: "shì wǎng mó", en_description: "Light-sensitive tissue at back of eye.", zh_description: "位于眼后部的感光细胞层。" },
+                    { en: "Sclera", zh: "巩膜", pinyin: "gǒng mó", en_description: "White outer layer of the eyeball.", zh_description: "形成眼球外部的坚韧白膜。" },
+                    { en: "Semicircular canal", zh: "三半规管", pinyin: "sān bàn guī guǎn", en_description: "Inner ear structures that detect rotational movement.", zh_description: "感知头部旋转的内耳平衡器。" },
+                    { en: "Soft palate", zh: "软腭骨", pinyin: "ruǎn è gǔ", en_description: "Soft tissue at back of roof of mouth.", zh_description: "位于上口腔后部的柔软组织。" },
+                    { en: "Spinal cord", zh: "脊髓神经", pinyin: "jí suǐ shén jīng", en_description: "Nerve bundle transmitting signals between brain and body.", zh_description: "连接大脑与身体的主要神经通道。" },
+                    { en: "Subglottis", zh: "声门下区", pinyin: "shēng mén xià qū", en_description: "Lower section framing the glottic opening.", zh_description: "包绕声门的下区域结构。" },
+                    { en: "Supraglottis", zh: "声门上区", pinyin: "shēng mén shàng qū", en_description: "Upper section framing the glottic opening.", zh_description: "包绕声门的上区域结构。" },
+                    { en: "Throat", zh: "喉", pinyin: "hóu", en_description: "Passage from mouth to esophagus and larynx.", zh_description: "连接口腔与食管/喉部的通道。" },
+                    { en: "Tongue", zh: "舌", pinyin: "shé", en_description: "Muscular organ for taste, swallowing, and speech.", zh_description: "控制味觉、吞咽与语言的灵活器官。" },
+                    { en: "Tonsil", zh: "扁桃体", pinyin: "biǎn táo tǐ", en_description: "Lymphatic tissue at throat sides that traps pathogens.", zh_description: "位于咽侧的免疫组织，帮助抵抗病原体。" },
+                    { en: "Tympanic membrane (Ear drum)", zh: "鼓膜", pinyin: "gǔ mó", en_description: "Thin tissue that vibrates in response to sound.", zh_description: "接受声音振动的中耳膜。" },
+                    { en: "Uvula", zh: "悬雍垂 (小舌)", pinyin: "xuán yōng chuí (xiǎo shé)", en_description: "Small flesh hanging at back of throat.", zh_description: "位于喉后部的柔软小突起。" },
+                    { en: "Vocal cord", zh: "声带", pinyin: "shēng dài", en_description: "Folds that vibrate to produce sound.", zh_description: "随空气振动发声的喉部组织。" }
                 ],
                 "消化系统 (Digestive System)": [
-                    { en: "Colon", zh: "结肠", pinyin: "jié cháng" },
-                    { en: "Gall bladder", zh: "胆囊", pinyin: "dǎn náng" },
-                    { en: "Ileum", zh: "回肠", pinyin: "huí cháng" },
-                    { en: "Omentum", zh: "网膜", pinyin: "wǎng mó" },
-                    { en: "Small Intestine", zh: "小肠", pinyin: "xiǎo cháng" }
+                    { en: "Colon", zh: "结肠", pinyin: "jié cháng", en_description: "Major part of the large intestine for water absorption.", zh_description: "吸收水分并储存粪便的大肠主结构。" },
+                    { en: "Gall bladder", zh: "胆囊", pinyin: "dǎn náng", en_description: "Organ storing bile produced by the liver.", zh_description: "储存肝脏产生的胆汁用于消化脂肪。" },
+                    { en: "Ileum", zh: "回肠", pinyin: "huí cháng", en_description: "Final section of the small intestine involved in nutrient absorption.", zh_description: "吸收养分的小肠末端部分。" },
+                    { en: "Omentum", zh: "网膜", pinyin: "wǎng mó", en_description: "Fatty membrane covering abdominal organs.", zh_description: "覆盖肠道的脂肪保护膜。" },
+                    { en: "Small Intestine", zh: "小肠", pinyin: "xiǎo cháng", en_description: "Digestive tract segment absorbing nutrients.", zh_description: "吸收营养物质的主要消化器官。" }
                 ],
                 "其他 (Other)": [
-                    { en: "Bone marrow", zh: "骨髓", pinyin: "gǔ suǐ" },
-                    { en: "Gum", zh: "牙肉/牙龈", pinyin: "yá ròu / yá yín" },
-                    { en: "Soft tissue", zh: "软体组织", pinyin: "ruǎn tǐ zǔ zhī" },
-                    { en: "Thymus", zh: "胸腺", pinyin: "xiōng xiàn" }
+                    { en: "Bone marrow", zh: "骨髓", pinyin: "gǔ suǐ", en_description: "Tissue inside bones producing blood cells.", zh_description: "骨内组织，负责生成红白细胞及血小板。" },
+                    { en: "Gum", zh: "牙肉/牙龈", pinyin: "yá ròu / yá yín", en_description: "Soft tissue surrounding tooth roots.", zh_description: "包裹牙齿根部的柔软口腔组织。" },
+                    { en: "Soft tissue", zh: "软体组织", pinyin: "ruǎn tǐ zǔ zhī", en_description: "Connective tissues such as muscle, fat, skin.", zh_description: "包括肌肉、脂肪、皮肤等身体柔软结构。" },
+                    { en: "Thymus", zh: "胸腺", pinyin: "xiōng xiàn", en_description: "Immune gland behind the breastbone developing T-cells.", zh_description: "位于胸骨后方有助于免疫成熟的腺体。" },
+                    { en: "Vagina", zh: "阴道", pinyin: "yīn dào", en_description: "A muscular, stretchy tube in women and most female mammals that connects the outside to the uterus.", zh_description: "阴道是女性和大多数雌性哺乳动物身体里的一个有弹性的肌肉通道，连接身体外部和子宫。" }
                 ]
             },
             "常见疾病与状况 (Common Diseases & Conditions)": {
                 "呼吸系统疾病 (Respiratory System Disorders)": [
-                    { en: "Rhinovirus (Common cold)", zh: "鼻病毒（普通感冒）", pinyin: "bí bìng dú (pǔ tōng gǎn mào)" },
-                    { en: "Pharyngitis (Sore throat)", zh: "咽炎（咽喉痛）", pinyin: "yān yán (yān hóu tòng)" },
-                    { en: "Tussis (Cough)", zh: "土脓病（咳嗽）", pinyin: "tǔ nóng bìng (ké sou)" },
-                    { en: "Asthma", zh: "哮喘", pinyin: "xiào chuǎn" },
-                    { en: "Pneumonia", zh: "肺炎", pinyin: "fèi yán" },
-                    { en: "Pulmonary tuberculosis", zh: "肺结核", pinyin: "fèi jié hé" },
-                    { en: "Chronic bronchitis (Lung infection)", zh: "慢性支气管炎（肺部感染）", pinyin: "màn xìng zhī qì guǎn yán (fèi bù gǎn rǎn)" },
-                    { en: "Emphysema", zh: "肺气肿", pinyin: "fèi qì zhǒng" },
-                    { en: "Lung cancer", zh: "肺癌", pinyin: "fèi ái" },
-                    { en: "Lower respiratory tract infection", zh: "下呼吸道感染", pinyin: "xià hū xī dào gǎn rǎn" },
-                    { en: "Bronchiectasis", zh: "支气管扩张", pinyin: "zhī qì guǎn kuò zhāng" },
-                    { en: "Bronchitis", zh: "支气管炎", pinyin: "zhī qì guǎn yán" },
-                    { en: "Bronchopneumonia", zh: "支气管肺炎", pinyin: "zhī qì guǎn fèi yán" },
-                    { en: "Common cold", zh: "感冒", pinyin: "gǎn mào" },
-                    { en: "Hemoptysis", zh: "咳血", pinyin: "ké xuè" },
-                    { en: "Influenza (Flu)", zh: "流感（流行性感冒）", pinyin: "liú gǎn (liú xíng xìng gǎn mào)" },
-                    { en: "Pertussis", zh: "百日咳", pinyin: "bǎi rì ké" },
-                    { en: "Pleural effusion", zh: "肺积水", pinyin: "fèi jī shuǐ" },
-                    { en: "Pleurisy", zh: "胸膜炎", pinyin: "xiōng mó yán" },
-                    { en: "Pneumothorax", zh: "气胸", pinyin: "qì xiōng" },
-                    { en: "Rhinitis", zh: "鼻炎", pinyin: "bí yán" },
-                    { en: "Sinusitis", zh: "窦炎", pinyin: "dòu yán" },
-                    { en: "Tracheitis", zh: "气管炎", pinyin: "qì guǎn yán" },
-                    { en: "Upper respiratory infection", zh: "上呼吸道感染", pinyin: "shàng hū xī dào gǎn rǎn" },
-                    { en: "Atypical pneumonia", zh: "非典型肺炎", pinyin: "fēi diǎn xíng fèi yán" },
-                    { en: "Pneumoconiosis", zh: "尘肺症", pinyin: "chén fèi zhèng" },
-                    { en: "Silicosis", zh: "矽肺", pinyin: "xī fèi" },
-                    { en: "Pulmonary embolism", zh: "肺栓塞", pinyin: "fèi shuān sè" },
-                    { en: "Obstructive Pneumonitis", zh: "阻塞性肺炎", pinyin: "zǔ sè xìng fèi yán" },
-                    { en: "Atelectasis", zh: "肺部膨胀不全", pinyin: "fèi bù péng zhàng bù quán" }
+                    { en: "Rhinovirus (Common cold)", zh: "鼻病毒（普通感冒）", pinyin: "bí bìng dú (pǔ tōng gǎn mào)", en_description: "A viral infection causing sneezing, runny nose, sore throat.", zh_description: "一种病毒感染，导致打喷嚏、流鼻涕、喉咙痛。" },
+                    { en: "Pharyngitis (Sore throat)", zh: "咽炎（咽喉痛）", pinyin: "yān yán (yān hóu tòng)", en_description: "Inflammation of the throat causing pain and discomfort.", zh_description: "咽喉部位发炎，引起疼痛和不适。" },
+                    { en: "Tussis (Cough)", zh: "咳嗽", pinyin: "ké sou", en_description: "Reflex action to clear the airway of mucus or irritants.", zh_description: "清除气道中痰液或刺激物的反射动作。" },
+                    { en: "Asthma", zh: "哮喘", pinyin: "xiào chuǎn", en_description: "Chronic condition causing airway inflammation and breathing difficulty.", zh_description: "慢性疾病，气道发炎，导致呼吸困难。" },
+                    { en: "Pneumonia", zh: "肺炎", pinyin: "fèi yán", en_description: "Infection causing inflammation in the lungs.", zh_description: "肺部感染引起炎症。" },
+                    { en: "Pulmonary tuberculosis", zh: "肺结核", pinyin: "fèi jié hé", en_description: "Bacterial infection affecting the lungs.", zh_description: "细菌感染肺部的疾病。" },
+                    { en: "Chronic bronchitis (Lung infection)", zh: "慢性支气管炎（肺部感染）", pinyin: "màn xìng zhī qì guǎn yán (fèi bù gǎn rǎn)", en_description: "Long-term inflammation of the bronchial tubes.", zh_description: "支气管长期发炎，导致肺部感染。" },
+                    { en: "Emphysema", zh: "肺气肿", pinyin: "fèi qì zhǒng", en_description: "Lung damage causing shortness of breath.", zh_description: "肺组织损伤，导致呼吸困难。" },
+                    { en: "Lung cancer", zh: "肺癌", pinyin: "fèi ái", en_description: "Malignant tumor in lung tissue.", zh_description: "肺部恶性肿瘤。" },
+                    { en: "Lower respiratory tract infection", zh: "下呼吸道感染", pinyin: "xià hū xī dào gǎn rǎn", en_description: "Infection affecting the lower parts of the respiratory tract.", zh_description: "感染影响呼吸道下部。" },
+                    { en: "Bronchiectasis", zh: "支气管扩张", pinyin: "zhī qì guǎn kuò zhāng", en_description: "Permanent enlargement of parts of the airways.", zh_description: "气道部分永久性扩张。" },
+                    { en: "Bronchitis", zh: "支气管炎", pinyin: "zhī qì guǎn yán", en_description: "Inflammation of the bronchial tubes.", zh_description: "支气管发炎。" },
+                    { en: "Bronchopneumonia", zh: "支气管肺炎", pinyin: "zhī qì guǎn fèi yán", en_description: "Infection affecting bronchi and lungs.", zh_description: "支气管和肺部感染。" },
+                    { en: "Common cold", zh: "感冒", pinyin: "gǎn mào", en_description: "Mild viral infection of the upper respiratory tract.", zh_description: "上呼吸道轻度病毒感染。" },
+                    { en: "Hemoptysis", zh: "咳血", pinyin: "ké xuè", en_description: "Coughing up blood.", zh_description: "咳出血液。" },
+                    { en: "Influenza (Flu)", zh: "流感（流行性感冒）", pinyin: "liú gǎn (liú xíng xìng gǎn mào)", en_description: "Viral infection causing fever, aches, cough, fatigue.", zh_description: "病毒感染，引起发烧、疼痛、咳嗽、疲劳。" },
+                    { en: "Pertussis", zh: "百日咳", pinyin: "bǎi rì ké", en_description: "Highly contagious bacterial infection causing severe cough.", zh_description: "高度传染性细菌感染，导致剧烈咳嗽。" },
+                    { en: "Pleural effusion", zh: "肺积水", pinyin: "fèi jī shuǐ", en_description: "Fluid accumulation between lung and chest wall.", zh_description: "肺与胸壁之间积液。" },
+                    { en: "Pleurisy", zh: "胸膜炎", pinyin: "xiōng mó yán", en_description: "Inflammation of the pleura (lung lining).", zh_description: "胸膜发炎。" },
+                    { en: "Pneumothorax", zh: "气胸", pinyin: "qì xiōng", en_description: "Air enters the pleural space causing lung collapse.", zh_description: "气体进入胸膜腔导致肺塌陷。" },
+                    { en: "Rhinitis", zh: "鼻炎", pinyin: "bí yán", en_description: "Inflammation of the nasal mucous membrane.", zh_description: "鼻黏膜发炎。" },
+                    { en: "Sinusitis", zh: "窦炎", pinyin: "dòu yán", en_description: "Inflammation of the sinuses causing congestion and pain.", zh_description: "窦腔发炎，导致堵塞和疼痛。" },
+                    { en: "Tracheitis", zh: "气管炎", pinyin: "qì guǎn yán", en_description: "Inflammation of the trachea (windpipe).", zh_description: "气管发炎。" },
+                    { en: "Upper respiratory infection", zh: "上呼吸道感染", pinyin: "shàng hū xī dào gǎn rǎn", en_description: "Infection affecting the nose, throat, and upper airways.", zh_description: "感染影响鼻子、咽喉及上呼吸道。" },
+                    { en: "Atypical pneumonia", zh: "非典型肺炎", pinyin: "fēi diǎn xíng fèi yán", en_description: "Pneumonia caused by unusual bacteria or viruses.", zh_description: "由非典型细菌或病毒引起的肺炎。" },
+                    { en: "Pneumoconiosis", zh: "尘肺症", pinyin: "chén fèi zhèng", en_description: "Lung disease caused by inhaling dust particles.", zh_description: "吸入粉尘引起的肺病。" },
+                    { en: "Silicosis", zh: "矽肺", pinyin: "xī fèi", en_description: "Lung disease caused by inhaling silica dust.", zh_description: "吸入硅尘引起的肺病。" },
+                    { en: "Pulmonary embolism", zh: "肺栓塞", pinyin: "fèi shuān sè", en_description: "Blockage of lung arteries by blood clots.", zh_description: "血栓阻塞肺动脉。" },
+                    { en: "Obstructive Pneumonitis", zh: "阻塞性肺炎", pinyin: "zǔ sè xìng fèi yán", en_description: "Lung inflammation caused by airway blockage.", zh_description: "气道阻塞引起的肺部炎症。" },
+                    { en: "Atelectasis", zh: "肺部膨胀不全", pinyin: "fèi bù péng zhàng bù quán", en_description: "Partial or complete lung collapse due to air loss.", zh_description: "肺部部分或完全塌陷。" }
                 ],
                 "感染与炎症 (Infections & Inflammations)": [
                     { en: "Pyrexia (Fever)", zh: "热病（发热）", pinyin: "rè bìng (fā rè)" },
@@ -472,7 +488,7 @@
                     { en: "Depression", zh: "抑郁症", pinyin: "yì yù zhèng" },
                     { en: "Obsessive-compulsive disorder (OCD)", zh: "强迫症", pinyin: "qiáng pò zhèng" },
                     { en: "Anorexia nervosa", zh: "厌食症", pinyin: "yàn shí zhèng" },
-                    { en: "Bulimia nervosa", zh: "暴食症", pinyin: "bào shí zhèng" },
+                    { en: "Bulimia nervosa", zh: "暴食症", pinyin: "bào shí zhí" },
                     { en: "Bipolar disorder", zh: "躁郁症", pinyin: "zào yù zhèng" },
                     { en: "Schizophrenia", zh: "精神分裂症", pinyin: "jīng shén fēn liè zhèng" },
                     { en: "Panic disorder", zh: "恐慌症", pinyin: "kǒng huāng zhèng" },
@@ -522,7 +538,7 @@
                     { en: "Allergic rhinitis", zh: "过敏性鼻炎", pinyin: "guò mǐn xìng bí yán" },
                     { en: "Chronic sinusitis", zh: "慢性鼻窦炎", pinyin: "màn xìng bí dòu yán" },
                     { en: "Nasal polyps", zh: "鼻息肉", pinyin: "bí xī ròu" },
-                    { en: "Deviated septum", zh: "鼻中隔弯曲", pinyin: "bí zhōng gé wān qū" },
+                    { en: "Deviated septum", zh: "鼻中隔弯曲", pinyin: "bí zhōng gé wān qǔ" },
                     { en: "Oral thrush", zh: "鹅口疮", pinyin: "é kǒu chuāng" },
                     { en: "Nosebleed / Epistaxis", zh: "流鼻血", pinyin: "liú bí xuè" },
                     { en: "Nasopharyngeal cancer", zh: "鼻咽癌", pinyin: "bí yān ái" },
@@ -536,7 +552,7 @@
                     { en: "Dental abscess/tooth abscess", zh: "牙疮", pinyin: "yá chuāng" },
                     { en: "Leukoplakia", zh: "白斑病", pinyin: "bái bān bìng" },
                     { en: "Periodontal disease", zh: "牙周病", pinyin: "yá zhōu bìng" },
-                    { en: "Stomatitis", zh: "口腔炎/口炎", pinyin: "kǒu qiāng yán / kǒu yán" },
+                    { en: "Stomatitis", zh: "口腔炎/口炎", pinyin: "pí fū yán / pí yán" },
                     { en: "Tonsillitis", zh: "扁桃体炎", pinyin: "biǎn táo tǐ yán" },
                     { en: "Cavity", zh: "蛀牙", pinyin: "zhù yá" }
                 ],
@@ -718,7 +734,7 @@
                     { en: "Avascular necrosis", zh: "缺血性坏死", pinyin: "quē xuè xìng huài sǐ" },
                     { en: "Trigger finger", zh: "扳机指", pinyin: "bān jī zhǐ" },
                     { en: "Wry neck / Torticollis", zh: "落枕", pinyin: "là zhěn" },
-                    { en: "Nursemaid's elbow", zh: "保姆肘", pinyin: "bǎo mǔ zhǒu" },
+                    { en: "Nursemaid's elbow", zh: "保姆肘", pinyin: "bǎo mú zhǒu" },
                     { en: "Sports injury", zh: "运动损伤", pinyin: "yùn dòng sǔn shāng" },
                     { en: "Carpal tunnel syndrome", zh: "腕隧道综合征", pinyin: "wàn suì dào zōng hé zhēng" },
                     { en: "Spinal stenosis", zh: "椎管狭窄", pinyin: "zhuī guǎn xiá zhǎi" },
@@ -733,14 +749,14 @@
                     { en: "Contusion (Bruise)", zh: "挫伤（瘀伤）", pinyin: "cuò shāng (yū shāng)" },
                     { en: "Hyperhidrosis (Excessive sweating)", zh: "多汗症（出汗过多）", pinyin: "duō hàn zhèng (chū hàn guò duō)" },
                     { en: "Ingrown toenail", zh: "嵌甲症（趾甲内生）", pinyin: "qiàn jiǎ zhèng (zhǐ jiǎ nèi shēng)" },
-                    { en: "Psoriasis", zh: "牛皮癣", pinyin: "niú pí xiǎn" },
+                    { en: "Psoriasis", zh: "牛皮癣", pinyin: "niú pí xiǎn", en_description: "A chronic autoimmune condition that causes rapid skin cell turnover, resulting in red, scaly patches.", zh_description: "一种慢性自身免疫性疾病，导致皮肤细胞快速更新，形成红色、鳞屑状斑块。" },
                     { en: "Eczema", zh: "湿疹", pinyin: "shī zhěn" },
                     { en: "Acne", zh: "痤疮", pinyin: "cuó chuāng" },
                     { en: "Wart", zh: "疣", pinyin: "yóu" },
                     { en: "Skin cancer", zh: "皮肤癌", pinyin: "pí fū ái" },
                     { en: "Basal cell carcinoma", zh: "基底细胞癌", pinyin: "jī dǐ xì bāo ái" },
                     { en: "Squamous cell carcinoma", zh: "鳞状细胞癌", pinyin: "lín zhuàng xì bāo ái" },
-                    { en: "Melanoma", zh: "黑色素细胞癌", pinyin: "hēi sè sù xì bāo ái" },
+                    { en: "Melanoma", zh: "黑色素细胞癌", pinyin: "hēi sè sù xì bāo liú" },
                     { en: "Vitiligo", zh: "白癜风", pinyin: "bái diàn fēng" },
                     { en: "Pimple", zh: "青春痘", pinyin: "qīng chūn dòu" },
                     { en: "Comedo", zh: "粉刺", pinyin: "fěn cì" },
@@ -808,7 +824,7 @@
                     { en: "Dengue fever", zh: "登革热", pinyin: "dēng gé rè" },
                     { en: "Hand, foot, and mouth disease (HFMD)", zh: "手足口病", pinyin: "shǒu zú kǒu bìng" },
                     { en: "Avian influenza / Bird flu", zh: "禽流感", pinyin: "qín liú gǎn" },
-                    { en: "Severe acute respiratory syndrome (SARS)", zh: "严重急性呼吸综合征（SARS）", pinyin: "yán zhòng jí xìng hū xī zōng hé zhēng (SARS)" }
+                    { en: "Severe acute respiratory syndrome (SARS)", pinyin: "yán zhòng jí xìng hū xī zōng hé zhēng (SARS)", zh: "严重急性呼吸综合征（SARS）" }
                 ],
                 "其他状况 (Other Conditions)": [
                     { en: "Dysphagia", zh: "吞咽困难", pinyin: "tūn yàn kùn nán" },
@@ -978,10 +994,10 @@
             ],
             // New Nutritional Categories
             "营养物质 (Nutritional Components)": [
-                { en: "Water", zh: "水", pinyin: "shuǐ" },
+                { en: "Water", zh: "水", pinyin: "shuǐ", en_description: "The most basic and essential component of the body, involved in nearly all biochemical reactions.", zh_description: "身体中最基本、最必需的成分，参与几乎所有生物化学反应。" },
                 { en: "Calories", zh: "热量（卡路里）", pinyin: "rè liàng (kǎ lù lǐ)" },
                 { en: "Energy", zh: "能量", pinyin: "néng liàng" },
-                { en: "Protein", zh: "蛋白质", pinyin: "dàn bái zhì" },
+                { en: "Protein", zh: "蛋白质", pinyin: "dàn bái zhì", en_description: "Composed of amino acids, essential for tissue repair, enzyme and hormone production, and other functions.", zh_description: "由氨基酸组成，具有维持和修复组织、生成酶和激素等功能。" },
                 { en: "Fat", zh: "脂肪", pinyin: "zhī fáng" },
                 { en: "Saturated Fat", zh: "饱和脂肪", pinyin: "bǎo hé zhī fáng" },
                 { en: "Trans Fat", zh: "反式脂肪", pinyin: "fǎn shì zhī fáng" },
@@ -1072,15 +1088,15 @@
                 { en: "Satiety Center", zh: "饱食中枢", pinyin: "bǎo shí zhōng shū" },
                 { en: "Protein Synthesis", zh: "蛋白质合成", pinyin: "dàn bái zhì hé chéng" },
                 { en: "Biological Availability", zh: "生物利用度", pinyin: "shēng wù lì yòng dù" },
-                { en: "Body Mass Index, BMI", zh: "体重指数", pinyin: "tǐ zhòng zhǐ shù" },
+                { en: "Body Mass Index, BMI", zh: "体重指数", pinyin: "tǐ zhòng zhǐ sù" },
                 { en: "Dietary Recommendations", zh: "膳食建议", pinyin: "shàn shí jiàn yì" },
                 { en: "Satiety", zh: "饱食感", pinyin: "bǎo shí gǎn" },
                 { en: "Nutritional Deficiencies", zh: "营养缺乏症", pinyin: "yíng yǎng quē fá zhèng" },
                 { en: "Nutrient Density", zh: "营养素密度", pinyin: "yíng yǎng sù mì dù" },
-                { en: "Glycemic Index", zh: "血糖指数", pinyin: "xuè táng zhǐ shù" },
+                { en: "Glycemic Index", zh: "血糖指数", pinyin: "xuè táng zhǐ sù" },
                 { en: "Antioxidants", zh: "抗氧化剂", pinyin: "kàng yǎng huà jì" },
                 { en: "Food Allergy", zh: "食物过敏", pinyin: "shí wù guò mǐn" },
-                { en: "Plateau Phase", zh: "平台期", pinyin: "píng tái qái" }
+                { en: "Plateau Phase", zh: "平台期", pinyin: "píng tái qī" }
             ],
             "关键营养词汇 (Key Nutritional Vocabulary)": [
                 { en: "Nutrition", zh: "营养", pinyin: "yíng yǎng" },
@@ -1115,6 +1131,7 @@
         const categoryTitle = document.getElementById('category-title');
         const termList = document.getElementById('term-list');
         const searchInput = document.getElementById('search-input');
+        const tooltip = document.getElementById('tooltip'); // Get tooltip element
 
         // Function to get all terms from all categories for comprehensive searching
         function getAllTerms() {
@@ -1133,7 +1150,7 @@
                     });
                 } else { // Subcategorized content (e.g., Body Parts & Systems, Common Diseases & Conditions, Tumors & Cancers)
                     for (const subCategoryKey in categoryContent) {
-                        const subCategoryContent = categoryContent[subCategoryKey]; // Changed variable name to avoid confusion
+                        const subCategoryContent = categoryContent[subCategoryKey]; // Corrected variable name
 
                         if (Array.isArray(subCategoryContent)) {
                             // Direct array of terms within a sub-category
@@ -1202,9 +1219,11 @@
                     termsToDisplay.forEach(term => {
                         const row = document.createElement('tr');
                         row.className = 'border-b border-slate-100 hover:bg-sky-50/50';
+                        // Store the term data directly on the row for easy access during hover
+                        row.dataset.term = JSON.stringify(term); 
                         row.innerHTML = `
-                            <td class="p-3 text-slate-800">${term.en || ''}</td>
-                            <td class="p-3 text-slate-800">
+                            <td class="p-3 text-slate-800 english-term">${term.en || ''}</td>
+                            <td class="p-3 text-slate-800 chinese-pinyin-term">
                                 <span class="chinese-text">${term.zh || ''}</span>
                                 <span class="pinyin-text">${term.pinyin || ''}</span>
                                 ${term.note ? `<span class="pinyin-text text-slate-600 italic mt-1">备注: ${term.note}</span>` : ''}
@@ -1228,9 +1247,10 @@
                     termsToDisplay.forEach(term => {
                         const row = document.createElement('tr');
                         row.className = 'border-b border-slate-100 hover:bg-sky-50/50';
+                        row.dataset.term = JSON.stringify(term);
                         row.innerHTML = `
-                            <td class="p-3 text-slate-800">${term.en || ''}</td>
-                            <td class="p-3 text-slate-800">
+                            <td class="p-3 text-slate-800 english-term">${term.en || ''}</td>
+                            <td class="p-3 text-slate-800 chinese-pinyin-term">
                                 <span class="chinese-text">${term.zh || ''}</span>
                                 <span class="pinyin-text">${term.pinyin || ''}</span>
                                 ${term.note ? `<span class="pinyin-text text-slate-600 italic mt-1">备注: ${term.note}</span>` : ''}
@@ -1244,9 +1264,10 @@
                     termsToDisplay.forEach(term => {
                         const row = document.createElement('tr');
                         row.className = 'border-b border-slate-100 hover:bg-sky-50/50';
+                        row.dataset.term = JSON.stringify(term);
                         row.innerHTML = `
-                            <td class="p-3 text-slate-800">${term.en || ''}</td>
-                            <td class="p-3 text-slate-800">
+                            <td class="p-3 text-slate-800 english-term">${term.en || ''}</td>
+                            <td class="p-3 text-slate-800 chinese-pinyin-term">
                                 <span class="chinese-text">${term.zh || ''}</span>
                                 <span class="pinyin-text">${term.pinyin || ''}</span>
                                 ${term.note ? `<span class="pinyin-text text-slate-600 italic mt-1">备注: ${term.note}</span>` : ''}
@@ -1268,9 +1289,10 @@
                             subCategoryContent.forEach(term => {
                                 const row = document.createElement('tr');
                                 row.className = 'border-b border-slate-100 hover:bg-sky-50/50';
+                                row.dataset.term = JSON.stringify(term);
                                 row.innerHTML = `
-                                    <td class="p-3 text-slate-800">${term.en || ''}</td>
-                                    <td class="p-3 text-slate-800">
+                                    <td class="p-3 text-slate-800 english-term">${term.en || ''}</td>
+                                    <td class="p-3 text-slate-800 chinese-pinyin-term">
                                         <span class="chinese-text">${term.zh || ''}</span>
                                         <span class="pinyin-text">${term.pinyin || ''}</span>
                                         ${term.note ? `<span class="pinyin-text text-slate-600 italic mt-1">备注: ${term.note}</span>` : ''}
@@ -1292,9 +1314,10 @@
                                     nestedSubCategoryTerms.forEach(term => {
                                         const row = document.createElement('tr');
                                         row.className = 'border-b border-slate-100 hover:bg-sky-50/50';
+                                        row.dataset.term = JSON.stringify(term);
                                         row.innerHTML = `
-                                            <td class="p-3 text-slate-800">${term.en || ''}</td>
-                                            <td class="p-3 text-slate-800">
+                                            <td class="p-3 text-slate-800 english-term">${term.en || ''}</td>
+                                            <td class="p-3 text-slate-800 chinese-pinyin-term">
                                                 <span class="chinese-text">${term.zh || ''}</span>
                                                 <span class="pinyin-text">${term.pinyin || ''}</span>
                                                 ${term.note ? `<span class="pinyin-text text-slate-600 italic mt-1">备注: ${term.note}</span>` : ''}
@@ -1313,6 +1336,57 @@
             }
         }
         
+        // Event listener for mouseover on the entire table body (event delegation)
+        termList.addEventListener('mouseover', (e) => {
+            const targetRow = e.target.closest('tr');
+            if (!targetRow || !targetRow.dataset.term) {
+                tooltip.style.opacity = '0';
+                return;
+            }
+
+            const termData = JSON.parse(targetRow.dataset.term);
+            let tooltipContent = '';
+
+            // Check if hovering over the English column (first td with class 'english-term')
+            if (e.target.classList.contains('english-term')) {
+                if (termData.en_description) {
+                    tooltipContent = termData.en_description;
+                } else {
+                    tooltipContent = termData.zh || ''; // Fallback to Chinese translation
+                }
+            } 
+            // Check if hovering over the Chinese/Pinyin column (second td with class 'chinese-pinyin-term' or its children spans)
+            else if (e.target.classList.contains('chinese-pinyin-term') || e.target.closest('.chinese-text') || e.target.closest('.pinyin-text')) {
+                if (termData.zh_description) {
+                    tooltipContent = termData.zh_description;
+                } else {
+                    tooltipContent = termData.en || ''; // Fallback to English translation
+                }
+            } else {
+                tooltip.style.opacity = '0';
+                return;
+            }
+
+            tooltip.innerHTML = tooltipContent;
+            tooltip.style.left = `${e.clientX + 15}px`; // Offset from cursor
+            tooltip.style.top = `${e.clientY + 15}px`;
+            tooltip.style.opacity = '1';
+        });
+
+        // Event listener for mouseout on the entire table body
+        termList.addEventListener('mouseout', () => {
+            tooltip.style.opacity = '0';
+        });
+
+        // Event listener for mousemove to update tooltip position
+        termList.addEventListener('mousemove', (e) => {
+            // Update position only if tooltip is visible
+            if (tooltip.style.opacity === '1') {
+                tooltip.style.left = `${e.clientX + 15}px`;
+                tooltip.style.top = `${e.clientY + 15}px`;
+            }
+        });
+
         searchInput.addEventListener('input', (e) => {
             const searchTerm = e.target.value;
             if (searchTerm.trim()) { // Only deactivate buttons if there's actual search text
